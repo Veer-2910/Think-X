@@ -1,0 +1,3938 @@
+2026-02-06 18:47:22 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:47:22 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:47:22 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:47:22 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:47:23 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:47:23 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:47:23 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:47:23 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:47:26 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:47:26 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:47:26 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:47:26 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:47:31 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:47:31 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:47:31 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:47:31 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:47:34 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:47:34 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:47:34 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:47:34 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:47:34 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:47:34 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:47:34 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:47:34 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:47:35 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:47:35 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:47:35 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:47:35 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:02 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:50:02 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:50:02 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:50:02 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:50:05 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:05 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:05 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:05 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:06 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:06 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:06 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:06 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:08 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:08 [error]: Export PDF error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:10 [error]: CSV Export Error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  where: {},
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:10 [error]: Export CSV error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  where: {},
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:18 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:50:18 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:50:19 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:50:19 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:50:19 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:50:19 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:50:19 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:19 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:19 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:50:19 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:50:19 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:19 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:20 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:20 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:20 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:20 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:21 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:50:21 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:50:21 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:21 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:21 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:50:21 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:50:21 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:21 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:21 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:21 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:21 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:50:21 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:52:26 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:52:26 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:52:27 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:52:27 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:54:26 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:54:26 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:54:26 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:54:26 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:54:26 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:54:26 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:54:26 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:54:26 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:54:26 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:54:26 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:54:27 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:54:27 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:54:31 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:54:31 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:54:31 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:54:31 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:54:31 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:54:31 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:54:31 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:54:31 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:54:31 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:54:31 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:54:31 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:54:31 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:54:31 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:54:31 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:54:31 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:54:31 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:54:37 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:54:37 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:54:37 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:54:37 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:56:00 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:56:00 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:56:01 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:56:01 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:56:01 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:56:01 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 18:56:01 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:56:01 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:56:01 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:56:01 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:56:01 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:56:01 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:56:01 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:56:01 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 18:56:01 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:56:01 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:56:02 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:56:02 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:56:02 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:56:02 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:56:03 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:56:03 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:56:03 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 18:56:03 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:14:54 [info]: New user registered: admin@university.edu
+2026-02-06 19:17:19 [info]: User logged in: admin@university.edu
+2026-02-06 19:17:19 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:17:19 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:17:19 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:17:19 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:17:27 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:17:27 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:17:27 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:27 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:27 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:17:27 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:17:27 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:27 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:27 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:27 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:28 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:17:28 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:17:28 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:28 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:29 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:17:29 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:17:35 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:17:35 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:17:35 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:17:35 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:17:35 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:35 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:35 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:35 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:35 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:35 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:35 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:35 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:36 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:17:36 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:17:37 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:17:37 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:17:37 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:17:37 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:17:37 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:37 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:37 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:17:37 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:17:37 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:37 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:37 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:37 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:37 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:17:37 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:36 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:20:36 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:20:36 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:20:36 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:20:37 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:37 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:37 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:37 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:37 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:37 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:38 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:38 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:39 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:39 [error]: Export PDF error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:41 [error]: CSV Export Error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  where: {},
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:41 [error]: Export CSV error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  where: {},
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:57 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:20:57 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:20:57 [error]: Subject failure heatmap error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:20:57 [error]: Get subject failures error: Cannot read properties of undefined (reading 'findMany')
+2026-02-06 19:20:58 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:58 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:59 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:59 [error]: Get semester transition error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:59 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:59 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:59 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:20:59 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 19:21:00 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:21:00 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:21:00 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:21:00 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:28:53 [error]: Login error: 
+Invalid `prisma.user.findUnique()` invocation:
+
+
+The column `users.name` does not exist in the current database.
+2026-02-06 19:34:09 [info]: New user registered: admin@university.edu
+2026-02-06 19:34:48 [info]: User logged in: admin@university.edu
+2026-02-06 19:34:49 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:34:49 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:34:49 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:34:49 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:35:00 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:35:00 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:35:01 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:35:01 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:36:27 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:36:38 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:36:38 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:36:38 [error]: Admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:36:38 [error]: Get admin insights error: Cannot read properties of undefined (reading 'groupBy')
+2026-02-06 19:38:29 [info]: Department risk analytics generated
+2026-02-06 19:38:29 [info]: Admin insights generated
+2026-02-06 19:38:30 [info]: Department risk analytics generated
+2026-02-06 19:38:30 [info]: Admin insights generated
+2026-02-06 19:39:05 [info]: Department risk analytics generated
+2026-02-06 19:39:05 [info]: Admin insights generated
+2026-02-06 19:39:07 [info]: Department risk analytics generated
+2026-02-06 19:39:07 [info]: Admin insights generated
+2026-02-06 19:40:40 [info]: Department risk analytics generated
+2026-02-06 19:40:40 [info]: Department risk analytics generated
+2026-02-06 19:40:40 [info]: Semester transition analysis generated
+2026-02-06 19:40:41 [info]: Semester transition analysis generated
+2026-02-06 19:40:42 [info]: Subject failure heatmap generated
+2026-02-06 19:40:42 [info]: Subject failure heatmap generated
+2026-02-06 19:41:07 [info]: Department risk analytics generated
+2026-02-06 19:41:07 [info]: Admin insights generated
+2026-02-06 19:41:08 [info]: Department risk analytics generated
+2026-02-06 19:41:08 [info]: Admin insights generated
+2026-02-06 19:41:11 [info]: Subject failure heatmap generated
+2026-02-06 19:41:11 [info]: Subject failure heatmap generated
+2026-02-06 19:41:12 [info]: Department risk analytics generated
+2026-02-06 19:41:12 [info]: Department risk analytics generated
+2026-02-06 19:41:13 [info]: Semester transition analysis generated
+2026-02-06 19:41:13 [info]: Semester transition analysis generated
+2026-02-06 19:42:09 [error]: Admin insights error: 
+Invalid `prisma.student.count()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-06 19:42:09 [error]: Get admin insights error: 
+Invalid `prisma.student.count()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-06 19:42:12 [info]: Department risk analytics generated
+2026-02-06 19:42:12 [info]: Admin insights generated
+2026-02-06 20:09:09 [info]: Department risk analytics generated
+2026-02-06 20:09:09 [info]: Semester transition analysis generated
+2026-02-06 20:09:09 [info]: Department risk analytics generated
+2026-02-06 20:09:09 [info]: Semester transition analysis generated
+2026-02-06 20:09:09 [info]: Subject failure heatmap generated
+2026-02-06 20:09:09 [info]: Subject failure heatmap generated
+2026-02-06 20:09:35 [info]: Subject failure heatmap generated
+2026-02-06 20:09:35 [info]: Department risk analytics generated
+2026-02-06 20:09:35 [info]: Subject failure heatmap generated
+2026-02-06 20:09:35 [info]: Department risk analytics generated
+2026-02-06 20:09:36 [info]: Semester transition analysis generated
+2026-02-06 20:09:36 [info]: Semester transition analysis generated
+2026-02-06 20:10:17 [info]: Semester transition analysis generated
+2026-02-06 20:10:17 [info]: Subject failure heatmap generated
+2026-02-06 20:10:17 [info]: Department risk analytics generated
+2026-02-06 20:10:17 [info]: Subject failure heatmap generated
+2026-02-06 20:10:17 [info]: Department risk analytics generated
+2026-02-06 20:10:17 [info]: Semester transition analysis generated
+2026-02-06 20:13:23 [info]: Department risk analytics generated
+2026-02-06 20:13:23 [info]: Admin insights generated
+2026-02-06 20:13:24 [info]: Department risk analytics generated
+2026-02-06 20:13:24 [info]: Admin insights generated
+2026-02-06 20:13:31 [info]: Department risk analytics generated
+2026-02-06 20:13:31 [info]: Department risk analytics generated
+2026-02-06 20:13:32 [info]: Subject failure heatmap generated
+2026-02-06 20:13:32 [info]: Subject failure heatmap generated
+2026-02-06 20:13:32 [info]: Semester transition analysis generated
+2026-02-06 20:13:33 [info]: Semester transition analysis generated
+2026-02-06 20:13:40 [info]: Department risk analytics generated
+2026-02-06 20:13:40 [info]: Admin insights generated
+2026-02-06 20:13:41 [info]: Department risk analytics generated
+2026-02-06 20:13:41 [info]: Admin insights generated
+2026-02-06 20:21:04 [info]: Department risk analytics generated
+2026-02-06 20:21:04 [info]: Admin insights generated
+2026-02-06 20:21:05 [info]: Department risk analytics generated
+2026-02-06 20:21:05 [info]: Admin insights generated
+2026-02-06 20:24:10 [info]: User logged in: admin@university.edu
+2026-02-06 20:24:15 [info]: Department risk analytics generated
+2026-02-06 20:24:15 [info]: Admin insights generated
+2026-02-06 20:24:15 [info]: Department risk analytics generated
+2026-02-06 20:24:15 [info]: Admin insights generated
+2026-02-06 20:24:33 [info]: Department risk analytics generated
+2026-02-06 20:24:33 [info]: Department risk analytics generated
+2026-02-06 20:24:34 [info]: Subject failure heatmap generated
+2026-02-06 20:24:34 [info]: Semester transition analysis generated
+2026-02-06 20:24:34 [info]: Subject failure heatmap generated
+2026-02-06 20:24:34 [info]: Semester transition analysis generated
+2026-02-06 20:24:36 [info]: Subject failure heatmap generated
+2026-02-06 20:24:36 [info]: Department risk analytics generated
+2026-02-06 20:24:36 [info]: Subject failure heatmap generated
+2026-02-06 20:24:36 [info]: Department risk analytics generated
+2026-02-06 20:24:36 [info]: Department risk analytics generated
+2026-02-06 20:24:36 [info]: Admin insights generated
+2026-02-06 20:24:37 [info]: Semester transition analysis generated
+2026-02-06 20:24:37 [info]: Department risk analytics generated
+2026-02-06 20:24:37 [info]: Admin insights generated
+2026-02-06 20:24:38 [info]: Semester transition analysis generated
+2026-02-06 20:55:50 [info]: User logged in: admin@university.edu
+2026-02-06 20:56:08 [info]: Department risk analytics generated
+2026-02-06 20:56:08 [info]: Admin insights generated
+2026-02-06 20:56:09 [info]: Department risk analytics generated
+2026-02-06 20:56:09 [info]: Admin insights generated
+2026-02-06 20:57:05 [info]: Department risk analytics generated
+2026-02-06 20:57:05 [info]: Department risk analytics generated
+2026-02-06 20:57:06 [info]: Subject failure heatmap generated
+2026-02-06 20:57:06 [info]: Subject failure heatmap generated
+2026-02-06 20:57:08 [info]: Semester transition analysis generated
+2026-02-06 20:57:08 [info]: Semester transition analysis generated
+2026-02-06 20:57:10 [info]: Department risk analytics generated
+2026-02-06 20:57:10 [info]: Admin insights generated
+2026-02-06 20:57:11 [info]: Department risk analytics generated
+2026-02-06 20:57:11 [info]: Admin insights generated
+2026-02-06 20:57:33 [info]: Admin admin@university.edu created new user: veerbhalodia29@gmail.com
+2026-02-06 20:57:39 [info]: Credentials sent to veerbhalodia29@gmail.com: <e6c0d125-5f28-f8f6-f47e-476435374e4a@gmail.com>
+2026-02-06 20:58:24 [info]: User logged in: veerbhalodia29@gmail.com
+2026-02-06 20:58:56 [info]: Department risk analytics generated
+2026-02-06 20:58:56 [info]: Admin insights generated
+2026-02-06 20:58:57 [info]: Department risk analytics generated
+2026-02-06 20:58:57 [info]: Admin insights generated
+2026-02-06 20:59:02 [error]: CSV Export Error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  where: {},
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 20:59:02 [error]: Export CSV error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  where: {},
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 20:59:36 [info]: Department risk analytics generated
+2026-02-06 20:59:36 [info]: Admin insights generated
+2026-02-06 20:59:37 [info]: Department risk analytics generated
+2026-02-06 20:59:37 [info]: Admin insights generated
+2026-02-06 20:59:38 [info]: Department risk analytics generated
+2026-02-06 20:59:38 [info]: Department risk analytics generated
+2026-02-06 20:59:38 [info]: Subject failure heatmap generated
+2026-02-06 20:59:39 [info]: Subject failure heatmap generated
+2026-02-06 20:59:39 [info]: Semester transition analysis generated
+2026-02-06 20:59:39 [info]: Semester transition analysis generated
+2026-02-06 21:01:32 [info]: Subject failure heatmap generated
+2026-02-06 21:01:32 [info]: Semester transition analysis generated
+2026-02-06 21:01:32 [info]: Subject failure heatmap generated
+2026-02-06 21:01:32 [info]: Department risk analytics generated
+2026-02-06 21:01:32 [info]: Semester transition analysis generated
+2026-02-06 21:01:32 [info]: Department risk analytics generated
+2026-02-06 21:01:42 [error]: CSV Import Error: 
+Invalid `prisma.assessment.createMany()` invocation:
+
+{
+  data: [
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      assessmentType: "MID_TERM",
+      subject: "Data Structures",
+      totalMarks: 100,
+      marksObtained: 75,
+      date: new Date("2024-01-20T00:00:00.000Z"),
+      remarks: "Good performance"
+    },
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      assessmentType: "ASSIGNMENT",
+      subject: "Algorithms",
+      totalMarks: 50,
+      marksObtained: 45,
+      date: new Date("2024-01-25T00:00:00.000Z"),
+      remarks: null
+    },
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      assessmentType: "QUIZ",
+      subject: "Database Systems",
+      totalMarks: 20,
+      marksObtained: 18,
+      date: new Date("2024-01-28T00:00:00.000Z"),
+      remarks: null
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      assessmentType: "MID_TERM",
+      subject: "Data Structures",
+      totalMarks: 100,
+      marksObtained: 82,
+      date: new Date("2024-01-20T00:00:00.000Z"),
+      remarks: "Excellent"
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      assessmentType: "ASSIGNMENT",
+      subject: "Algorithms",
+      totalMarks: 50,
+      marksObtained: 40,
+      date: new Date("2024-01-25T00:00:00.000Z"),
+      remarks: null
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      assessmentType: "QUIZ",
+      subject: "Database Systems",
+      totalMarks: 20,
+      marksObtained: 15,
+      date: new Date("2024-01-28T00:00:00.000Z"),
+      remarks: null
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      assessmentType: "MID_TERM",
+      subject: "Data Structures",
+      totalMarks: 100,
+      marksObtained: 55,
+      date: new Date("2024-01-20T00:00:00.000Z"),
+      remarks: "Needs improvement"
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      assessmentType: "ASSIGNMENT",
+      subject: "Algorithms",
+      totalMarks: 50,
+      marksObtained: 30,
+      date: new Date("2024-01-25T00:00:00.000Z"),
+      remarks: "Late submission"
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      assessmentType: "QUIZ",
+      subject: "Database Systems",
+      totalMarks: 20,
+      marksObtained: 12,
+      date: new Date("2024-01-28T00:00:00.000Z"),
+      remarks: null
+    }
+  ],
+  skipDuplicates: true
+}
+
+Argument `examType` is missing.
+2026-02-06 21:01:42 [error]: Assessments CSV upload error: 
+Invalid `prisma.assessment.createMany()` invocation:
+
+{
+  data: [
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      assessmentType: "MID_TERM",
+      subject: "Data Structures",
+      totalMarks: 100,
+      marksObtained: 75,
+      date: new Date("2024-01-20T00:00:00.000Z"),
+      remarks: "Good performance"
+    },
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      assessmentType: "ASSIGNMENT",
+      subject: "Algorithms",
+      totalMarks: 50,
+      marksObtained: 45,
+      date: new Date("2024-01-25T00:00:00.000Z"),
+      remarks: null
+    },
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      assessmentType: "QUIZ",
+      subject: "Database Systems",
+      totalMarks: 20,
+      marksObtained: 18,
+      date: new Date("2024-01-28T00:00:00.000Z"),
+      remarks: null
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      assessmentType: "MID_TERM",
+      subject: "Data Structures",
+      totalMarks: 100,
+      marksObtained: 82,
+      date: new Date("2024-01-20T00:00:00.000Z"),
+      remarks: "Excellent"
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      assessmentType: "ASSIGNMENT",
+      subject: "Algorithms",
+      totalMarks: 50,
+      marksObtained: 40,
+      date: new Date("2024-01-25T00:00:00.000Z"),
+      remarks: null
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      assessmentType: "QUIZ",
+      subject: "Database Systems",
+      totalMarks: 20,
+      marksObtained: 15,
+      date: new Date("2024-01-28T00:00:00.000Z"),
+      remarks: null
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      assessmentType: "MID_TERM",
+      subject: "Data Structures",
+      totalMarks: 100,
+      marksObtained: 55,
+      date: new Date("2024-01-20T00:00:00.000Z"),
+      remarks: "Needs improvement"
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      assessmentType: "ASSIGNMENT",
+      subject: "Algorithms",
+      totalMarks: 50,
+      marksObtained: 30,
+      date: new Date("2024-01-25T00:00:00.000Z"),
+      remarks: "Late submission"
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      assessmentType: "QUIZ",
+      subject: "Database Systems",
+      totalMarks: 20,
+      marksObtained: 12,
+      date: new Date("2024-01-28T00:00:00.000Z"),
+      remarks: null
+    }
+  ],
+  skipDuplicates: true
+}
+
+Argument `examType` is missing.
+2026-02-06 21:02:03 [info]: Department risk analytics generated
+2026-02-06 21:02:03 [info]: Admin insights generated
+2026-02-06 21:02:04 [info]: Department risk analytics generated
+2026-02-06 21:02:04 [info]: Admin insights generated
+2026-02-06 21:02:15 [info]: Subject failure heatmap generated
+2026-02-06 21:02:15 [info]: Subject failure heatmap generated
+2026-02-06 21:02:16 [info]: Semester transition analysis generated
+2026-02-06 21:02:17 [info]: Department risk analytics generated
+2026-02-06 21:02:17 [info]: Semester transition analysis generated
+2026-02-06 21:02:17 [info]: Department risk analytics generated
+2026-02-06 21:06:03 [info]: Department risk analytics generated
+2026-02-06 21:06:03 [info]: Department risk analytics generated
+2026-02-06 21:06:03 [info]: Subject failure heatmap generated
+2026-02-06 21:06:03 [info]: Semester transition analysis generated
+2026-02-06 21:06:03 [info]: Subject failure heatmap generated
+2026-02-06 21:06:04 [info]: Semester transition analysis generated
+2026-02-06 21:06:12 [info]: Department risk analytics generated
+2026-02-06 21:06:12 [info]: Admin insights generated
+2026-02-06 21:06:13 [info]: Department risk analytics generated
+2026-02-06 21:06:13 [info]: Admin insights generated
+2026-02-06 21:07:57 [info]: User logged in: admin@university.edu
+2026-02-06 21:08:40 [info]: Department risk analytics generated
+2026-02-06 21:08:40 [info]: Department risk analytics generated
+2026-02-06 21:08:41 [info]: Subject failure heatmap generated
+2026-02-06 21:08:41 [info]: Subject failure heatmap generated
+2026-02-06 21:08:41 [info]: Semester transition analysis generated
+2026-02-06 21:08:41 [info]: Semester transition analysis generated
+2026-02-06 21:08:46 [info]: Department risk analytics generated
+2026-02-06 21:08:46 [info]: Admin insights generated
+2026-02-06 21:08:46 [info]: Department risk analytics generated
+2026-02-06 21:08:46 [info]: Admin insights generated
+2026-02-06 21:08:57 [info]: Department risk analytics generated
+2026-02-06 21:08:57 [info]: Subject failure heatmap generated
+2026-02-06 21:08:57 [info]: Department risk analytics generated
+2026-02-06 21:08:57 [info]: Subject failure heatmap generated
+2026-02-06 21:08:57 [info]: Semester transition analysis generated
+2026-02-06 21:08:57 [info]: Semester transition analysis generated
+2026-02-06 21:09:33 [info]: Department risk analytics generated
+2026-02-06 21:09:33 [info]: Subject failure heatmap generated
+2026-02-06 21:09:33 [info]: Subject failure heatmap generated
+2026-02-06 21:09:33 [info]: Department risk analytics generated
+2026-02-06 21:09:34 [info]: Semester transition analysis generated
+2026-02-06 21:09:34 [info]: Semester transition analysis generated
+2026-02-06 21:11:41 [info]: User logged in: admin@university.edu
+2026-02-06 21:11:45 [info]: Subject failure heatmap generated
+2026-02-06 21:11:46 [info]: Subject failure heatmap generated
+2026-02-06 21:11:46 [info]: Department risk analytics generated
+2026-02-06 21:11:46 [info]: Semester transition analysis generated
+2026-02-06 21:11:46 [info]: Department risk analytics generated
+2026-02-06 21:11:47 [info]: Semester transition analysis generated
+2026-02-06 21:12:28 [info]: Department risk analytics generated
+2026-02-06 21:12:28 [info]: Admin insights generated
+2026-02-06 21:12:29 [info]: Department risk analytics generated
+2026-02-06 21:12:29 [info]: Admin insights generated
+2026-02-06 21:20:19 [info]: Department risk analytics generated
+2026-02-06 21:20:19 [info]: Department risk analytics generated
+2026-02-06 21:20:20 [info]: Subject failure heatmap generated
+2026-02-06 21:20:20 [info]: Subject failure heatmap generated
+2026-02-06 21:20:21 [info]: Semester transition analysis generated
+2026-02-06 21:20:22 [info]: Semester transition analysis generated
+2026-02-06 21:20:40 [info]: Subject failure heatmap generated
+2026-02-06 21:20:40 [info]: Subject failure heatmap generated
+2026-02-06 21:20:41 [info]: Department risk analytics generated
+2026-02-06 21:20:42 [info]: Semester transition analysis generated
+2026-02-06 21:20:43 [info]: Department risk analytics generated
+2026-02-06 21:20:43 [info]: Semester transition analysis generated
+2026-02-06 21:22:58 [info]: Department risk analytics generated
+2026-02-06 21:22:58 [info]: Subject failure heatmap generated
+2026-02-06 21:22:58 [info]: Subject failure heatmap generated
+2026-02-06 21:22:58 [info]: Department risk analytics generated
+2026-02-06 21:22:58 [info]: Semester transition analysis generated
+2026-02-06 21:22:59 [info]: Semester transition analysis generated
+2026-02-06 21:23:03 [info]: Subject failure heatmap generated
+2026-02-06 21:23:03 [info]: Subject failure heatmap generated
+2026-02-06 21:23:03 [info]: Department risk analytics generated
+2026-02-06 21:23:03 [info]: Department risk analytics generated
+2026-02-06 21:23:04 [info]: Semester transition analysis generated
+2026-02-06 21:23:05 [info]: Semester transition analysis generated
+2026-02-06 21:23:36 [info]: Subject failure heatmap generated
+2026-02-06 21:23:36 [info]: Subject failure heatmap generated
+2026-02-06 21:23:36 [info]: Department risk analytics generated
+2026-02-06 21:23:36 [info]: Department risk analytics generated
+2026-02-06 21:23:37 [info]: Semester transition analysis generated
+2026-02-06 21:23:38 [info]: Semester transition analysis generated
+2026-02-06 21:24:22 [info]: Subject failure heatmap generated
+2026-02-06 21:24:22 [info]: Subject failure heatmap generated
+2026-02-06 21:24:22 [info]: Department risk analytics generated
+2026-02-06 21:24:22 [info]: Semester transition analysis generated
+2026-02-06 21:24:23 [info]: Semester transition analysis generated
+2026-02-06 21:24:23 [info]: Department risk analytics generated
+2026-02-06 21:25:34 [info]: Subject failure heatmap generated
+2026-02-06 21:25:35 [info]: Subject failure heatmap generated
+2026-02-06 21:25:38 [info]: Department risk analytics generated
+2026-02-06 21:25:38 [info]: Semester transition analysis generated
+2026-02-06 21:25:39 [info]: Department risk analytics generated
+2026-02-06 21:25:41 [info]: Semester transition analysis generated
+2026-02-06 21:28:01 [info]: Department risk analytics generated
+2026-02-06 21:28:01 [info]: Department risk analytics generated
+2026-02-06 21:28:02 [info]: Subject failure heatmap generated
+2026-02-06 21:28:02 [info]: Subject failure heatmap generated
+2026-02-06 21:28:03 [info]: Semester transition analysis generated
+2026-02-06 21:28:03 [info]: Semester transition analysis generated
+2026-02-06 21:28:12 [error]: CSV Import Error: Cannot read properties of undefined (reading 'createMany')
+2026-02-06 21:28:12 [error]: Attendance CSV upload error: Cannot read properties of undefined (reading 'createMany')
+2026-02-06 21:32:06 [info]: Subject failure heatmap generated
+2026-02-06 21:32:06 [info]: Subject failure heatmap generated
+2026-02-06 21:32:07 [info]: Department risk analytics generated
+2026-02-06 21:32:08 [info]: Department risk analytics generated
+2026-02-06 21:32:09 [info]: Semester transition analysis generated
+2026-02-06 21:32:10 [info]: Semester transition analysis generated
+2026-02-06 21:32:16 [error]: CSV Import Error: 
+Invalid `prisma.attendance.createMany()` invocation:
+
+{
+  data: [
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      date: new Date("2024-01-15T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      date: new Date("2024-01-16T00:00:00.000Z"),
+      status: "ABSENT",
+      remarks: "Sick leave"
+    },
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      date: new Date("2024-01-17T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      date: new Date("2024-01-15T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      date: new Date("2024-01-16T00:00:00.000Z"),
+      status: "LATE",
+      remarks: "Traffic"
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      date: new Date("2024-01-17T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      date: new Date("2024-01-15T00:00:00.000Z"),
+      status: "ABSENT",
+      remarks: "Family emergency"
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      date: new Date("2024-01-16T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      date: new Date("2024-01-17T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    }
+  ],
+  skipDuplicates: true
+}
+
+Unknown argument `remarks`. Available options are marked with ?.
+2026-02-06 21:32:16 [error]: Attendance CSV upload error: 
+Invalid `prisma.attendance.createMany()` invocation:
+
+{
+  data: [
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      date: new Date("2024-01-15T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      date: new Date("2024-01-16T00:00:00.000Z"),
+      status: "ABSENT",
+      remarks: "Sick leave"
+    },
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      date: new Date("2024-01-17T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      date: new Date("2024-01-15T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      date: new Date("2024-01-16T00:00:00.000Z"),
+      status: "LATE",
+      remarks: "Traffic"
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      date: new Date("2024-01-17T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      date: new Date("2024-01-15T00:00:00.000Z"),
+      status: "ABSENT",
+      remarks: "Family emergency"
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      date: new Date("2024-01-16T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      date: new Date("2024-01-17T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    }
+  ],
+  skipDuplicates: true
+}
+
+Unknown argument `remarks`. Available options are marked with ?.
+2026-02-06 21:35:47 [info]: User logged in: admin@university.edu
+2026-02-06 21:35:53 [info]: Department risk analytics generated
+2026-02-06 21:35:53 [info]: Department risk analytics generated
+2026-02-06 21:35:54 [info]: Subject failure heatmap generated
+2026-02-06 21:35:54 [info]: Subject failure heatmap generated
+2026-02-06 21:35:54 [info]: Semester transition analysis generated
+2026-02-06 21:35:55 [info]: Semester transition analysis generated
+2026-02-06 21:41:25 [info]: User logged in: admin@university.edu
+2026-02-06 21:41:36 [error]: CSV Import Error: 
+Invalid `prisma.attendance.createMany()` invocation:
+
+{
+  data: [
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      date: new Date("2024-01-15T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      date: new Date("2024-01-16T00:00:00.000Z"),
+      status: "ABSENT",
+      remarks: "Sick leave"
+    },
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      date: new Date("2024-01-17T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      date: new Date("2024-01-15T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      date: new Date("2024-01-16T00:00:00.000Z"),
+      status: "LATE",
+      remarks: "Traffic"
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      date: new Date("2024-01-17T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      date: new Date("2024-01-15T00:00:00.000Z"),
+      status: "ABSENT",
+      remarks: "Family emergency"
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      date: new Date("2024-01-16T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      date: new Date("2024-01-17T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    }
+  ],
+  skipDuplicates: true
+}
+
+Unknown argument `remarks`. Available options are marked with ?.
+2026-02-06 21:41:36 [error]: Attendance CSV upload error: 
+Invalid `prisma.attendance.createMany()` invocation:
+
+{
+  data: [
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      date: new Date("2024-01-15T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      date: new Date("2024-01-16T00:00:00.000Z"),
+      status: "ABSENT",
+      remarks: "Sick leave"
+    },
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      date: new Date("2024-01-17T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      date: new Date("2024-01-15T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      date: new Date("2024-01-16T00:00:00.000Z"),
+      status: "LATE",
+      remarks: "Traffic"
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      date: new Date("2024-01-17T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      date: new Date("2024-01-15T00:00:00.000Z"),
+      status: "ABSENT",
+      remarks: "Family emergency"
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      date: new Date("2024-01-16T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      date: new Date("2024-01-17T00:00:00.000Z"),
+      status: "PRESENT",
+      remarks: null
+    }
+  ],
+  skipDuplicates: true
+}
+
+Unknown argument `remarks`. Available options are marked with ?.
+2026-02-06 21:42:28 [info]: CSV Import: 5 fee records imported/updated
+2026-02-06 21:42:28 [info]: Fees CSV uploaded: 5 records
+2026-02-06 21:42:33 [info]: Subject failure heatmap generated
+2026-02-06 21:42:33 [info]: Subject failure heatmap generated
+2026-02-06 21:42:33 [info]: Department risk analytics generated
+2026-02-06 21:42:34 [info]: Department risk analytics generated
+2026-02-06 21:42:34 [info]: Semester transition analysis generated
+2026-02-06 21:42:35 [info]: Semester transition analysis generated
+2026-02-06 21:44:21 [info]: Department risk analytics generated
+2026-02-06 21:44:21 [info]: Admin insights generated
+2026-02-06 21:44:22 [info]: Department risk analytics generated
+2026-02-06 21:44:22 [info]: Admin insights generated
+2026-02-06 21:44:47 [info]: Subject failure heatmap generated
+2026-02-06 21:44:47 [info]: Subject failure heatmap generated
+2026-02-06 21:44:48 [info]: Department risk analytics generated
+2026-02-06 21:44:48 [info]: Department risk analytics generated
+2026-02-06 21:44:49 [info]: Semester transition analysis generated
+2026-02-06 21:44:50 [info]: Semester transition analysis generated
+2026-02-06 21:45:42 [info]: CSV Import: 9 attendance records imported
+2026-02-06 21:45:42 [info]: Starting risk profile updates for 3 students...
+2026-02-06 21:45:43 [info]: Attendance CSV uploaded: 9 records
+2026-02-06 21:45:45 [info]: Department risk analytics generated
+2026-02-06 21:45:45 [info]: Subject failure heatmap generated
+2026-02-06 21:45:45 [info]: Subject failure heatmap generated
+2026-02-06 21:45:45 [info]: Department risk analytics generated
+2026-02-06 21:45:46 [info]: Semester transition analysis generated
+2026-02-06 21:45:46 [info]: Semester transition analysis generated
+2026-02-06 21:46:04 [info]: Risk profile updates completed
+2026-02-06 21:47:18 [info]: Subject failure heatmap generated
+2026-02-06 21:47:18 [info]: Subject failure heatmap generated
+2026-02-06 21:47:18 [info]: Department risk analytics generated
+2026-02-06 21:47:18 [info]: Semester transition analysis generated
+2026-02-06 21:47:19 [info]: Department risk analytics generated
+2026-02-06 21:47:19 [info]: Semester transition analysis generated
+2026-02-06 21:47:21 [info]: Department risk analytics generated
+2026-02-06 21:47:21 [info]: Admin insights generated
+2026-02-06 21:47:21 [info]: Department risk analytics generated
+2026-02-06 21:47:21 [info]: Admin insights generated
+2026-02-06 21:47:35 [info]: Department risk analytics generated
+2026-02-06 21:47:35 [info]: Admin insights generated
+2026-02-06 21:47:35 [info]: PDF export created: admin-insights_report_2026-02-06T16-17-33.pdf
+2026-02-06 21:47:36 [info]: Department risk analytics generated
+2026-02-06 21:47:36 [info]: Admin insights generated
+2026-02-06 21:47:36 [info]: PDF export created: admin-insights_report_2026-02-06T16-17-35.pdf
+2026-02-06 21:47:58 [error]: CSV Export Error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  where: {},
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true,
+?   courseAttempts?: true,
+?   feeRecord?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 21:47:58 [error]: Export CSV error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  where: {},
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true,
+?   courseAttempts?: true,
+?   feeRecord?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 21:52:11 [info]: Department risk analytics generated
+2026-02-06 21:52:11 [info]: Admin insights generated
+2026-02-06 21:53:25 [info]: Department risk analytics generated
+2026-02-06 21:53:25 [info]: Department risk analytics generated
+2026-02-06 21:53:26 [info]: Subject failure heatmap generated
+2026-02-06 21:53:27 [info]: Subject failure heatmap generated
+2026-02-06 21:53:27 [info]: Semester transition analysis generated
+2026-02-06 21:53:29 [info]: Semester transition analysis generated
+2026-02-06 21:55:42 [info]: Subject failure heatmap generated
+2026-02-06 21:55:42 [info]: Subject failure heatmap generated
+2026-02-06 21:55:42 [info]: Department risk analytics generated
+2026-02-06 21:55:43 [info]: Semester transition analysis generated
+2026-02-06 21:55:43 [info]: Department risk analytics generated
+2026-02-06 21:55:44 [info]: Semester transition analysis generated
+2026-02-06 21:58:19 [info]: CSV Import: 9 attendance records imported
+2026-02-06 21:58:19 [info]: Starting risk profile updates for 3 students...
+2026-02-06 21:58:19 [info]: Attendance CSV uploaded: 9 records
+2026-02-06 21:58:31 [error]: CSV Import Error: 
+Invalid `prisma.assessment.createMany()` invocation:
+
+{
+  data: [
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      assessmentType: "MID_TERM",
+      subject: "Data Structures",
+      totalMarks: 100,
+      marksObtained: 75,
+      date: new Date("2024-01-20T00:00:00.000Z")
+    },
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      assessmentType: "ASSIGNMENT",
+      subject: "Algorithms",
+      totalMarks: 50,
+      marksObtained: 45,
+      date: new Date("2024-01-25T00:00:00.000Z")
+    },
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      assessmentType: "QUIZ",
+      subject: "Database Systems",
+      totalMarks: 20,
+      marksObtained: 18,
+      date: new Date("2024-01-28T00:00:00.000Z")
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      assessmentType: "MID_TERM",
+      subject: "Data Structures",
+      totalMarks: 100,
+      marksObtained: 82,
+      date: new Date("2024-01-20T00:00:00.000Z")
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      assessmentType: "ASSIGNMENT",
+      subject: "Algorithms",
+      totalMarks: 50,
+      marksObtained: 40,
+      date: new Date("2024-01-25T00:00:00.000Z")
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      assessmentType: "QUIZ",
+      subject: "Database Systems",
+      totalMarks: 20,
+      marksObtained: 15,
+      date: new Date("2024-01-28T00:00:00.000Z")
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      assessmentType: "MID_TERM",
+      subject: "Data Structures",
+      totalMarks: 100,
+      marksObtained: 55,
+      date: new Date("2024-01-20T00:00:00.000Z")
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      assessmentType: "ASSIGNMENT",
+      subject: "Algorithms",
+      totalMarks: 50,
+      marksObtained: 30,
+      date: new Date("2024-01-25T00:00:00.000Z")
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      assessmentType: "QUIZ",
+      subject: "Database Systems",
+      totalMarks: 20,
+      marksObtained: 12,
+      date: new Date("2024-01-28T00:00:00.000Z")
+    }
+  ],
+  skipDuplicates: true
+}
+
+Argument `examType` is missing.
+2026-02-06 21:58:31 [error]: Assessments CSV upload error: 
+Invalid `prisma.assessment.createMany()` invocation:
+
+{
+  data: [
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      assessmentType: "MID_TERM",
+      subject: "Data Structures",
+      totalMarks: 100,
+      marksObtained: 75,
+      date: new Date("2024-01-20T00:00:00.000Z")
+    },
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      assessmentType: "ASSIGNMENT",
+      subject: "Algorithms",
+      totalMarks: 50,
+      marksObtained: 45,
+      date: new Date("2024-01-25T00:00:00.000Z")
+    },
+    {
+      studentId: "a3fed214-bac9-41f3-835f-d4ea9792ae4a",
+      assessmentType: "QUIZ",
+      subject: "Database Systems",
+      totalMarks: 20,
+      marksObtained: 18,
+      date: new Date("2024-01-28T00:00:00.000Z")
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      assessmentType: "MID_TERM",
+      subject: "Data Structures",
+      totalMarks: 100,
+      marksObtained: 82,
+      date: new Date("2024-01-20T00:00:00.000Z")
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      assessmentType: "ASSIGNMENT",
+      subject: "Algorithms",
+      totalMarks: 50,
+      marksObtained: 40,
+      date: new Date("2024-01-25T00:00:00.000Z")
+    },
+    {
+      studentId: "b0977220-1779-4266-862d-dde2b7542bc5",
+      assessmentType: "QUIZ",
+      subject: "Database Systems",
+      totalMarks: 20,
+      marksObtained: 15,
+      date: new Date("2024-01-28T00:00:00.000Z")
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      assessmentType: "MID_TERM",
+      subject: "Data Structures",
+      totalMarks: 100,
+      marksObtained: 55,
+      date: new Date("2024-01-20T00:00:00.000Z")
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      assessmentType: "ASSIGNMENT",
+      subject: "Algorithms",
+      totalMarks: 50,
+      marksObtained: 30,
+      date: new Date("2024-01-25T00:00:00.000Z")
+    },
+    {
+      studentId: "809647c5-76e0-488f-8fdb-e2ffaf97df79",
+      assessmentType: "QUIZ",
+      subject: "Database Systems",
+      totalMarks: 20,
+      marksObtained: 12,
+      date: new Date("2024-01-28T00:00:00.000Z")
+    }
+  ],
+  skipDuplicates: true
+}
+
+Argument `examType` is missing.
+2026-02-06 21:58:31 [info]: Risk profile updates completed
+2026-02-06 21:58:43 [info]: CSV Import: 9 course attempts imported
+2026-02-06 21:58:43 [info]: Course attempts CSV uploaded: 9 records
+2026-02-06 21:58:50 [info]: CSV Import: 5 fee records imported/updated
+2026-02-06 21:58:50 [info]: Fees CSV uploaded: 5 records
+2026-02-06 21:58:53 [info]: Department risk analytics generated
+2026-02-06 21:58:53 [info]: Department risk analytics generated
+2026-02-06 21:58:54 [info]: Subject failure heatmap generated
+2026-02-06 21:58:54 [info]: Subject failure heatmap generated
+2026-02-06 21:58:54 [info]: Semester transition analysis generated
+2026-02-06 21:58:55 [info]: Semester transition analysis generated
+2026-02-06 22:02:53 [info]: Subject failure heatmap generated
+2026-02-06 22:02:53 [info]: Department risk analytics generated
+2026-02-06 22:02:53 [info]: Subject failure heatmap generated
+2026-02-06 22:02:54 [info]: Department risk analytics generated
+2026-02-06 22:02:54 [info]: Semester transition analysis generated
+2026-02-06 22:02:55 [info]: Semester transition analysis generated
+2026-02-06 22:05:51 [warn]: Clear all data requested - Starting deletion process
+2026-02-06 22:05:55 [warn]: All data cleared successfully. Total records deleted: 137
+2026-02-06 22:10:18 [info]: Department risk analytics generated
+2026-02-06 22:10:18 [info]: Department risk analytics generated
+2026-02-06 22:10:23 [info]: Subject failure heatmap generated
+2026-02-06 22:10:24 [info]: Department risk analytics generated
+2026-02-06 22:10:24 [info]: Subject failure heatmap generated
+2026-02-06 22:10:24 [info]: Department risk analytics generated
+2026-02-06 22:10:24 [info]: Semester transition analysis generated
+2026-02-06 22:10:24 [info]: Semester transition analysis generated
+2026-02-06 22:10:32 [info]: Department risk analytics generated
+2026-02-06 22:10:32 [info]: Admin insights generated
+2026-02-06 22:10:33 [info]: Department risk analytics generated
+2026-02-06 22:10:33 [info]: Admin insights generated
+2026-02-06 22:10:37 [info]: Department risk analytics generated
+2026-02-06 22:10:37 [info]: Admin insights generated
+2026-02-06 22:10:38 [info]: Department risk analytics generated
+2026-02-06 22:10:38 [info]: Department risk analytics generated
+2026-02-06 22:11:59 [info]: Department risk analytics generated
+2026-02-06 22:11:59 [info]: Department risk analytics generated
+2026-02-06 22:12:13 [info]: Department risk analytics generated
+2026-02-06 22:12:13 [info]: Admin insights generated
+2026-02-06 22:12:14 [info]: Department risk analytics generated
+2026-02-06 22:12:14 [info]: Admin insights generated
+2026-02-06 22:13:42 [info]: Department risk analytics generated
+2026-02-06 22:13:42 [info]: Admin insights generated
+2026-02-06 22:13:43 [info]: Department risk analytics generated
+2026-02-06 22:13:43 [info]: Admin insights generated
+2026-02-06 22:14:40 [info]: Department risk analytics generated
+2026-02-06 22:14:40 [info]: Department risk analytics generated
+2026-02-06 22:14:41 [info]: Department risk analytics generated
+2026-02-06 22:14:41 [info]: Subject failure heatmap generated
+2026-02-06 22:14:41 [info]: Department risk analytics generated
+2026-02-06 22:14:41 [info]: Semester transition analysis generated
+2026-02-06 22:14:41 [info]: Subject failure heatmap generated
+2026-02-06 22:14:42 [info]: Semester transition analysis generated
+2026-02-06 22:15:28 [info]: Department risk analytics generated
+2026-02-06 22:15:28 [info]: Department risk analytics generated
+2026-02-06 22:15:40 [info]: Department risk analytics generated
+2026-02-06 22:15:41 [info]: Subject failure heatmap generated
+2026-02-06 22:15:41 [info]: Subject failure heatmap generated
+2026-02-06 22:15:41 [info]: Semester transition analysis generated
+2026-02-06 22:15:41 [info]: Department risk analytics generated
+2026-02-06 22:15:42 [info]: Semester transition analysis generated
+2026-02-06 22:15:48 [info]: Department risk analytics generated
+2026-02-06 22:15:48 [info]: Admin insights generated
+2026-02-06 22:15:50 [info]: Department risk analytics generated
+2026-02-06 22:15:50 [info]: Admin insights generated
+2026-02-06 22:17:05 [info]: Department risk analytics generated
+2026-02-06 22:17:05 [info]: Department risk analytics generated
+2026-02-06 22:17:08 [info]: Department risk analytics generated
+2026-02-06 22:17:08 [info]: Subject failure heatmap generated
+2026-02-06 22:17:08 [info]: Subject failure heatmap generated
+2026-02-06 22:17:08 [info]: Department risk analytics generated
+2026-02-06 22:17:08 [info]: Semester transition analysis generated
+2026-02-06 22:17:09 [info]: Semester transition analysis generated
+2026-02-06 22:17:15 [info]: Department risk analytics generated
+2026-02-06 22:17:15 [info]: Admin insights generated
+2026-02-06 22:17:16 [info]: Department risk analytics generated
+2026-02-06 22:17:16 [info]: Admin insights generated
+2026-02-06 22:17:32 [info]: Subject failure heatmap generated
+2026-02-06 22:17:32 [info]: Department risk analytics generated
+2026-02-06 22:17:32 [info]: Subject failure heatmap generated
+2026-02-06 22:17:32 [info]: Department risk analytics generated
+2026-02-06 22:17:32 [info]: Semester transition analysis generated
+2026-02-06 22:17:33 [info]: Semester transition analysis generated
+2026-02-06 22:18:48 [info]: Department risk analytics generated
+2026-02-06 22:18:48 [info]: Admin insights generated
+2026-02-06 22:18:49 [info]: Department risk analytics generated
+2026-02-06 22:18:49 [info]: Admin insights generated
+2026-02-06 22:25:12 [info]: Department risk analytics generated
+2026-02-06 22:25:12 [info]: Department risk analytics generated
+2026-02-06 22:25:32 [info]: Department risk analytics generated
+2026-02-06 22:25:32 [info]: Admin insights generated
+2026-02-06 22:25:33 [info]: Department risk analytics generated
+2026-02-06 22:25:33 [info]: Admin insights generated
+2026-02-06 22:25:56 [info]: User logged in: veerbhalodia29@gmail.com
+2026-02-06 22:26:23 [info]: User logged in: admin@university.edu
+2026-02-06 22:26:56 [info]: Department risk analytics generated
+2026-02-06 22:26:56 [info]: Admin insights generated
+2026-02-06 22:26:58 [info]: Department risk analytics generated
+2026-02-06 22:26:58 [info]: Admin insights generated
+2026-02-06 22:27:00 [warn]: Clear all data requested - Starting deletion process
+2026-02-06 22:27:02 [warn]: All data cleared successfully. Total records deleted: 100
+2026-02-06 22:30:50 [info]: Subject failure heatmap generated
+2026-02-06 22:30:50 [info]: Subject failure heatmap generated
+2026-02-06 22:30:50 [info]: Department risk analytics generated
+2026-02-06 22:30:50 [info]: Department risk analytics generated
+2026-02-06 22:30:51 [info]: Semester transition analysis generated
+2026-02-06 22:30:52 [info]: Semester transition analysis generated
+2026-02-06 22:31:11 [info]: Department risk analytics generated
+2026-02-06 22:31:11 [info]: Admin insights generated
+2026-02-06 22:31:12 [info]: Department risk analytics generated
+2026-02-06 22:31:12 [info]: Admin insights generated
+2026-02-06 22:41:08 [info]: Department risk analytics generated
+2026-02-06 22:41:10 [info]: Department risk analytics generated
+2026-02-06 22:41:35 [info]: Subject failure heatmap generated
+2026-02-06 22:41:35 [info]: Subject failure heatmap generated
+2026-02-06 22:41:36 [info]: Department risk analytics generated
+2026-02-06 22:41:36 [info]: Department risk analytics generated
+2026-02-06 22:41:42 [info]: Semester transition analysis generated
+2026-02-06 22:41:43 [info]: Semester transition analysis generated
+2026-02-06 22:48:55 [info]: Department risk analytics generated
+2026-02-06 22:48:55 [info]: Admin insights generated
+2026-02-06 22:48:57 [info]: Department risk analytics generated
+2026-02-06 22:48:57 [info]: Admin insights generated
+2026-02-06 22:55:06 [info]: Subject failure heatmap generated
+2026-02-06 22:55:06 [info]: Subject failure heatmap generated
+2026-02-06 22:55:07 [info]: Department risk analytics generated
+2026-02-06 22:55:07 [info]: Department risk analytics generated
+2026-02-06 22:55:08 [info]: Department risk analytics generated
+2026-02-06 22:55:08 [info]: Department risk analytics generated
+2026-02-06 22:55:14 [info]: Semester transition analysis generated
+2026-02-06 22:55:17 [info]: Semester transition analysis generated
+2026-02-06 22:55:30 [info]: Department risk analytics generated
+2026-02-06 22:55:30 [info]: Department risk analytics generated
+2026-02-06 23:00:08 [info]: Department risk analytics generated
+2026-02-06 23:00:09 [info]: Department risk analytics generated
+2026-02-06 23:00:09 [info]: Subject failure heatmap generated
+2026-02-06 23:00:09 [info]: Subject failure heatmap generated
+2026-02-06 23:00:10 [info]: Semester transition analysis generated
+2026-02-06 23:00:10 [info]: Semester transition analysis generated
+2026-02-06 23:00:45 [info]: Department risk analytics generated
+2026-02-06 23:00:46 [info]: Department risk analytics generated
+2026-02-06 23:00:53 [info]: Department risk analytics generated
+2026-02-06 23:00:53 [info]: Admin insights generated
+2026-02-06 23:00:55 [info]: Department risk analytics generated
+2026-02-06 23:00:55 [info]: Admin insights generated
+2026-02-06 23:02:46 [info]: Department risk analytics generated
+2026-02-06 23:02:49 [info]: Department risk analytics generated
+2026-02-06 23:02:49 [info]: Subject failure heatmap generated
+2026-02-06 23:02:50 [info]: Subject failure heatmap generated
+2026-02-06 23:02:51 [info]: Department risk analytics generated
+2026-02-06 23:02:51 [info]: Department risk analytics generated
+2026-02-06 23:02:51 [info]: Semester transition analysis generated
+2026-02-06 23:02:52 [info]: Semester transition analysis generated
+2026-02-06 23:03:17 [warn]: Clear all data requested - Starting deletion process
+2026-02-06 23:03:19 [warn]: All data cleared successfully. Total records deleted: 100
+2026-02-06 23:03:54 [info]: Department risk analytics generated
+2026-02-06 23:03:54 [info]: Department risk analytics generated
+2026-02-06 23:03:59 [info]: Department risk analytics generated
+2026-02-06 23:03:59 [info]: Department risk analytics generated
+2026-02-06 23:03:59 [info]: Subject failure heatmap generated
+2026-02-06 23:04:00 [info]: Semester transition analysis generated
+2026-02-06 23:04:00 [info]: Subject failure heatmap generated
+2026-02-06 23:04:00 [info]: Semester transition analysis generated
+2026-02-06 23:06:09 [info]: Department risk analytics generated
+2026-02-06 23:06:10 [info]: Department risk analytics generated
+2026-02-06 23:06:16 [info]: Department risk analytics generated
+2026-02-06 23:06:16 [info]: Admin insights generated
+2026-02-06 23:06:16 [info]: PDF export created: admin-insights_report_2026-02-06T17-36-13.pdf
+2026-02-06 23:06:17 [info]: Department risk analytics generated
+2026-02-06 23:06:17 [info]: Admin insights generated
+2026-02-06 23:06:17 [info]: PDF export created: admin-insights_report_2026-02-06T17-36-16.pdf
+2026-02-06 23:06:29 [error]: CSV Export Error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  where: {},
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true,
+?   courseAttempts?: true,
+?   feeRecord?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 23:06:29 [error]: Export CSV error: 
+Invalid `prisma.student.findMany()` invocation:
+
+{
+  where: {},
+  include: {
+    riskProfile: {
+    ~~~~~~~~~~~
+      select: {
+        riskLevel: true,
+        riskScore: true
+      }
+    },
+?   attendanceRecords?: true,
+?   assessments?: true,
+?   alerts?: true,
+?   mentorAssignments?: true,
+?   interventionTasks?: true,
+?   counselingLogs?: true,
+?   courseAttempts?: true,
+?   feeRecord?: true
+  }
+}
+
+Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-06 23:14:34 [info]: Department risk analytics generated
+2026-02-06 23:14:35 [info]: Department risk analytics generated
+2026-02-06 23:14:38 [info]: Department risk analytics generated
+2026-02-06 23:14:38 [info]: Subject failure heatmap generated
+2026-02-06 23:14:38 [info]: Subject failure heatmap generated
+2026-02-06 23:14:38 [info]: Department risk analytics generated
+2026-02-06 23:14:39 [info]: Semester transition analysis generated
+2026-02-06 23:14:39 [info]: Semester transition analysis generated
+2026-02-06 23:14:41 [info]: Department risk analytics generated
+2026-02-06 23:14:41 [info]: Department risk analytics generated
+2026-02-06 23:15:32 [info]: Department risk analytics generated
+2026-02-06 23:15:32 [info]: Admin insights generated
+2026-02-06 23:15:33 [info]: Department risk analytics generated
+2026-02-06 23:15:33 [info]: Admin insights generated
+2026-02-06 23:15:40 [info]: Department risk analytics generated
+2026-02-06 23:15:40 [info]: Department risk analytics generated
+2026-02-06 23:15:58 [info]: Department risk analytics generated
+2026-02-06 23:15:58 [info]: Department risk analytics generated
+2026-02-06 23:15:59 [info]: Department risk analytics generated
+2026-02-06 23:15:59 [info]: Subject failure heatmap generated
+2026-02-06 23:15:59 [info]: Department risk analytics generated
+2026-02-06 23:15:59 [info]: Subject failure heatmap generated
+2026-02-06 23:16:00 [info]: Semester transition analysis generated
+2026-02-06 23:16:00 [info]: Semester transition analysis generated
+2026-02-06 23:16:01 [info]: Department risk analytics generated
+2026-02-06 23:16:01 [info]: Department risk analytics generated
+2026-02-06 23:16:05 [info]: Subject failure heatmap generated
+2026-02-06 23:16:05 [info]: Department risk analytics generated
+2026-02-06 23:16:05 [info]: Department risk analytics generated
+2026-02-06 23:16:05 [info]: Subject failure heatmap generated
+2026-02-06 23:16:05 [info]: Semester transition analysis generated
+2026-02-06 23:16:06 [info]: Semester transition analysis generated
+2026-02-06 23:23:44 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:23:44 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:23:47 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:23:48 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:24:37 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:24:37 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:24:37 [info]: Subject failure heatmap generated
+2026-02-06 23:24:37 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:24:37 [info]: Semester transition analysis generated
+2026-02-06 23:24:38 [info]: Semester transition analysis generated
+2026-02-06 23:24:38 [info]: Subject failure heatmap generated
+2026-02-06 23:24:38 [info]: Subject failure heatmap generated
+2026-02-06 23:24:38 [info]: Semester transition analysis generated
+2026-02-06 23:25:19 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:25:19 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:25:21 [info]: Subject failure heatmap generated
+2026-02-06 23:25:21 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:25:21 [info]: Subject failure heatmap generated
+2026-02-06 23:25:21 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:25:21 [info]: Semester transition analysis generated
+2026-02-06 23:25:22 [info]: Semester transition analysis generated
+2026-02-06 23:25:29 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:25:29 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:25:30 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:25:30 [info]: Subject failure heatmap generated
+2026-02-06 23:25:30 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:25:30 [info]: Subject failure heatmap generated
+2026-02-06 23:25:31 [info]: Semester transition analysis generated
+2026-02-06 23:25:31 [info]: Semester transition analysis generated
+2026-02-06 23:25:33 [info]: Subject failure heatmap generated
+2026-02-06 23:25:33 [info]: Semester transition analysis generated
+2026-02-06 23:25:33 [info]: Department risk analytics generated (Semester: 1)
+2026-02-06 23:25:36 [info]: Department risk analytics generated (Semester: 6)
+2026-02-06 23:25:36 [info]: Subject failure heatmap generated
+2026-02-06 23:25:36 [info]: Semester transition analysis generated
+2026-02-06 23:25:38 [info]: Subject failure heatmap generated
+2026-02-06 23:25:38 [info]: Department risk analytics generated (Semester: 8)
+2026-02-06 23:25:39 [info]: Semester transition analysis generated
+2026-02-06 23:25:40 [info]: Subject failure heatmap generated
+2026-02-06 23:25:40 [info]: Semester transition analysis generated
+2026-02-06 23:25:40 [info]: Department risk analytics generated (Semester: 5)
+2026-02-06 23:25:45 [info]: Department risk analytics generated (Semester: 1)
+2026-02-06 23:25:45 [info]: Subject failure heatmap generated
+2026-02-06 23:25:45 [info]: Semester transition analysis generated
+2026-02-06 23:25:47 [info]: Subject failure heatmap generated
+2026-02-06 23:25:47 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:25:47 [info]: Semester transition analysis generated
+2026-02-06 23:25:50 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:25:50 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:25:53 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:25:53 [info]: Admin insights generated (Semester: All)
+2026-02-06 23:25:54 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:25:54 [info]: Admin insights generated (Semester: All)

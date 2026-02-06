@@ -1,0 +1,11 @@
+studentId,name,email,phone,dateOfBirth,gender,department,semester,currentCGPA,attendancePercent,familyIncome,parentEducation,distanceFromHome,libraryVisits,extracurricular,disciplinaryIssues,dropoutRisk
+CS2021001,Rahul Kumar,rahul.kumar@college.edu,9876543210,2003-05-15,Male,Computer Science,3,8.5,92,500000,Graduate,15,45,true,0,LOW
+CS2021002,Priya Sharma,priya.sharma@college.edu,9876543211,2003-07-22,Female,Computer Science,3,6.2,68,250000,High School,50,12,false,2,HIGH
+ME2021001,Amit Patel,amit.patel@college.edu,9876543212,2003-03-10,Male,Mechanical Engineering,3,7.8,85,400000,Graduate,20,30,true,0,LOW
+EC2021001,Sneha Reddy,sneha.reddy@college.edu,9876543213,2003-09-18,Female,Electronics,3,5.8,55,150000,High School,75,8,false,3,HIGH
+CS2021003,Vijay Singh,vijay.singh@college.edu,9876543214,2003-11-05,Male,Computer Science,3,9.1,95,600000,Post Graduate,10,50,true,0,LOW
+IT2021001,Anjali Gupta,anjali.gupta@college.edu,9876543215,2003-06-30,Female,Information Technology,3,7.2,78,350000,Graduate,25,28,true,1,MEDIUM
+ME2021002,Karan Verma,karan.verma@college.edu,9876543216,2003-04-12,Male,Mechanical Engineering,3,6.5,72,280000,High School,45,15,false,1,MEDIUM
+EC2021002,Neha Joshi,neha.joshi@college.edu,9876543217,2003-08-25,Female,Electronics,3,8.0,88,480000,Graduate,18,38,true,0,LOW
+CS2021004,Rohan Das,rohan.das@college.edu,9876543218,2003-02-14,Male,Computer Science,3,5.5,60,200000,High School,60,10,false,2,HIGH
+IT2021002,Pooja Mehta,pooja.mehta@college.edu,9876543219,2003-10-08,Female,Information Technology,3,7.9,82,420000,Graduate,22,35,true,0,LOW

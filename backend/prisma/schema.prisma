@@ -1,14 +1,226 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Role-based User Model
+enum UserRole {
+  ADMIN
+  MENTOR
+  COUNSELOR
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      UserRole @default(MENTOR)
+  isTemporaryPassword Boolean @default(false)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+// Student Model with Academic Fields
+model Student {
+  id                String   @id @default(uuid())
+  studentId         String   @unique // Enrollment number
+  name              String
+  email             String   @unique
+  phone             String?
+  dateOfBirth       DateTime?
+  gender            String?
+  
+  // Academic Information
+  department        String
+  semester          Int
+  currentCGPA       Float    @default(0.0)
+  attendancePercent Float    @default(0.0)
+  
+  // Family & Socioeconomic
+  familyIncome      Float?
+  parentEducation   String?
+  distanceFromHome  Float?   // in kilometers
+  
+  // Behavioral Data
+  libraryVisits     Int      @default(0)
+  extracurricular   Boolean  @default(false)
+  disciplinaryIssues Int     @default(0)
+  
+  // Dropout Risk
+  dropoutRisk       String   @default("UNKNOWN") // LOW, MEDIUM, HIGH, UNKNOWN
+  riskReason        String?  // Explanation for the assigned risk
+  lastAssessment    DateTime?
+  
+  // ML Predictions
+  mlProbability     Float?   // ML dropout probability (0-1)
+  mlConfidence      Float?   // ML prediction confidence
+  mlLastUpdated     DateTime? // When ML prediction was last run
+  
+  // Metadata
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("students")
+
+  // Relations
+  attendanceRecords Attendance[]
+  assessments       Assessment[]
+  alerts            Alert[]
+  mentorAssignments MentorAssignment[]
+  interventionTasks InterventionTask[]
+  counselingLogs    CounselingLog[]
+  courseAttempts    CourseAttempt[]
+  feeRecord         FeeRecord?
+}
+
+model Attendance {
+  id        String   @id @default(uuid())
+  studentId String
+  student   Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  date      DateTime
+  status    String   // PRESENT, ABSENT, LEAVE
+  subject   String?  // Optional subject-wise attendance
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("attendance")
+}
+
+model Assessment {
+  id          String   @id @default(uuid())
+  studentId   String
+  student     Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  subject     String
+  examType    String   // MID_TERM, FINAL, QUIZ, ASSIGNMENT
+  marksObtained Float
+  totalMarks  Float
+  date        DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@map("assessments")
+}
+
+model Alert {
+  id        String   @id @default(uuid())
+  studentId String
+  student   Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  riskLevel String   // HIGH, MEDIUM, LOW
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  
+  @@map("alerts")
+}
+
+model Mentor {
+  id               String             @id @default(uuid())
+  name             String
+  email            String             @unique
+  department       String?
+  maxStudents      Int                @default(10)
+  assignedStudents MentorAssignment[]
+  createdAt        DateTime           @default(now())
+  
+  @@map("mentors")
+}
+
+model MentorAssignment {
+  id         String   @id @default(uuid())
+  studentId  String
+  student    Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  mentorId   String
+  mentor     Mentor   @relation(fields: [mentorId], references: [id], onDelete: Cascade)
+  assignedAt DateTime @default(now())
+  status     String   @default("ACTIVE") // ACTIVE, COMPLETED, REASSIGNED
+  
+  @@map("mentor_assignments")
+}
+
+model InterventionTask {
+  id          String    @id @default(uuid())
+  studentId   String
+  student     Student   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  mentorId    String?
+  title       String
+  description String
+  priority    String    // HIGH, MEDIUM, LOW
+  status      String    @default("PENDING") // PENDING, IN_PROGRESS, COMPLETED, ESCALATED
+  dueDate     DateTime
+  completedAt DateTime?
+  escalated   Boolean   @default(false)
+  escalatedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  @@map("intervention_tasks")
+}
+
+model CounselingLog {
+  id                    String    @id @default(uuid())
+  studentId             String
+  student               Student   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  mentorId              String
+  sessionDate           DateTime
+  notes                 String    // Counseling session notes
+  actionsTaken          String?   // Actions taken during session
+  followUpRequired      Boolean   @default(false)
+  followUpDate          DateTime?
+  
+  // Risk snapshot before counseling
+  riskBefore            String    // LOW, MEDIUM, HIGH
+  riskScoreBefore       Int
+  
+  // Risk snapshot after counseling (calculated later)
+  riskAfter             String?
+  riskScoreAfter        Int?
+  
+  // Improvement metrics
+  attendanceImprovement Float?    // Percentage change
+  cgpaImprovement       Float?    // Point change
+  
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  
+  @@map("counseling_logs")
+}
+
+model CourseAttempt {
+  id            String   @id @default(uuid())
+  studentId     String
+  student       Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  courseCode    String
+  attemptNumber Int
+  passFail      String   // PASS, FAIL
+  grade         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("course_attempts")
+}
+
+model FeeRecord {
+  id              String   @id @default(uuid())
+  studentId       String   @unique
+  student         Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  totalFees       Float
+  feesPaid        Float
+  feesPending     Float
+  paymentStatus   String   // PAID, PARTIAL, PENDING, OVERDUE
+  lastPaymentDate DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@map("fee_records")
 }
