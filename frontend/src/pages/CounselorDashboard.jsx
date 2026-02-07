@@ -3,32 +3,40 @@ import { Link } from 'react-router-dom';
 import PageWrapper from '../components/layout/PageWrapper';
 import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
-import { counselingAPI } from '../services/api';
-import { 
-  Users, 
-  AlertTriangle, 
-  ClipboardList,
-  ArrowRight,
-  Clock
+import Button from '../components/ui/Button';
+import { counselorAPI } from '../services/api';
+import {
+  Users,
+  AlertTriangle,
+  TrendingUp,
+  Eye,
+  Edit,
+  Plus,
+  Activity
 } from 'lucide-react';
 
 const CounselorDashboard = () => {
-  const [queue, setQueue] = useState([]);
+  const [students, setStudents] = useState([]);
+  const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [filter, setFilter] = useState('ALL'); // ALL, HIGH, MEDIUM, LOW
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    fetchQueue();
+    fetchData();
   }, []);
 
-  const fetchQueue = async () => {
+  const fetchData = async () => {
     try {
       setLoading(true);
-      const data = await counselingAPI.getQueue();
-      setQueue(data.data || []);
+      const [studentsData, statsData] = await Promise.all([
+        counselorAPI.getMyStudents(),
+        counselorAPI.getMyStats()
+      ]);
+      setStudents(studentsData.data || []);
+      setStats(statsData.data || null);
     } catch (err) {
-      console.error('Error fetching counseling queue:', err);
-      setError('Failed to load counseling queue');
+      console.error('Error fetching counselor data:', err);
     } finally {
       setLoading(false);
     }
@@ -44,76 +52,136 @@ const CounselorDashboard = () => {
     return <Badge variant={variants[level] || 'neutral'}>{level}</Badge>;
   };
 
+  // Filter students
+  const filteredStudents = students.filter(student => {
+    const matchesFilter = filter === 'ALL' || student.dropoutRisk === filter;
+    const matchesSearch = student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      student.studentId.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesFilter && matchesSearch;
+  });
+
   if (loading) {
     return (
-      <PageWrapper title="Counseling Queue">
+      <PageWrapper title="My Students">
         <div className="flex items-center justify-center h-64">
-           <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
         </div>
       </PageWrapper>
     );
   }
 
-  // Calculate stats
-  const totalCases = queue.length;
-  const criticalCases = queue.filter(s => s.dropoutRisk === 'HIGH').length;
-  const pendingAlerts = queue.reduce((acc, s) => acc + (s._count?.alerts || 0), 0);
-
   return (
-    <PageWrapper title="Counseling Queue">
-
+    <PageWrapper title="My Students">
 
       {/* Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <Card>
+          <div className="flex items-center gap-4">
+            <div className="p-3 bg-primary-50 text-primary rounded-lg">
+              <Users size={24} />
+            </div>
+            <div>
+              <p className="text-secondary-500 text-sm">Total Students</p>
+              <h3 className="text-2xl font-bold">{stats?.totalStudents || 0}</h3>
+            </div>
+          </div>
+        </Card>
+
         <Card>
           <div className="flex items-center gap-4">
             <div className="p-3 bg-red-50 text-red-600 rounded-lg">
               <AlertTriangle size={24} />
             </div>
             <div>
-              <p className="text-secondary-500 text-sm">Priority Cases</p>
-              <h3 className="text-2xl font-bold">{criticalCases}</h3>
-            </div>
-          </div>
-        </Card>
-        
-        <Card>
-          <div className="flex items-center gap-4">
-             <div className="p-3 bg-amber-50 text-amber-600 rounded-lg">
-              <Clock size={24} />
-            </div>
-            <div>
-              <p className="text-secondary-500 text-sm">Total In Queue</p>
-              <h3 className="text-2xl font-bold">{totalCases}</h3>
+              <p className="text-secondary-500 text-sm">High Risk</p>
+              <h3 className="text-2xl font-bold">{stats?.highRisk || 0}</h3>
             </div>
           </div>
         </Card>
 
         <Card>
-           <div className="flex items-center gap-4">
-             <div className="p-3 bg-purple-50 text-purple-600 rounded-lg">
-              <ClipboardList size={24} />
+          <div className="flex items-center gap-4">
+            <div className="p-3 bg-blue-50 text-blue-600 rounded-lg">
+              <TrendingUp size={24} />
             </div>
             <div>
-              <p className="text-secondary-500 text-sm">Pending Alerts</p>
-              <h3 className="text-2xl font-bold">{pendingAlerts}</h3>
+              <p className="text-secondary-500 text-sm">Avg CGPA</p>
+              <h3 className="text-2xl font-bold">{stats?.avgCGPA?.toFixed(2) || '0.00'}</h3>
+            </div>
+          </div>
+        </Card>
+
+        <Card>
+          <div className="flex items-center gap-4">
+            <div className="p-3 bg-green-50 text-green-600 rounded-lg">
+              <Activity size={24} />
+            </div>
+            <div>
+              <p className="text-secondary-500 text-sm">Avg Attendance</p>
+              <h3 className="text-2xl font-bold">{stats?.avgAttendance?.toFixed(1) || '0.0'}%</h3>
             </div>
           </div>
         </Card>
       </div>
 
-      {/* Queue List */}
+      {/* Capacity Indicator */}
+      {stats && (
+        <Card className="mb-6">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-sm font-semibold text-secondary-700">Student Capacity</h3>
+            <span className="text-sm font-medium text-secondary-600">
+              {stats.totalStudents} / {stats.maxStudents}
+            </span>
+          </div>
+          <div className="w-full bg-secondary-100 rounded-full h-2">
+            <div
+              className={`h-2 rounded-full transition-all ${parseFloat(stats.capacityUsed) > 90 ? 'bg-red-500' :
+                  parseFloat(stats.capacityUsed) > 70 ? 'bg-amber-500' : 'bg-green-500'
+                }`}
+              style={{ width: `${Math.min(parseFloat(stats.capacityUsed), 100)}%` }}
+            ></div>
+          </div>
+        </Card>
+      )}
+
+      {/* Student List */}
       <Card>
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-lg font-semibold">Priority Intervention List</h2>
-          <span className="text-sm text-secondary-500">Sorted by Risk Level & Prediction Confidence</span>
+        <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4">
+          <h2 className="text-lg font-semibold">Assigned Students ({filteredStudents.length})</h2>
+
+          <div className="flex flex-col md:flex-row items-center gap-3 w-full md:w-auto">
+            {/* Search */}
+            <input
+              type="text"
+              placeholder="Search students..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 w-full md:w-64"
+            />
+
+            {/* Filter */}
+            <select
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+              className="px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 w-full md:w-auto"
+            >
+              <option value="ALL">All Risk Levels</option>
+              <option value="HIGH">High Risk</option>
+              <option value="MEDIUM">Medium Risk</option>
+              <option value="LOW">Low Risk</option>
+            </select>
+          </div>
         </div>
 
-        {queue.length === 0 ? (
+        {filteredStudents.length === 0 ? (
           <div className="text-center py-12 text-secondary-500">
-            <ClipboardList size={48} className="mx-auto mb-4 opacity-50" />
-            <p className="text-lg font-medium">No priority cases assigned.</p>
-            <p className="text-sm mt-2">The queue is currently empty.</p>
+            <Users size={48} className="mx-auto mb-4 opacity-50" />
+            <p className="text-lg font-medium">
+              {students.length === 0 ? 'No students assigned yet.' : 'No students match your filters.'}
+            </p>
+            {students.length === 0 && (
+              <p className="text-sm mt-2">Please wait for admin assignment.</p>
+            )}
           </div>
         ) : (
           <div className="overflow-x-auto">
@@ -121,42 +189,38 @@ const CounselorDashboard = () => {
               <thead>
                 <tr className="border-b border-secondary-100">
                   <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Student</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Risk Profile</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">ML Probability</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Primary Reason</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Alerts</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Actions</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Department</th>
+                  <th className="text-center py-3 px-4 text-sm font-semibold text-secondary-700">Semester</th>
+                  <th className="text-center py-3 px-4 text-sm font-semibold text-secondary-700">CGPA</th>
+                  <th className="text-center py-3 px-4 text-sm font-semibold text-secondary-700">Attendance</th>
+                  <th className="text-center py-3 px-4 text-sm font-semibold text-secondary-700">Risk Level</th>
+                  <th className="text-center py-3 px-4 text-sm font-semibold text-secondary-700">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {queue.map((student) => (
+                {filteredStudents.map((student) => (
                   <tr key={student.id} className="border-b border-secondary-50 hover:bg-secondary-50 transition-colors">
                     <td className="py-3 px-4">
                       <div>
                         <p className="font-medium text-secondary-900">{student.name}</p>
-                        <p className="text-xs text-secondary-500">{student.studentId} • {student.department}</p>
+                        <p className="text-xs text-secondary-500">{student.studentId}</p>
                       </div>
                     </td>
-                    <td className="py-3 px-4">{getRiskBadge(student.dropoutRisk)}</td>
-                    <td className="py-3 px-4 text-sm text-secondary-600">
-                      {student.mlProbability ? `${(student.mlProbability * 100).toFixed(1)}%` : 'N/A'}
-                    </td>
-                    <td className="py-3 px-4 text-sm text-secondary-600 truncate max-w-xs" title={student.riskReason}>
-                      {student.riskReason || '-'}
-                    </td>
+                    <td className="py-3 px-4 text-sm text-secondary-600">{student.department}</td>
+                    <td className="py-3 px-4 text-sm text-center text-secondary-600">{student.semester}</td>
+                    <td className="py-3 px-4 text-sm text-center text-secondary-600">{student.currentCGPA}</td>
+                    <td className="py-3 px-4 text-sm text-center text-secondary-600">{student.attendancePercent?.toFixed(1)}%</td>
+                    <td className="py-3 px-4 text-center">{getRiskBadge(student.dropoutRisk)}</td>
                     <td className="py-3 px-4">
-                      {student._count?.alerts > 0 && (
-                        <Badge variant="danger">{student._count.alerts} New</Badge>
-                      )}
-                    </td>
-                    <td className="py-3 px-4">
-                      <Link 
-                        to={`/students/${student.id}`} 
-                        className="inline-flex items-center gap-1 text-primary hover:text-primary-700 font-medium text-sm"
-                      >
-                        Start Session
-                        <ArrowRight size={16} />
-                      </Link>
+                      <div className="flex items-center justify-center gap-2">
+                        <Link
+                          to={`/students/${student.id}`}
+                          className="inline-flex items-center gap-1 text-primary hover:text-primary-700 font-medium text-sm"
+                        >
+                          <Eye size={16} />
+                          View
+                        </Link>
+                      </div>
                     </td>
                   </tr>
                 ))}

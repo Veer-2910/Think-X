@@ -13,7 +13,7 @@ import { sendCredentials } from '../services/emailService.js';
  */
 export const createUser = async (req, res) => {
   try {
-    const { email, name, role } = req.body;
+    const { email, name, role, specialization } = req.body;
 
     // Check if requester is admin
     if (req.user.role !== 'ADMIN') {
@@ -68,6 +68,29 @@ export const createUser = async (req, res) => {
         createdAt: true
       }
     });
+
+    // Auto-create Counselor or Mentor profile based on role
+    if (user.role === 'COUNSELOR') {
+      await prisma.counselor.create({
+        data: {
+          name: user.name,
+          email: user.email,
+          department: null,
+          maxStudents: 30 // Default capacity
+        }
+      });
+      logger.info(`Created Counselor profile for: ${user.email}`);
+    } else if (user.role === 'MENTOR') {
+      await prisma.mentor.create({
+        data: {
+          name: user.name,
+          email: user.email,
+          department: null,
+          specialization: specialization || null
+        }
+      });
+      logger.info(`Created Mentor profile for: ${user.email}`);
+    }
 
     // Send credentials via email
     // We don't await this to block response, but valid for small scale
@@ -197,13 +220,29 @@ export const login = async (req, res) => {
     // Remove password from response
     const { password: _, ...userWithoutPassword } = user;
 
+    // Fetch associated profile data
+    let profileData = {};
+    if (user.role === 'MENTOR') {
+      const mentor = await prisma.mentor.findUnique({ where: { email: user.email } });
+      if (mentor) profileData = { ...mentor, profileId: mentor.id };
+    } else if (user.role === 'COUNSELOR') {
+      const counselor = await prisma.counselor.findUnique({ where: { email: user.email } });
+      if (counselor) profileData = { ...counselor, profileId: counselor.id };
+    }
+
+    const responseUser = {
+      ...userWithoutPassword,
+      ...profileData, // Merge profile data (specialization, department, etc)
+      id: user.id // Ensure User ID is preserved as top-level 'id'
+    };
+
     logger.info(`User logged in: ${user.email}`);
 
     res.json(successResponse(
-      { 
-        user: userWithoutPassword, 
+      {
+        user: responseUser,
         token,
-        mustChangePassword: user.isTemporaryPassword // Flag for frontend
+        mustChangePassword: user.isTemporaryPassword
       },
       'Login successful'
     ));
@@ -237,7 +276,23 @@ export const getMe = async (req, res) => {
       return res.status(404).json(errorResponse('User not found', 404));
     }
 
-    res.json(successResponse(user, 'User profile retrieved'));
+    // Fetch associated profile data
+    let profileData = {};
+    if (user.role === 'MENTOR') {
+      const mentor = await prisma.mentor.findUnique({ where: { email: user.email } });
+      if (mentor) profileData = { ...mentor, profileId: mentor.id };
+    } else if (user.role === 'COUNSELOR') {
+      const counselor = await prisma.counselor.findUnique({ where: { email: user.email } });
+      if (counselor) profileData = { ...counselor, profileId: counselor.id };
+    }
+
+    const responseUser = {
+      ...user,
+      ...profileData, // Merge profile data
+      id: user.id // Ensure User ID is preserved
+    };
+
+    res.json(successResponse(responseUser, 'User profile retrieved'));
   } catch (error) {
     logger.error(`Get profile error: ${error.message}`);
     res.status(500).json(errorResponse('Failed to get user profile', 500));
@@ -306,7 +361,7 @@ export const changePassword = async (req, res) => {
     // Update password
     await prisma.user.update({
       where: { id: userId },
-      data: { 
+      data: {
         password: hashedPassword,
         isTemporaryPassword: false // Unlock account
       }

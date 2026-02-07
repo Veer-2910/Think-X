@@ -2,19 +2,20 @@ import { useState, useEffect } from 'react';
 import PageWrapper from '../components/layout/PageWrapper';
 import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
-import Button from '../components/ui/Button'; // Assuming Button component exists
+import Button from '../components/ui/Button';
 import ExportButton from '../components/ui/ExportButton';
-import { analyticsAPI, authAPI } from '../services/api'; // Added authAPI
-import { 
-  Users, 
-  AlertTriangle, 
-  TrendingUp, 
+import UserManagementSection from '../components/admin/UserManagementSection';
+import { analyticsAPI, authAPI } from '../services/api';
+import {
+  Users,
+  AlertTriangle,
+  TrendingUp,
   Building2,
   UserCheck,
   FileText,
   BarChart3,
-  UserPlus, // Added
-  Mail // Added
+  UserPlus,
+  Mail
 } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import { Link } from 'react-router-dom';
@@ -23,7 +24,7 @@ const AdminDashboard = () => {
   const [insights, setInsights] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedSemester, setSelectedSemester] = useState('');
-  
+
   // Create User State
   const [newUser, setNewUser] = useState({ name: '', email: '', role: 'MENTOR' });
   const [createUserLoading, setCreateUserLoading] = useState(false);
@@ -55,7 +56,7 @@ const AdminDashboard = () => {
     try {
       await authAPI.createUser(newUser);
       setCreateUserMessage({ type: 'success', text: `User ${newUser.email} created successfully!` });
-      setNewUser({ name: '', email: '', role: 'MENTOR' });
+      setNewUser({ name: '', email: '', role: 'MENTOR', specialization: '' });
       // Optionally refresh stats if impactful
     } catch (error) {
       setCreateUserMessage({ type: 'error', text: error.response?.data?.message || 'Failed to create user' });
@@ -140,12 +141,12 @@ const AdminDashboard = () => {
 
       {/* Controls: Semester Filter & Export */}
       <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-        
+
         {/* Semester Filter */}
         <div className="flex items-center gap-3 bg-white p-2 rounded-lg shadow-sm w-full md:w-auto">
           <span className="text-sm font-medium text-secondary-600 pl-2">Filter by:</span>
-          <select 
-            value={selectedSemester} 
+          <select
+            value={selectedSemester}
             onChange={(e) => setSelectedSemester(e.target.value)}
             className="border-none bg-secondary-50 rounded-md px-3 py-1.5 text-sm font-medium text-secondary-900 focus:ring-2 focus:ring-primary-500 cursor-pointer"
           >
@@ -157,7 +158,7 @@ const AdminDashboard = () => {
         </div>
 
         <div className="flex items-center gap-3 w-full md:w-auto justify-end">
-          <Button 
+          <Button
             onClick={() => {
               fetchInsights();
             }}
@@ -202,7 +203,7 @@ const AdminDashboard = () => {
           <UserPlus className="text-primary" size={24} />
           <h3 className="text-lg font-semibold">Create New User</h3>
         </div>
-        
+
         {createUserMessage && (
           <div className={`mb-4 p-3 rounded-lg ${createUserMessage.type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
             {createUserMessage.text}
@@ -212,38 +213,60 @@ const AdminDashboard = () => {
         <form onSubmit={handleCreateUser} className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
-            <input 
-              type="text" 
+            <input
+              type="text"
               required
               className="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
               placeholder="e.g. Dr. Jane Smith"
               value={newUser.name}
-              onChange={(e) => setNewUser({...newUser, name: e.target.value})}
+              onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
             />
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
-            <input 
-              type="email" 
+            <input
+              type="email"
               required
               className="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
               placeholder="jane@university.edu"
               value={newUser.email}
-              onChange={(e) => setNewUser({...newUser, email: e.target.value})}
+              onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
             />
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">Role</label>
-            <select 
+            <select
               className="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
               value={newUser.role}
-              onChange={(e) => setNewUser({...newUser, role: e.target.value})}
+              onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
             >
               <option value="MENTOR">Mentor</option>
               <option value="COUNSELOR">Counselor</option>
-              <option value="ADMIN">Admin</option>
             </select>
           </div>
+
+          {/* Specialization - Only show for MENTOR role */}
+          {newUser.role === 'MENTOR' && (
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1">Specialization</label>
+              <select
+                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
+                value={newUser.specialization}
+                onChange={(e) => setNewUser({ ...newUser, specialization: e.target.value })}
+              >
+                <option value="">General Mentoring</option>
+                <option value="Academic Support">Academic Support</option>
+                <option value="Family Counseling">Family Counseling</option>
+                <option value="Financial Guidance">Financial Guidance</option>
+                <option value="Mental Health Support">Mental Health Support</option>
+                <option value="Grief Counseling">Grief Counseling</option>
+                <option value="Career Guidance">Career Guidance</option>
+                <option value="Addiction Counseling">Addiction Counseling</option>
+                <option value="Social Skills">Social Skills</option>
+              </select>
+            </div>
+          )}
+
           <div>
             <Button type="submit" disabled={createUserLoading} className="w-full flex justify-center items-center gap-2">
               {createUserLoading ? 'Creating...' : <><Mail size={16} /> Create & Send Credentials</>}
@@ -251,6 +274,11 @@ const AdminDashboard = () => {
           </div>
         </form>
       </Card>
+
+      {/* User Management Section - Mentors & Counselors */}
+      <div className="mb-8">
+        <UserManagementSection />
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         {/* Risk Distribution */}
@@ -288,7 +316,7 @@ const AdminDashboard = () => {
               </div>
               <span className="text-lg font-bold">{insights.interventions.counselingSessions}</span>
             </div>
-            
+
             <div className="flex items-center justify-between p-3 bg-secondary-50 rounded-lg">
               <div className="flex items-center gap-3">
                 <UserCheck className="text-green-600" size={20} />
@@ -324,7 +352,7 @@ const AdminDashboard = () => {
             View All →
           </Link>
         </div>
-        
+
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>

@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import PageWrapper from '../components/layout/PageWrapper';
 import CSVUploadCard from '../components/ui/CSVUploadCard';
+import AddStudentModal from '../components/modals/AddStudentModal';
 import { studentAPI, attendanceAPI, academicAPI, feeAPI } from '../services/api';
 import { useToast } from '../contexts/ToastContext';
-import { Users, Calendar, FileText, BookOpen, DollarSign, AlertTriangle, Trash2, ChevronDown, ChevronUp, Database } from 'lucide-react';
+import { Users, Calendar, FileText, BookOpen, DollarSign, AlertTriangle, Trash2, ChevronDown, ChevronUp, Database, UserPlus } from 'lucide-react';
 
 const DataManagement = () => {
   const { success, error, info } = useToast();
@@ -13,6 +14,7 @@ const DataManagement = () => {
   const [clearing, setClearing] = useState(false);
   const [clearError, setClearError] = useState('');
   const [showAdvanced, setShowAdvanced] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
 
   const handleUploadSuccess = (entityType) => {
     // Trigger data refresh
@@ -29,14 +31,14 @@ const DataManagement = () => {
     try {
       setClearing(true);
       setClearError('');
-      
+
       const result = await studentAPI.clearAllData();
-      
+
       // Success - close modal and refresh
       setShowClearModal(false);
       setConfirmText('');
       setRefreshKey(prev => prev + 1);
-      
+
       success(`Successfully deleted ${result.data.totalRecords} records!`);
       info('You can now upload new data.');
     } catch (err) {
@@ -108,7 +110,16 @@ const DataManagement = () => {
     >
       {/* Master CSV Upload */}
       <div className="mb-8">
-        <h2 className="text-lg font-semibold text-slate-900 mb-4">Upload Student Data</h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-semibold text-slate-900">Upload Student Data</h2>
+          <button
+            onClick={() => setShowAddModal(true)}
+            className="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary-600 text-white font-medium rounded-lg transition-colors"
+          >
+            <UserPlus size={18} />
+            Add Student
+          </button>
+        </div>
         <CSVUploadCard
           key={`master-${refreshKey}`}
           title={masterConfig.title}
@@ -119,6 +130,15 @@ const DataManagement = () => {
           onUploadSuccess={masterConfig.onSuccess}
         />
       </div>
+
+      {/* Add Student Modal */}
+      <AddStudentModal
+        isOpen={showAddModal}
+        onClose={() => setShowAddModal(false)}
+        onSuccess={() => {
+          setRefreshKey(prev => prev + 1);
+        }}
+      />
 
       {/* Advanced Section */}
       <div className="mb-8">
@@ -174,7 +194,7 @@ const DataManagement = () => {
               </div>
               <h3 className="text-xl font-bold text-slate-900">Confirm Data Deletion</h3>
             </div>
-            
+
             <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
               <p className="text-sm text-red-800 font-medium mb-2">⚠️ This will permanently delete:</p>
               <ul className="text-sm text-red-700 space-y-1 ml-4">
@@ -191,7 +211,7 @@ const DataManagement = () => {
             <p className="text-sm text-slate-700 mb-4">
               Type <span className="font-mono font-bold bg-slate-100 px-2 py-1 rounded">DELETE</span> to confirm:
             </p>
-            
+
             <input
               type="text"
               value={confirmText}

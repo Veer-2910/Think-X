@@ -4,6 +4,9 @@
   "description": "Backend for AI-based Student Dropout Prevention System",
   "main": "src/server.js",
   "type": "module",
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
@@ -20,6 +23,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@prisma/client": "^5.10.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.6",

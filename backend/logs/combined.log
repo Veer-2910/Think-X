@@ -3936,3 +3936,834 @@ Unknown field `riskProfile` for include statement on model `Student`. Available 
 2026-02-06 23:25:53 [info]: Admin insights generated (Semester: All)
 2026-02-06 23:25:54 [info]: Department risk analytics generated (Semester: All)
 2026-02-06 23:25:54 [info]: Admin insights generated (Semester: All)
+2026-02-06 23:47:02 [info]: User logged in: admin@university.edu
+2026-02-06 23:47:32 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:47:32 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:47:34 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:47:35 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:48:56 [info]: Subject failure heatmap generated
+2026-02-06 23:48:56 [info]: Subject failure heatmap generated
+2026-02-06 23:48:56 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:48:56 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:48:57 [info]: Semester transition analysis generated
+2026-02-06 23:48:57 [info]: Semester transition analysis generated
+2026-02-06 23:49:10 [info]: Department risk analytics generated (Semester: 5)
+2026-02-06 23:49:10 [info]: Subject failure heatmap generated
+2026-02-06 23:49:11 [info]: Semester transition analysis generated
+2026-02-06 23:49:31 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:49:32 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:49:37 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:49:37 [info]: Admin insights generated (Semester: All)
+2026-02-06 23:49:39 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:49:39 [info]: Admin insights generated (Semester: All)
+2026-02-06 23:49:58 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:49:58 [info]: Admin insights generated (Semester: All)
+2026-02-06 23:49:59 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:49:59 [info]: Admin insights generated (Semester: All)
+2026-02-06 23:50:19 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:50:19 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:51:23 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:51:23 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:51:26 [info]: Subject failure heatmap generated
+2026-02-06 23:51:27 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:51:28 [info]: Subject failure heatmap generated
+2026-02-06 23:51:29 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:51:31 [info]: Semester transition analysis generated
+2026-02-06 23:51:32 [info]: Semester transition analysis generated
+2026-02-06 23:51:56 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:51:56 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:51:58 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:51:58 [info]: Subject failure heatmap generated
+2026-02-06 23:51:58 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:51:58 [info]: Semester transition analysis generated
+2026-02-06 23:51:58 [info]: Subject failure heatmap generated
+2026-02-06 23:51:59 [info]: Semester transition analysis generated
+2026-02-06 23:52:03 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:52:03 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:52:20 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:52:21 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:52:49 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:52:49 [info]: Subject failure heatmap generated
+2026-02-06 23:52:49 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:52:50 [info]: Subject failure heatmap generated
+2026-02-06 23:52:51 [info]: Semester transition analysis generated
+2026-02-06 23:52:52 [info]: Semester transition analysis generated
+2026-02-06 23:57:11 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:57:11 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:57:17 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:57:17 [info]: Admin insights generated (Semester: All)
+2026-02-06 23:57:18 [info]: Department risk analytics generated (Semester: All)
+2026-02-06 23:57:18 [info]: Admin insights generated (Semester: All)
+2026-02-07 00:03:23 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 00:03:23 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 00:05:02 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 00:05:02 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 00:07:23 [info]: User logged in: admin@university.edu
+2026-02-07 00:25:10 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 00:25:10 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 00:25:11 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 00:25:11 [info]: Subject failure heatmap generated
+2026-02-07 00:25:11 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 00:25:11 [info]: Subject failure heatmap generated
+2026-02-07 00:25:11 [info]: Semester transition analysis generated
+2026-02-07 00:25:12 [info]: Semester transition analysis generated
+2026-02-07 00:38:43 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 00:38:43 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 00:47:46 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 00:47:47 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 00:59:55 [error]: Get profile error: 
+Invalid `prisma.user.findUnique()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 01:00:00 [error]: Get profile error: 
+Invalid `prisma.user.findUnique()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 01:00:03 [error]: Login error: 
+Invalid `prisma.user.findUnique()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 01:00:10 [error]: Login error: 
+Invalid `prisma.user.findUnique()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 01:00:21 [info]: User logged in: admin@university.edu
+2026-02-07 01:00:45 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 01:00:45 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 01:00:45 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 01:00:46 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 01:01:00 [info]: Subject failure heatmap generated
+2026-02-07 01:01:01 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 01:01:01 [info]: Subject failure heatmap generated
+2026-02-07 01:01:01 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 01:01:01 [info]: Semester transition analysis generated
+2026-02-07 01:01:01 [info]: Semester transition analysis generated
+2026-02-07 01:03:54 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 01:03:54 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 01:03:56 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 01:03:56 [info]: Subject failure heatmap generated
+2026-02-07 01:03:56 [info]: Semester transition analysis generated
+2026-02-07 01:03:56 [info]: Subject failure heatmap generated
+2026-02-07 01:03:56 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 01:03:57 [info]: Semester transition analysis generated
+2026-02-07 01:04:07 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 01:04:07 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 01:12:44 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 01:12:44 [info]: Admin insights generated (Semester: All)
+2026-02-07 01:12:45 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 01:12:45 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:13:31 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:13:31 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:13:41 [info]: Subject failure heatmap generated
+2026-02-07 09:13:41 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:13:41 [info]: Subject failure heatmap generated
+2026-02-07 09:13:41 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:13:41 [info]: Semester transition analysis generated
+2026-02-07 09:13:41 [info]: Semester transition analysis generated
+2026-02-07 09:13:48 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:13:48 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:13:53 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:13:53 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:13:53 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:13:53 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:15:09 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:15:09 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:15:10 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:15:10 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:15:21 [info]: Admin admin@university.edu created new user: jenilsutariya001@gmail.com
+2026-02-07 09:15:25 [info]: Credentials sent to jenilsutariya001@gmail.com: <a40bf4e3-d0c1-f98c-6666-119e14954cc0@gmail.com>
+2026-02-07 09:15:46 [info]: User logged in: jenilsutariya001@gmail.com
+2026-02-07 09:16:16 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:16:16 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:16:18 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:16:18 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:17:43 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:17:43 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:19:03 [info]: User logged in: admin@university.edu
+2026-02-07 09:23:13 [info]: Subject failure heatmap generated
+2026-02-07 09:23:13 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:23:13 [info]: Subject failure heatmap generated
+2026-02-07 09:23:13 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:23:14 [info]: Semester transition analysis generated
+2026-02-07 09:23:14 [info]: Semester transition analysis generated
+2026-02-07 09:32:38 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:32:38 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:32:42 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:32:42 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:32:42 [info]: Subject failure heatmap generated
+2026-02-07 09:32:42 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:32:43 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:32:43 [info]: Subject failure heatmap generated
+2026-02-07 09:32:43 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:32:43 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:32:43 [info]: Semester transition analysis generated
+2026-02-07 09:32:44 [info]: Semester transition analysis generated
+2026-02-07 09:32:46 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:32:46 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:34:29 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:34:29 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:34:30 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:34:30 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:41:18 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:41:18 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:41:19 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:41:19 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:43:24 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:43:24 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:43:25 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:43:25 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:44:44 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:44:44 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:44:50 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:44:50 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:44:51 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:44:51 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:44:58 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:44:59 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:45:52 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:45:52 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:45:53 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:45:53 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:46:38 [info]: Admin admin@university.edu created new user: jenilsutariya001@gmail.com
+2026-02-07 09:46:42 [info]: Credentials sent to jenilsutariya001@gmail.com: <4896b1bf-0f11-9bf6-1191-7e155b1ec7c8@gmail.com>
+2026-02-07 09:47:00 [info]: User logged in: jenilsutariya001@gmail.com
+2026-02-07 09:48:40 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:48:40 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:48:40 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:48:40 [info]: Subject failure heatmap generated
+2026-02-07 09:48:40 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:48:40 [info]: Subject failure heatmap generated
+2026-02-07 09:48:40 [info]: Semester transition analysis generated
+2026-02-07 09:48:41 [info]: Semester transition analysis generated
+2026-02-07 09:48:43 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:48:43 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:48:45 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:48:45 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:48:52 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:48:52 [info]: PDF export created: department-risk_report_2026-02-07T04-18-52.pdf
+2026-02-07 09:48:52 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:48:52 [info]: PDF export created: department-risk_report_2026-02-07T04-18-52.pdf
+2026-02-07 09:49:09 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:49:09 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:49:10 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:49:10 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:51:21 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:51:21 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:51:23 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:51:23 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:52:34 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:52:34 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:52:35 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:52:35 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:53:14 [info]: Created Mentor profile for: yashkhanpara11@gmail.com
+2026-02-07 09:53:14 [info]: Admin admin@university.edu created new user: yashkhanpara11@gmail.com
+2026-02-07 09:53:19 [info]: Credentials sent to yashkhanpara11@gmail.com: <7b42f2f4-535d-1037-bc71-fafad60e6fe8@gmail.com>
+2026-02-07 09:54:16 [info]: User logged in: yashkhanpara11@gmail.com
+2026-02-07 09:55:23 [info]: User logged in: admin@university.edu
+2026-02-07 09:55:26 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:55:26 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:55:26 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:55:26 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:56:49 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:56:49 [info]: Admin insights generated (Semester: All)
+2026-02-07 09:56:50 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 09:56:50 [info]: Admin insights generated (Semester: All)
+2026-02-07 10:01:06 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:01:06 [info]: Subject failure heatmap generated
+2026-02-07 10:01:06 [info]: Semester transition analysis generated
+2026-02-07 10:01:06 [info]: Subject failure heatmap generated
+2026-02-07 10:01:06 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:01:06 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:01:06 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:01:07 [info]: Semester transition analysis generated
+2026-02-07 10:01:07 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:01:08 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:12:08 [warn]: Clear all data requested - Starting deletion process
+2026-02-07 10:12:10 [warn]: All data cleared successfully. Total records deleted: 20
+2026-02-07 10:13:59 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:13:59 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:15:48 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:15:50 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:16:07 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:16:07 [info]: Subject failure heatmap generated
+2026-02-07 10:16:07 [info]: Subject failure heatmap generated
+2026-02-07 10:16:08 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:16:08 [info]: Semester transition analysis generated
+2026-02-07 10:16:08 [info]: Semester transition analysis generated
+2026-02-07 10:16:38 [info]: Subject failure heatmap generated
+2026-02-07 10:16:38 [info]: Department risk analytics generated (Semester: 1)
+2026-02-07 10:16:39 [info]: Semester transition analysis generated
+2026-02-07 10:16:40 [info]: Department risk analytics generated (Semester: 5)
+2026-02-07 10:16:40 [info]: Subject failure heatmap generated
+2026-02-07 10:16:40 [info]: Semester transition analysis generated
+2026-02-07 10:16:43 [info]: Subject failure heatmap generated
+2026-02-07 10:16:43 [info]: Department risk analytics generated (Semester: 3)
+2026-02-07 10:16:45 [info]: Semester transition analysis generated
+2026-02-07 10:16:47 [info]: Subject failure heatmap generated
+2026-02-07 10:16:47 [info]: Department risk analytics generated (Semester: 4)
+2026-02-07 10:16:48 [info]: Semester transition analysis generated
+2026-02-07 10:16:56 [info]: Subject failure heatmap generated
+2026-02-07 10:16:56 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:16:57 [info]: Semester transition analysis generated
+2026-02-07 10:17:08 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:17:08 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:17:15 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:17:15 [info]: Admin insights generated (Semester: All)
+2026-02-07 10:17:19 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:17:19 [info]: Admin insights generated (Semester: All)
+2026-02-07 10:21:10 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:21:10 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:21:12 [info]: Subject failure heatmap generated
+2026-02-07 10:21:12 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:21:12 [info]: Subject failure heatmap generated
+2026-02-07 10:21:12 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:21:13 [info]: Semester transition analysis generated
+2026-02-07 10:21:14 [info]: Semester transition analysis generated
+2026-02-07 10:21:36 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:21:36 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:21:40 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:21:40 [info]: Admin insights generated (Semester: All)
+2026-02-07 10:21:42 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:21:42 [info]: Admin insights generated (Semester: All)
+2026-02-07 10:25:11 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:25:11 [info]: Admin insights generated (Semester: All)
+2026-02-07 10:25:13 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:25:13 [info]: Admin insights generated (Semester: All)
+2026-02-07 10:33:39 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:33:39 [info]: Admin insights generated (Semester: All)
+2026-02-07 10:33:40 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:33:40 [info]: Admin insights generated (Semester: All)
+2026-02-07 10:41:05 [info]: User logged in: admin@university.edu
+2026-02-07 10:41:16 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:41:16 [info]: Admin insights generated (Semester: All)
+2026-02-07 10:41:19 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:41:19 [info]: Admin insights generated (Semester: All)
+2026-02-07 10:43:20 [info]: User logged in: jenilsutariya001@gmail.com
+2026-02-07 10:44:17 [info]: Subject failure heatmap generated
+2026-02-07 10:44:17 [info]: Subject failure heatmap generated
+2026-02-07 10:44:17 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:44:18 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:44:18 [info]: Semester transition analysis generated
+2026-02-07 10:44:19 [info]: Semester transition analysis generated
+2026-02-07 10:44:31 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:44:32 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:44:36 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:44:36 [info]: Admin insights generated (Semester: All)
+2026-02-07 10:44:38 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:44:38 [info]: Admin insights generated (Semester: All)
+2026-02-07 10:45:48 [info]: Subject failure heatmap generated
+2026-02-07 10:45:48 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:45:48 [info]: Subject failure heatmap generated
+2026-02-07 10:45:48 [info]: Semester transition analysis generated
+2026-02-07 10:45:49 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:45:50 [info]: Semester transition analysis generated
+2026-02-07 10:45:50 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:45:50 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:46:03 [info]: Subject failure heatmap generated
+2026-02-07 10:46:12 [error]: Subject failure heatmap error: 
+Invalid `prisma.assessment.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:12 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:12 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:12 [error]: Semester transition analysis error: 
+Invalid `prisma.student.groupBy()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Subject failure heatmap error: 
+Invalid `prisma.assessment.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Semester transition analysis error: 
+Invalid `prisma.student.groupBy()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Subject failure heatmap error: 
+Invalid `prisma.assessment.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Semester transition analysis error: 
+Invalid `prisma.student.groupBy()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Subject failure heatmap error: 
+Invalid `prisma.assessment.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Semester transition analysis error: 
+Invalid `prisma.student.groupBy()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Subject failure heatmap error: 
+Invalid `prisma.assessment.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:15 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:15 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:15 [error]: Semester transition analysis error: 
+Invalid `prisma.student.groupBy()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:18 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:18 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:18 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:18 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:18 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:18 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:18 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:19 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:19 [error]: Semester transition analysis error: 
+Invalid `prisma.student.groupBy()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:19 [error]: Subject failure heatmap error: 
+Invalid `prisma.assessment.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:19 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:19 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:20 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:20 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:20 [error]: Subject failure heatmap error: 
+Invalid `prisma.assessment.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:20 [error]: Subject failure heatmap error: 
+Invalid `prisma.assessment.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:21 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Server has closed the connection.
+2026-02-07 10:46:21 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Server has closed the connection.
+2026-02-07 10:46:21 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Server has closed the connection.
+2026-02-07 10:51:39 [info]: Department risk analytics generated (Semester: 1)
+2026-02-07 10:51:39 [info]: Subject failure heatmap generated
+2026-02-07 10:51:41 [info]: Semester transition analysis generated
+2026-02-07 10:51:43 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:51:43 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:52:15 [info]: Subject failure heatmap generated
+2026-02-07 10:52:16 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:52:16 [info]: Semester transition analysis generated
+2026-02-07 10:53:05 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:53:06 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:53:06 [info]: Subject failure heatmap generated
+2026-02-07 10:53:06 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:53:06 [info]: Subject failure heatmap generated
+2026-02-07 10:53:06 [info]: Semester transition analysis generated
+2026-02-07 10:53:06 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:53:06 [info]: Semester transition analysis generated
+2026-02-07 10:53:33 [info]: Subject failure heatmap generated
+2026-02-07 10:53:33 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:53:33 [info]: Subject failure heatmap generated
+2026-02-07 10:53:34 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:53:34 [info]: Semester transition analysis generated
+2026-02-07 10:53:34 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:53:35 [info]: Semester transition analysis generated
+2026-02-07 10:53:35 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:53:39 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:53:39 [info]: Admin insights generated (Semester: All)
+2026-02-07 10:53:40 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:53:40 [info]: Admin insights generated (Semester: All)
+2026-02-07 10:55:42 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:55:43 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:55:43 [info]: Subject failure heatmap generated
+2026-02-07 10:55:43 [info]: Subject failure heatmap generated
+2026-02-07 10:55:43 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:55:43 [info]: Semester transition analysis generated
+2026-02-07 10:55:43 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:55:43 [info]: Semester transition analysis generated
+2026-02-07 10:55:45 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:55:45 [info]: Admin insights generated (Semester: All)
+2026-02-07 10:55:46 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 10:55:46 [info]: Admin insights generated (Semester: All)
+2026-02-07 11:02:06 [info]: Semester transition analysis generated
+2026-02-07 11:02:06 [info]: Subject failure heatmap generated
+2026-02-07 11:02:06 [info]: Subject failure heatmap generated
+2026-02-07 11:02:06 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:02:07 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:02:07 [info]: Semester transition analysis generated
+2026-02-07 11:02:07 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:02:07 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:02:10 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:02:10 [info]: Admin insights generated (Semester: All)
+2026-02-07 11:02:11 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:02:11 [info]: Admin insights generated (Semester: All)
+2026-02-07 11:11:08 [info]: Subject failure heatmap generated
+2026-02-07 11:11:08 [info]: Subject failure heatmap generated
+2026-02-07 11:11:09 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:11:09 [info]: Semester transition analysis generated
+2026-02-07 11:11:09 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:11:09 [info]: Semester transition analysis generated
+2026-02-07 11:12:14 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:12:14 [info]: Admin insights generated (Semester: All)
+2026-02-07 11:12:15 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:12:15 [info]: Admin insights generated (Semester: All)
+2026-02-07 11:17:18 [info]: Subject failure heatmap generated
+2026-02-07 11:17:18 [info]: Subject failure heatmap generated
+2026-02-07 11:17:19 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:17:19 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:17:20 [info]: Semester transition analysis generated
+2026-02-07 11:17:20 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:17:20 [info]: Admin insights generated (Semester: All)
+2026-02-07 11:17:20 [info]: Semester transition analysis generated
+2026-02-07 11:17:22 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:17:22 [info]: Admin insights generated (Semester: All)
+2026-02-07 11:44:43 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:44:43 [info]: Admin insights generated (Semester: All)
+2026-02-07 11:44:44 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:44:44 [info]: Admin insights generated (Semester: All)
+2026-02-07 11:46:35 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:46:35 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:46:37 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:46:37 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:47:13 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:47:14 [info]: Subject failure heatmap generated
+2026-02-07 11:47:14 [info]: Subject failure heatmap generated
+2026-02-07 11:47:14 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:47:14 [info]: Semester transition analysis generated
+2026-02-07 11:47:14 [info]: Semester transition analysis generated
+2026-02-07 11:51:23 [info]: User logged in: admin@university.edu
+2026-02-07 11:51:32 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:51:32 [info]: Semester transition analysis generated
+2026-02-07 11:51:33 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:51:33 [info]: Semester transition analysis generated
+2026-02-07 11:51:33 [info]: Subject failure heatmap generated
+2026-02-07 11:51:33 [info]: Subject failure heatmap generated
+2026-02-07 11:51:48 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:51:49 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:51:53 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:51:53 [info]: Admin insights generated (Semester: All)
+2026-02-07 11:51:55 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:51:55 [info]: Admin insights generated (Semester: All)
+2026-02-07 11:52:17 [info]: Created Counselor profile for: jenilsutariya001@gmail.com
+2026-02-07 11:52:17 [info]: Admin admin@university.edu created new user: jenilsutariya001@gmail.com
+2026-02-07 11:52:22 [info]: Credentials sent to jenilsutariya001@gmail.com: <8232f7b5-3502-ab01-488b-cda6520d8722@gmail.com>
+2026-02-07 11:52:44 [info]: User logged in: jenilsutariya001@gmail.com
+2026-02-07 11:53:01 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:53:01 [info]: Admin insights generated (Semester: All)
+2026-02-07 11:53:03 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:53:03 [info]: Admin insights generated (Semester: All)
+2026-02-07 11:54:22 [info]: Created Counselor profile for: yashkhanpara11@gmail.com
+2026-02-07 11:54:22 [info]: Admin admin@university.edu created new user: yashkhanpara11@gmail.com
+2026-02-07 11:54:26 [info]: Credentials sent to yashkhanpara11@gmail.com: <d9afa564-53c3-64c9-53a3-1ab258307b4c@gmail.com>
+2026-02-07 11:55:33 [info]: User logged in: yashkhanpara11@gmail.com
+2026-02-07 11:55:59 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:55:59 [info]: Admin insights generated (Semester: All)
+2026-02-07 11:56:01 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:56:01 [info]: Admin insights generated (Semester: All)
+2026-02-07 11:58:53 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:58:53 [info]: Admin insights generated (Semester: All)
+2026-02-07 11:58:55 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 11:58:55 [info]: Admin insights generated (Semester: All)
+2026-02-07 11:59:19 [info]: Created Counselor profile for: yashkhanpara06@gmail.com
+2026-02-07 11:59:19 [info]: Admin admin@university.edu created new user: yashkhanpara06@gmail.com
+2026-02-07 11:59:24 [info]: Credentials sent to yashkhanpara06@gmail.com: <eba3d152-4917-8464-4474-8fe469945ae9@gmail.com>
+2026-02-07 12:00:10 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:00:10 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:00:11 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:00:11 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:01:29 [info]: Created Mentor profile for: 23dcs048@charusat.edu.in
+2026-02-07 12:01:29 [info]: Admin admin@university.edu created new user: 23dcs048@charusat.edu.in
+2026-02-07 12:01:34 [info]: Credentials sent to 23dcs048@charusat.edu.in: <b6d4bf3e-12cc-43e7-d614-31e97e9f608e@gmail.com>
+2026-02-07 12:01:39 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:01:39 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:01:41 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:01:41 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:02:36 [info]: User logged in: 23dcs048@charusat.edu.in
+2026-02-07 12:03:16 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:03:16 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:07:13 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:07:13 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:07:18 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:07:18 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:08:31 [info]: Created Mentor profile for: 23dcs060@charusat.edu.in
+2026-02-07 12:08:31 [info]: Admin admin@university.edu created new user: 23dcs060@charusat.edu.in
+2026-02-07 12:08:35 [info]: Credentials sent to 23dcs060@charusat.edu.in: <4e70bc5a-1936-85c9-9a37-bb745378e0b3@gmail.com>
+2026-02-07 12:09:18 [info]: User logged in: 23dcs060@charusat.edu.in
+2026-02-07 12:09:31 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:09:31 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:09:39 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:09:39 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:09:42 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:09:42 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:18:23 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:18:23 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:20:45 [info]: Created Mentor profile for: 23dcs129@charusat.edu.in
+2026-02-07 12:20:45 [info]: Admin admin@university.edu created new user: 23dcs129@charusat.edu.in
+2026-02-07 12:20:50 [info]: Credentials sent to 23dcs129@charusat.edu.in: <b677b8e1-6e07-4b23-d713-c07d02737a5d@gmail.com>
+2026-02-07 12:20:51 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:20:51 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:20:57 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:20:57 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:20:59 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:20:59 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:25:35 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:25:35 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:25:36 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:25:36 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:26:09 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:26:09 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:26:11 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:26:11 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:35:04 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:35:04 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:35:07 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:35:07 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:35:08 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:35:08 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:35:32 [info]: Created Mentor profile for: 23dcs048@gmail.com
+2026-02-07 12:35:32 [info]: Admin admin@university.edu created new user: 23dcs048@gmail.com
+2026-02-07 12:35:37 [info]: Credentials sent to 23dcs048@gmail.com: <c1414c10-83a7-8016-5601-a7e20e15c108@gmail.com>
+2026-02-07 12:35:40 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:35:40 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:35:41 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:35:41 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:36:54 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:36:54 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:36:55 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:36:55 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:41:56 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:41:56 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:41:59 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:41:59 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:43:25 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:43:25 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:43:26 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:43:26 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:46:18 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:46:18 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:46:20 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:46:20 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:47:49 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:47:49 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:47:49 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:47:49 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:48:57 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:48:57 [info]: Admin insights generated (Semester: All)
+2026-02-07 12:48:58 [info]: Department risk analytics generated (Semester: All)
+2026-02-07 12:48:58 [info]: Admin insights generated (Semester: All)

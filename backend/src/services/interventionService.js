@@ -9,38 +9,97 @@ const SLA_DURATIONS = {
   LOW: 14 * 24 * 60 * 60 * 1000     // 14 days
 };
 
+import { analyzeStudentProblems, suggestMentors } from './geminiService.js';
+
 /**
- * Auto-assign student to available mentor
+ * Auto-assign student to available mentor (AI-Powered)
  * @param {string} studentId - Student ID
  * @returns {Promise<Object|null>} Assignment or null if no mentor available
  */
 export const autoAssignMentor = async (studentId) => {
   try {
-    // Find mentor with least assignments
+    // 1. Get student data with counselor notes
+    const student = await prisma.student.findUnique({
+      where: { id: studentId },
+      select: {
+        id: true,
+        name: true,
+        counselorNotes: true,
+        problemCategories: true
+      }
+    });
+
+    if (!student) return null;
+
+    // 2. Get all mentors with availability
     const mentors = await prisma.mentor.findMany({
       include: {
         assignedStudents: {
-          where: { status: 'ACTIVE' }
+          where: { status: 'ACTIVE' },
+          select: { id: true } // Only need ID to count
         }
       }
     });
-    
-    if (mentors.length === 0) {
+
+    // Filter mentors with capacity
+    const availableMentors = mentors.filter(m => m.assignedStudents.length < m.maxStudents);
+
+    if (availableMentors.length === 0) {
       console.warn('No mentors available for assignment');
       return null;
     }
-    
-    // Find mentor with capacity
-    const availableMentor = mentors
-      .filter(m => m.assignedStudents.length < m.maxStudents)
-      .sort((a, b) => a.assignedStudents.length - b.assignedStudents.length)[0];
-    
-    if (!availableMentor) {
-      console.warn('All mentors at capacity');
-      return null;
+
+    let selectedMentor = null;
+
+    // 3. AI Matching Logic
+    if (student.counselorNotes && student.counselorNotes.trim().length > 0) {
+      try {
+        console.log(`Analyzing student ${student.name} for AI mentor matching...`);
+
+        // Analyze problems (or use existing analysis if recent/valid)
+        let categories = [];
+        if (student.problemCategories) {
+          categories = JSON.parse(student.problemCategories);
+        } else {
+          const analysis = await analyzeStudentProblems(student.counselorNotes);
+          categories = analysis.categories;
+
+          // Save analysis to student
+          await prisma.student.update({
+            where: { id: studentId },
+            data: {
+              problemCategories: JSON.stringify(analysis.categories),
+              aiAnalysis: analysis.summary,
+              aiAnalyzedAt: new Date()
+            }
+          });
+        }
+
+        // Get suggestions
+        const suggestions = suggestMentors(categories, availableMentors);
+
+        if (suggestions.length > 0 && suggestions[0].matchScore > 0) {
+          selectedMentor = suggestions[0];
+          console.log(`AI selected mentor ${selectedMentor.name} (Score: ${selectedMentor.matchScore})`);
+        }
+      } catch (err) {
+        console.error('AI matching failed, falling back to load balancing:', err);
+      }
     }
-    
-    return assignMentor(studentId, availableMentor.id);
+
+    // 4. Fallback: Load Balancing (Least Assigned)
+    if (!selectedMentor) {
+      selectedMentor = availableMentors.sort((a, b) => a.assignedStudents.length - b.assignedStudents.length)[0];
+      console.log(`Fallback selected mentor ${selectedMentor.name} (Load: ${selectedMentor.assignedStudents.length})`);
+    }
+
+    // 5. Assign
+    if (selectedMentor) {
+      return assignMentor(studentId, selectedMentor.id);
+    }
+
+    return null;
+
   } catch (error) {
     console.error('Error auto-assigning mentor:', error);
     return null;
@@ -62,7 +121,7 @@ export const assignMentor = async (studentId, mentorId) => {
         status: 'ACTIVE'
       }
     });
-    
+
     if (existing) {
       // Reassign
       await prisma.mentorAssignment.update({
@@ -70,7 +129,7 @@ export const assignMentor = async (studentId, mentorId) => {
         data: { status: 'REASSIGNED' }
       });
     }
-    
+
     const assignment = await prisma.mentorAssignment.create({
       data: {
         studentId,
@@ -82,7 +141,7 @@ export const assignMentor = async (studentId, mentorId) => {
         mentor: true
       }
     });
-    
+
     console.log(`Student ${studentId} assigned to mentor ${mentorId}`);
     return assignment;
   } catch (error) {
@@ -104,7 +163,7 @@ export const createInterventionTask = async (studentId, priority, title, descrip
   try {
     // Calculate due date based on SLA
     const dueDate = new Date(Date.now() + SLA_DURATIONS[priority]);
-    
+
     const task = await prisma.interventionTask.create({
       data: {
         studentId,
@@ -118,7 +177,7 @@ export const createInterventionTask = async (studentId, priority, title, descrip
         student: true
       }
     });
-    
+
     console.log(`Intervention task created for student ${studentId} with ${priority} priority (due: ${dueDate})`);
     return task;
   } catch (error) {
@@ -134,7 +193,7 @@ export const createInterventionTask = async (studentId, priority, title, descrip
 export const checkSLAViolations = async () => {
   try {
     const now = new Date();
-    
+
     const overdueTasks = await prisma.interventionTask.findMany({
       where: {
         status: {
@@ -149,7 +208,7 @@ export const checkSLAViolations = async () => {
         student: true
       }
     });
-    
+
     console.log(`Found ${overdueTasks.length} overdue tasks`);
     return overdueTasks;
   } catch (error) {
@@ -176,9 +235,9 @@ export const escalateTask = async (taskId) => {
         student: true
       }
     });
-    
+
     console.log(`Task ${taskId} escalated for student ${task.student.name}`);
-    
+
     // Create alert for escalation
     const alertService = await import('./alertService.js');
     await alertService.createAlert(
@@ -186,7 +245,7 @@ export const escalateTask = async (taskId) => {
       'HIGH',
       `ESCALATED: Intervention task "${task.title}" overdue and requires immediate attention`
     );
-    
+
     return task;
   } catch (error) {
     console.error('Error escalating task:', error);
@@ -201,13 +260,13 @@ export const escalateTask = async (taskId) => {
 export const autoEscalateOverdueTasks = async () => {
   try {
     const overdueTasks = await checkSLAViolations();
-    
+
     const escalated = [];
     for (const task of overdueTasks) {
       const escalatedTask = await escalateTask(task.id);
       escalated.push(escalatedTask);
     }
-    
+
     console.log(`Auto-escalated ${escalated.length} tasks`);
     return escalated;
   } catch (error) {
@@ -225,11 +284,11 @@ export const autoEscalateOverdueTasks = async () => {
 export const updateTaskStatus = async (taskId, status) => {
   try {
     const data = { status };
-    
+
     if (status === 'COMPLETED') {
       data.completedAt = new Date();
     }
-    
+
     return await prisma.interventionTask.update({
       where: { id: taskId },
       data

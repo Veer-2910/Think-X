@@ -15,8 +15,11 @@ import riskRoutes from './routes/riskRoutes.js';
 import interventionRoutes from './routes/interventionRoutes.js';
 import counselingRoutes from './routes/counselingRoutes.js';
 import mentorRoutes from './routes/mentorRoutes.js';
+import counselorRoutes from './routes/counselorRoutes.js'; // Added
+import adminRoutes from './routes/adminRoutes.js'; // Added
 import reportingRoutes from './routes/reportingRoutes.js';
 import analyticsRoutes from './routes/analyticsRoutes.js';
+import aiRoutes from './routes/aiRoutes.js'; // Added
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -26,12 +29,12 @@ app.use(cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (mobile apps, Postman, etc.)
     if (!origin) return callback(null, true);
-    
+
     // Allow any localhost origin in development
     if (origin.startsWith('http://localhost:')) {
       return callback(null, true);
     }
-    
+
     // In production, restrict to specific origin
     callback(new Error('Not allowed by CORS'));
   },
@@ -52,8 +55,11 @@ app.use('/api/risk', riskRoutes);
 app.use('/api/intervention', interventionRoutes);
 app.use('/api/counseling', counselingRoutes);
 app.use('/api/mentor', mentorRoutes);
+app.use('/api/counselor', counselorRoutes); // Added
+app.use('/api/admin', adminRoutes); // Added
 app.use('/api/reports', reportingRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use('/api/ai', aiRoutes); // AI-powered features
 
 // Health Check API
 app.get('/api/health', (req, res) => {

@@ -7,7 +7,7 @@ import { Readable } from 'stream';
 export const createStudent = async (req, res) => {
   try {
     const studentData = req.body;
-    
+
     // Check if student ID or email already exists
     const existingStudent = await prisma.student.findFirst({
       where: {
@@ -66,11 +66,11 @@ export const getAllStudents = async (req, res) => {
 
     // Build filter conditions
     const where = {};
-    
+
     if (department) where.department = department;
     if (semester) where.semester = parseInt(semester);
     if (dropoutRisk) where.dropoutRisk = dropoutRisk;
-    
+
     if (search) {
       where.OR = [
         { name: { contains: search, mode: 'insensitive' } },
@@ -167,6 +167,20 @@ export const updateStudent = async (req, res) => {
       data: updateData
     });
 
+    // Auto-trigger assignment if High Risk or Notes changed for High Risk student
+    if (
+      (updateData.dropoutRisk === 'HIGH' && existingStudent.dropoutRisk !== 'HIGH') ||
+      (updateData.counselorNotes && updateData.counselorNotes !== existingStudent.counselorNotes)
+    ) {
+      try {
+        console.log(`Triggering auto-assignment for high-risk student: ${student.name}`);
+        const { autoAssignMentor } = await import('../services/interventionService.js');
+        await autoAssignMentor(student.id);
+      } catch (err) {
+        console.error('Failed to auto-assign mentor:', err);
+      }
+    }
+
     res.status(200).json({
       success: true,
       message: 'Student updated successfully',
@@ -233,7 +247,7 @@ export const bulkUploadStudents = async (req, res) => {
 
     // Parse CSV from buffer
     const stream = Readable.from(req.file.buffer.toString());
-    
+
     stream
       .pipe(csv())
       .on('data', (row) => {
@@ -268,10 +282,10 @@ export const bulkUploadStudents = async (req, res) => {
               paymentStatus: row.paymentStatus?.trim() || 'PENDING'
             }
           };
-          
+
           // Debug log for first few rows
           if (lineNumber <= 3) {
-             console.log(`[Row ${lineNumber}] Parsed:`, student);
+            console.log(`[Row ${lineNumber}] Parsed:`, student);
           }
 
           // Basic validation
@@ -369,13 +383,15 @@ export const bulkUploadStudents = async (req, res) => {
 
           // Calculate risk for each student
           const { calculateRisk } = await import('../services/riskEngine.js');
+          const { autoAssignMentor } = await import('../services/interventionService.js');
+
           for (const student of uploadedStudents) {
             const { riskLevel, riskScore, riskReason } = calculateRisk(
               student,
               student.attendanceRecords || [],
               student.assessments || []
             );
-            
+
             await prisma.student.update({
               where: { id: student.id },
               data: {
@@ -383,6 +399,16 @@ export const bulkUploadStudents = async (req, res) => {
                 riskReason: riskReason
               }
             });
+
+            // Auto-assign mentor if HIGH risk
+            if (riskLevel === 'HIGH') {
+              try {
+                console.log(`Auto-assigning mentor for uploaded high-risk student: ${student.name}`);
+                await autoAssignMentor(student.id);
+              } catch (err) {
+                console.error(`Failed to auto-assign mentor to ${student.name}:`, err);
+              }
+            }
           }
           console.log(`Risk calculation completed for ${uploadedStudents.length} students.`);
 

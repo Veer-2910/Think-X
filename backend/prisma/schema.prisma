@@ -67,6 +67,14 @@ model Student {
   mlConfidence      Float?   // ML prediction confidence
   mlLastUpdated     DateTime? // When ML prediction was last run
   
+  // Counselor Notes
+  counselorNotes    String?  @db.Text // Family problems, personal issues, etc.
+  
+  // AI Analysis  
+  problemCategories String?  @db.Text // JSON array of detected problem categories
+  aiAnalysis        String?  @db.Text // Gemini AI analysis summary
+  aiAnalyzedAt      DateTime? // When AI analysis was last run
+  
   // Metadata
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
@@ -74,14 +82,15 @@ model Student {
   @@map("students")
 
   // Relations
-  attendanceRecords Attendance[]
-  assessments       Assessment[]
-  alerts            Alert[]
-  mentorAssignments MentorAssignment[]
-  interventionTasks InterventionTask[]
-  counselingLogs    CounselingLog[]
-  courseAttempts    CourseAttempt[]
-  feeRecord         FeeRecord?
+  attendanceRecords    Attendance[]
+  assessments          Assessment[]
+  alerts               Alert[]
+  mentorAssignments    MentorAssignment[]
+  counselorAssignments CounselorAssignment[]
+  interventionTasks    InterventionTask[]
+  counselingLogs       CounselingLog[]
+  courseAttempts       CourseAttempt[]
+  feeRecord            FeeRecord?
 }
 
 model Attendance {
@@ -125,13 +134,15 @@ model Alert {
 }
 
 model Mentor {
-  id               String             @id @default(uuid())
-  name             String
-  email            String             @unique
-  department       String?
-  maxStudents      Int                @default(10)
-  assignedStudents MentorAssignment[]
-  createdAt        DateTime           @default(now())
+  id                   String                        @id @default(uuid())
+  name                 String
+  email                String                        @unique
+  department           String?
+  specialization       String?  // Mentor's area of expertise for AI matching
+  maxStudents          Int                           @default(10)
+  assignedStudents     MentorAssignment[]
+  counselorAssignments MentorCounselorAssignment[]
+  createdAt            DateTime                      @default(now())
   
   @@map("mentors")
 }
@@ -171,7 +182,8 @@ model CounselingLog {
   id                    String    @id @default(uuid())
   studentId             String
   student               Student   @relation(fields: [studentId], references: [id], onDelete: Cascade)
-  mentorId              String
+  mentorId              String?
+  counselorId           String?   // Counselor who conducted the session
   sessionDate           DateTime
   notes                 String    // Counseling session notes
   actionsTaken          String?   // Actions taken during session
@@ -223,4 +235,47 @@ model FeeRecord {
   updatedAt       DateTime @updatedAt
   
   @@map("fee_records")
+}
+
+// Counselor Model
+model Counselor {
+  id                    String                        @id @default(uuid())
+  name                  String
+  email                 String                        @unique
+  department            String?
+  maxStudents           Int                           @default(30)
+  assignedStudents      CounselorAssignment[]
+  mentorAssignments     MentorCounselorAssignment[]
+  createdAt             DateTime                      @default(now())
+  updatedAt             DateTime                      @updatedAt
+  
+  @@map("counselors")
+}
+
+// Student-to-Counselor Assignment
+model CounselorAssignment {
+  id          String     @id @default(uuid())
+  studentId   String
+  student     Student    @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  counselorId String
+  counselor   Counselor  @relation(fields: [counselorId], references: [id], onDelete: Cascade)
+  assignedAt  DateTime   @default(now())
+  assignedBy  String?    // Admin user ID who made the assignment
+  status      String     @default("ACTIVE") // ACTIVE, COMPLETED, REASSIGNED
+  
+  @@map("counselor_assignments")
+}
+
+// Mentor-to-Counselor Assignment (Oversight)
+model MentorCounselorAssignment {
+  id          String     @id @default(uuid())
+  mentorId    String
+  mentor      Mentor     @relation(fields: [mentorId], references: [id], onDelete: Cascade)
+  counselorId String
+  counselor   Counselor  @relation(fields: [counselorId], references: [id], onDelete: Cascade)
+  assignedAt  DateTime   @default(now())
+  assignedBy  String?    // Admin user ID
+  status      String     @default("ACTIVE") // ACTIVE, COMPLETED, REASSIGNED
+  
+  @@map("mentor_counselor_assignments")
 }

@@ -38,7 +38,7 @@ api.interceptors.response.use(
     if (error.response) {
       // Server responded with error status
       const { status, data } = error.response;
-      
+
       switch (status) {
         case 401:
           // Unauthorized - clear token and redirect to login
@@ -61,7 +61,7 @@ api.interceptors.response.use(
         default:
           console.error(`Error: ${data.message || 'An error occurred'}`);
       }
-      
+
       return Promise.reject(data);
     } else if (error.request) {
       // Request made but no response received
@@ -144,6 +144,30 @@ export const interventionAPI = {
 // ==================== MENTOR ENDPOINTS ====================
 export const mentorAPI = {
   getMyStudents: () => api.get('/mentor/my-students'),
+  getMyCounselors: () => api.get('/mentor/my-counselors'),
+  getStudentsByCounselor: (counselorId) => api.get(`/mentor/counselor/${counselorId}/students`),
+  getCounselorStats: () => api.get('/mentor/counselor-stats'),
+};
+
+// ==================== COUNSELOR ENDPOINTS ====================
+export const counselorAPI = {
+  getMyStudents: () => api.get('/counselor/my-students'),
+  updateStudentDetails: (id, data) => api.put(`/counselor/student/${id}/details`, data),
+  updateStudentMarks: (id, data) => api.post(`/counselor/student/${id}/marks`, data),
+  updateStudentAttendance: (id, data) => api.post(`/counselor/student/${id}/attendance`, data),
+  getMyStats: () => api.get('/counselor/stats'),
+};
+
+// ==================== ADMIN ENDPOINTS ====================
+export const adminAPI = {
+  getAllMentors: () => api.get('/admin/mentors'),
+  getAllCounselors: () => api.get('/admin/counselors'),
+  assignStudentToCounselor: (data) => api.post('/admin/assign/student-counselor', data),
+  assignMentorToCounselor: (data) => api.post('/admin/assign/mentor-counselor', data),
+  bulkAssignStudents: (data) => api.post('/admin/assign/bulk-students', data),
+  reassignStudent: (data) => api.put('/admin/reassign/student', data),
+  getUserManagementStats: () => api.get('/admin/stats'),
+  deleteUser: (userId) => api.delete(`/admin/users/${userId}`),
 };
 
 // ==================== COUNSELING ENDPOINTS ====================
@@ -170,6 +194,13 @@ export const analyticsAPI = {
   getAdminInsights: (params) => api.get('/analytics/admin-insights', { params }),
   exportCSV: (data) => api.post('/analytics/export-csv', data),
   exportPDF: (data) => api.post('/analytics/export-pdf', data),
+};
+
+// ==================== AI ENDPOINTS ====================
+export const aiAPI = {
+  analyzeStudent: (studentId) => api.post(`/ai/analyze-student/${studentId}`),
+  suggestMentors: (studentId) => api.post(`/ai/suggest-mentors/${studentId}`),
+  getImprovementPlan: (studentId) => api.post(`/ai/improvement-plan/${studentId}`),
 };
 
 // ==================== HEALTH CHECK ====================

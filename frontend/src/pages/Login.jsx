@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { useToast } from '../contexts/ToastContext';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import { LogIn, GraduationCap, AlertCircle } from 'lucide-react';
@@ -28,10 +29,10 @@ const Login = () => {
 
     try {
       const result = await login(formData.email, formData.password);
-      
+
       if (result.success) {
         success('Login successful! Redirecting...');
-        
+
         // Enforce password change if flagged
         if (result.mustChangePassword) {
           navigate('/change-password');
@@ -77,13 +78,6 @@ const Login = () => {
           </div> */}
         </div>
 
-        {error && (
-          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-700">
-            <AlertCircle size={20} />
-            <span className="text-sm">{error}</span>
-          </div>
-        )}
-
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">
@@ -119,8 +113,8 @@ const Login = () => {
             />
           </div>
 
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             className="w-full flex items-center justify-center gap-2"
             disabled={loading}
           >

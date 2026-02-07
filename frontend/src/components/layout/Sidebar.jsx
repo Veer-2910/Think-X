@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { 
-  LayoutDashboard, 
-  Users, 
-  BarChart3, 
+import {
+  LayoutDashboard,
+  Users,
+  BarChart3,
   FileText,
   Database,
   Menu,
   X,
-  BookOpen, 
+  BookOpen,
   ClipboardList,
   ShieldAlert,
   LogOut
@@ -26,19 +26,20 @@ const Sidebar = () => {
   const allMenuItems = [
     // Common / Admin
     { path: '/', icon: LayoutDashboard, label: 'Overview', roles: ['ADMIN'] },
-    
+
     // Mentor Specific
     { path: '/mentor/my-students', icon: BookOpen, label: 'My Students', roles: ['MENTOR'] },
-    
+
     // Counselor Specific
     { path: '/counseling/queue', icon: ClipboardList, label: 'Counseling Queue', roles: ['COUNSELOR'] },
-    
-    // General Students List (Everyone can see, but specific views preferred)
-    { path: '/students', icon: Users, label: 'Student Directory', roles: ['ADMIN', 'MENTOR', 'COUNSELOR'] },
-    
+    { path: '/counseling/analytics', icon: BarChart3, label: 'My Analytics', roles: ['COUNSELOR'] },
+    { path: '/counseling/data', icon: Database, label: 'Manage Data', roles: ['COUNSELOR'] },
+
+    // General Students List (Admin and Mentor only - Counselors see only assigned students)
+    { path: '/students', icon: Users, label: 'Student Directory', roles: ['ADMIN', 'MENTOR'] },
+
     // Admin / Advanced
     { path: '/analytics', icon: BarChart3, label: 'Analytics', roles: ['ADMIN'] },
-    { path: '/advanced-analytics', icon: BarChart3, label: 'Deep Insights', roles: ['ADMIN'] },
     { path: '/reports', icon: FileText, label: 'Reports', roles: ['ADMIN'] },
     { path: '/data-management', icon: Database, label: 'Data Management', roles: ['ADMIN'] },
     { path: '/admin', icon: ShieldAlert, label: 'Admin Console', roles: ['ADMIN'] },
@@ -78,7 +79,7 @@ const Sidebar = () => {
       >
         <div className="p-6 border-b border-secondary-100 flex justify-between items-center bg-white sticky top-0 z-10">
           <h1 className="text-xl font-bold text-primary">Student Success</h1>
-          <button 
+          <button
             onClick={logout}
             className="p-2 text-secondary-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all"
             title="Sign Out"

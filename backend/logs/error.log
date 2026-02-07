@@ -3378,3 +3378,320 @@ Invalid `prisma.student.findMany()` invocation:
 }
 
 Unknown field `riskProfile` for include statement on model `Student`. Available options are marked with ?.
+2026-02-07 00:59:55 [error]: Get profile error: 
+Invalid `prisma.user.findUnique()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 01:00:00 [error]: Get profile error: 
+Invalid `prisma.user.findUnique()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 01:00:03 [error]: Login error: 
+Invalid `prisma.user.findUnique()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 01:00:10 [error]: Login error: 
+Invalid `prisma.user.findUnique()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:12 [error]: Subject failure heatmap error: 
+Invalid `prisma.assessment.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:12 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:12 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:12 [error]: Semester transition analysis error: 
+Invalid `prisma.student.groupBy()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Subject failure heatmap error: 
+Invalid `prisma.assessment.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Semester transition analysis error: 
+Invalid `prisma.student.groupBy()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Subject failure heatmap error: 
+Invalid `prisma.assessment.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Semester transition analysis error: 
+Invalid `prisma.student.groupBy()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Subject failure heatmap error: 
+Invalid `prisma.assessment.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Semester transition analysis error: 
+Invalid `prisma.student.groupBy()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:13 [error]: Subject failure heatmap error: 
+Invalid `prisma.assessment.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:15 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:15 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:15 [error]: Semester transition analysis error: 
+Invalid `prisma.student.groupBy()` invocation:
+
+
+Can't reach database server at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`
+
+Please make sure your database server is running at `ep-square-bush-a19u4r0y-pooler.ap-southeast-1.aws.neon.tech:5432`.
+2026-02-07 10:46:18 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:18 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:18 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:18 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:18 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:18 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:18 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:19 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:19 [error]: Semester transition analysis error: 
+Invalid `prisma.student.groupBy()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:19 [error]: Subject failure heatmap error: 
+Invalid `prisma.assessment.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:19 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:19 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:20 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:20 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:20 [error]: Subject failure heatmap error: 
+Invalid `prisma.assessment.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:20 [error]: Subject failure heatmap error: 
+Invalid `prisma.assessment.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 21)
+2026-02-07 10:46:21 [error]: Semester transition analysis error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Server has closed the connection.
+2026-02-07 10:46:21 [error]: Department risk analytics error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Server has closed the connection.
+2026-02-07 10:46:21 [error]: Get department risk error: 
+Invalid `prisma.student.findMany()` invocation:
+
+
+Server has closed the connection.
