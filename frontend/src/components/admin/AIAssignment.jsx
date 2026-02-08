@@ -1,19 +1,22 @@
 import { useState } from 'react';
 import { aiAPI } from '../../services/api';
 import { useToast } from '../../contexts/ToastContext';
-import { Sparkles, Brain, AlertCircle, CheckCircle2, TrendingUp } from 'lucide-react';
+import { Sparkles, Brain, AlertCircle, CheckCircle2, TrendingUp, RefreshCw, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Button from '../ui/Button';
+import Badge from '../ui/Badge';
 
 const PROBLEM_CATEGORIES = {
-    academic_struggles: { label: 'Academic Struggles', color: 'bg-blue-100 text-blue-700' },
-    family_issues: { label: 'Family Issues', color: 'bg-purple-100 text-purple-700' },
-    financial_problems: { label: 'Financial Problems', color: 'bg-orange-100 text-orange-700' },
-    health_concerns: { label: 'Health Concerns', color: 'bg-red-100 text-red-700' },
-    mental_health: { label: 'Mental Health', color: 'bg-pink-100 text-pink-700' },
-    bereavement: { label: 'Bereavement/Loss', color: 'bg-gray-100 text-gray-700' },
-    social_isolation: { label: 'Social Isolation', color: 'bg-indigo-100 text-indigo-700' },
-    attendance_issues: { label: 'Attendance Issues', color: 'bg-yellow-100 text-yellow-700' },
-    substance_abuse: { label: 'Substance Abuse', color: 'bg-red-200 text-red-800' },
-    career_confusion: { label: 'Career Confusion', color: 'bg-teal-100 text-teal-700' }
+    academic_struggles: { label: 'Academic Struggles', color: 'bg-blue-100 text-blue-700 border-blue-200' },
+    family_issues: { label: 'Family Issues', color: 'bg-purple-100 text-purple-700 border-purple-200' },
+    financial_problems: { label: 'Financial Problems', color: 'bg-orange-100 text-orange-700 border-orange-200' },
+    health_concerns: { label: 'Health Concerns', color: 'bg-red-100 text-red-700 border-red-200' },
+    mental_health: { label: 'Mental Health', color: 'bg-pink-100 text-pink-700 border-pink-200' },
+    bereavement: { label: 'Bereavement/Loss', color: 'bg-slate-100 text-slate-700 border-slate-200' },
+    social_isolation: { label: 'Social Isolation', color: 'bg-indigo-100 text-indigo-700 border-indigo-200' },
+    attendance_issues: { label: 'Attendance Issues', color: 'bg-amber-100 text-amber-700 border-amber-200' },
+    substance_abuse: { label: 'Substance Abuse', color: 'bg-rose-100 text-rose-700 border-rose-200' },
+    career_confusion: { label: 'Career Confusion', color: 'bg-teal-100 text-teal-700 border-teal-200' }
 };
 
 const AIAssignment = ({ studentId, studentName, onMentorSelect }) => {
@@ -25,10 +28,15 @@ const AIAssignment = ({ studentId, studentName, onMentorSelect }) => {
     const handleAnalyze = async () => {
         try {
             setAnalyzing(true);
+            setAnalysis(null);
+            setSuggestions([]);
 
             // Step 1: Analyze student problems
             const analyzeResponse = await aiAPI.analyzeStudent(studentId);
             const analysisData = analyzeResponse.data.data;
+
+            // Artificial delay for better UX (so user sees the "Analyzing" state)
+            await new Promise(resolve => setTimeout(resolve, 800));
 
             setAnalysis(analysisData);
 
@@ -40,161 +48,227 @@ const AIAssignment = ({ studentId, studentName, onMentorSelect }) => {
 
             success('AI Analysis completed!');
         } catch (err) {
+            console.error(err);
             error(err.response?.data?.message || 'Failed to analyze student');
         } finally {
             setAnalyzing(false);
         }
     };
 
+    const handleAutoAssign = async () => {
+        try {
+            if (suggestions.length === 0) return;
+
+            setAnalyzing(true);
+            const response = await aiAPI.autoAssignMentor(studentId);
+
+            success(`Successfully assigned to ${response.data.mentorName}`);
+
+            // Notify parent
+            if (onMentorSelect) {
+                // We don't have the ID in the response directly as 'mentorId', but we know it's suggestions[0].id usually. 
+                // But safer to rely on what we have or just refresh.
+                // The parent (UserManagementSection) might need to know the ID to update state?
+                // Actually UserManagementSection uses onMentorSelect to set selectedMentor. 
+                // But autoAssign call ALREADY performed the assignment in backend.
+                // So we should probably callback with a success flag or reload?
+                // For now, let's just use the ID we have from suggestions.
+                onMentorSelect(suggestions[0].id);
+            }
+        } catch (err) {
+            console.error(err);
+            error(err.response?.data?.message || 'Auto-assignment failed');
+        } finally {
+            setAnalyzing(false);
+        }
+    };
+
     return (
-        <div className="bg-gradient-to-br from-primary-50 to-secondary-50 rounded-lg p-6 border border-primary-200">
-            <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                    <Sparkles className="text-primary" size={24} />
-                    <h3 className="text-lg font-semibold text-slate-900">AI-Powered Assignment</h3>
+        <div className="bg-gradient-to-br from-indigo-50/50 to-purple-50/50 rounded-2xl border border-indigo-100 p-6 relative overflow-hidden">
+            {/* Background Decor */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+
+            <div className="flex items-center justify-between mb-6 relative z-10">
+                <div className="flex items-center gap-3">
+                    <div className="p-2 bg-indigo-100 rounded-lg">
+                        <Sparkles className="text-indigo-600" size={20} />
+                    </div>
+                    <div>
+                        <h3 className="text-lg font-bold text-slate-800">AI-Powered Assignment</h3>
+                        <p className="text-xs text-secondary-500">Powered by Gemini AI</p>
+                    </div>
                 </div>
 
-                {!analysis && (
-                    <button
+                {!analysis && !analyzing && (
+                    <Button
                         onClick={handleAnalyze}
-                        disabled={analyzing}
-                        className="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary-600 text-white font-medium rounded-lg transition-colors disabled:opacity-50"
+                        variant="primary"
+                        className="shadow-md shadow-indigo-500/20"
                     >
-                        <Brain size={18} />
-                        {analyzing ? 'Analyzing...' : 'Analyze with AI'}
-                    </button>
+                        <Brain size={16} className="mr-2" />
+                        Analyze Student
+                    </Button>
                 )}
             </div>
 
-            {analyzing && (
-                <div className="flex items-center justify-center py-8">
-                    <div className="text-center">
-                        <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent mx-auto mb-3"></div>
-                        <p className="text-sm text-secondary-600">Gemini AI is analyzing student problems...</p>
-                    </div>
-                </div>
-            )}
-
-            {analysis && (
-                <div className="space-y-4">
-                    {/* Problem Categories */}
-                    <div>
-                        <h4 className="text-sm font-medium text-secondary-700 mb-2 flex items-center gap-1">
-                            <AlertCircle size={16} />
-                            Detected Problems
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                            {analysis.categories.map((category) => {
-                                const config = PROBLEM_CATEGORIES[category] || { label: category, color: 'bg-gray-100 text-gray-700' };
-                                return (
-                                    <span
-                                        key={category}
-                                        className={`px-3 py-1 rounded-full text-xs font-medium ${config.color}`}
-                                    >
-                                        {config.label}
-                                    </span>
-                                );
-                            })}
+            <AnimatePresence mode="wait">
+                {analyzing ? (
+                    <motion.div
+                        key="analyzing"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="flex flex-col items-center justify-center py-12"
+                    >
+                        <div className="relative mb-4">
+                            <div className="w-16 h-16 border-4 border-indigo-100 rounded-full"></div>
+                            <div className="absolute top-0 left-0 w-16 h-16 border-4 border-indigo-500 rounded-full border-t-transparent animate-spin"></div>
+                            <Brain className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-indigo-500 animate-pulse" size={24} />
                         </div>
-                    </div>
+                        <p className="text-sm font-medium text-slate-700">Analyzing student profile...</p>
+                        <p className="text-xs text-slate-500 mt-1">Identifying key challenges and matching mentors</p>
+                    </motion.div>
+                ) : analysis ? (
+                    <motion.div
+                        key="results"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="space-y-6 relative z-10"
+                    >
+                        {/* Summary Card */}
+                        <div className="bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-white/50 shadow-sm">
+                            <h4 className="text-sm font-semibold text-slate-800 mb-3 flex items-center gap-2">
+                                <AlertCircle size={16} className="text-amber-500" />
+                                Analysis Summary
+                            </h4>
+                            <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                                {analysis.summary}
+                            </p>
 
-                    {/* AI Summary */}
-                    <div className="bg-white rounded-lg p-4 border border-secondary-200">
-                        <p className="text-sm text-secondary-700">
-                            <span className="font-semibold">AI Summary:</span> {analysis.summary}
-                        </p>
-                        {analysis.confidence && (
-                            <div className="mt-2 flex items-center gap-2">
-                                <div className="flex-1 bg-secondary-200 rounded-full h-2">
-                                    <div
-                                        className="bg-primary h-2 rounded-full transition-all"
-                                        style={{ width: `${analysis.confidence * 100}%` }}
-                                    ></div>
-                                </div>
-                                <span className="text-xs text-secondary-600 font-medium">
-                                    {Math.round(analysis.confidence * 100)}% confident
-                                </span>
+                            <div className="flex flex-wrap gap-2 mb-4">
+                                {analysis.categories?.map((category) => {
+                                    const config = PROBLEM_CATEGORIES[category] || { label: category, color: 'bg-slate-100 text-slate-700 border-slate-200' };
+                                    return (
+                                        <span
+                                            key={category}
+                                            className={`px-3 py-1 rounded-full text-xs font-semibold border ${config.color}`}
+                                        >
+                                            {config.label}
+                                        </span>
+                                    );
+                                })}
                             </div>
-                        )}
-                    </div>
 
-                    {/* Mentor Suggestions */}
-                    {suggestions.length > 0 && (
+                            {analysis.confidence && (
+                                <div className="bg-slate-50 rounded-lg p-3 flex items-center gap-3">
+                                    <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Confidence Level</span>
+                                    <div className="flex-1 h-2 bg-slate-200 rounded-full overflow-hidden">
+                                        <div
+                                            className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
+                                            style={{ width: `${analysis.confidence * 100}%` }}
+                                        />
+                                    </div>
+                                    <span className="text-sm font-bold text-indigo-600">{Math.round(analysis.confidence * 100)}%</span>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Mentor Suggestions */}
                         <div>
-                            <h4 className="text-sm font-medium text-secondary-700 mb-3 flex items-center gap-1">
-                                <TrendingUp size={16} />
+                            <h4 className="text-sm font-semibold text-slate-800 mb-3 flex items-center gap-2">
+                                <TrendingUp size={16} className="text-emerald-500" />
                                 Recommended Mentors
                             </h4>
-                            <div className="space-y-2">
-                                {suggestions.slice(0, 5).map((mentor) => (
-                                    <div
-                                        key={mentor.id}
-                                        onClick={() => onMentorSelect && onMentorSelect(mentor.id)}
-                                        className={`p-3 rounded-lg border-2 cursor-pointer transition-all ${mentor.isRecommended
-                                                ? 'border-primary bg-primary-50 hover:border-primary-600'
-                                                : 'border-secondary-200 bg-white hover:border-secondary-300'
-                                            }`}
-                                    >
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex-1">
-                                                <div className="flex items-center gap-2">
-                                                    <p className="font-medium text-slate-900">{mentor.name}</p>
-                                                    {mentor.isRecommended && (
-                                                        <span className="px-2 py-0.5 bg-primary text-white text-xs rounded-full font-medium">
-                                                            Top Match
-                                                        </span>
-                                                    )}
+
+                            {suggestions.length > 0 ? (
+                                <div className="space-y-3">
+                                    {suggestions.slice(0, 3).map((mentor, index) => (
+                                        <motion.div
+                                            key={mentor.id}
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: index * 0.1 }}
+                                            onClick={() => onMentorSelect && onMentorSelect(mentor.id)}
+                                            className={`group relative p-4 rounded-xl border-2 transition-all cursor-pointer hover:shadow-md ${mentor.isRecommended
+                                                ? 'bg-white border-indigo-100 hover:border-indigo-500'
+                                                : 'bg-slate-50 border-transparent hover:border-slate-300'
+                                                }`}
+                                        >
+                                            {mentor.isRecommended && (
+                                                <div className="absolute -top-3 -right-3 bg-indigo-500 text-white text-[10px] font-bold px-2 py-1 rounded-full shadow-sm shadow-indigo-500/30 uppercase tracking-wide">
+                                                    Top Match
                                                 </div>
-                                                <p className="text-xs text-secondary-600 mt-1">
-                                                    {mentor.specialization || 'General Mentoring'} • {mentor.department || 'All Departments'}
-                                                </p>
-                                                {mentor.matchedCategories && mentor.matchedCategories.length > 0 && (
-                                                    <div className="flex flex-wrap gap-1 mt-2">
-                                                        {mentor.matchedCategories.map(cat => {
-                                                            const config = PROBLEM_CATEGORIES[cat];
-                                                            return config ? (
-                                                                <span key={cat} className="text-xs px-2 py-0.5 bg-primary-100 text-primary-700 rounded">
-                                                                    {config.label}
-                                                                </span>
-                                                            ) : null;
-                                                        })}
-                                                    </div>
-                                                )}
-                                            </div>
-                                            <div className="flex items-center gap-2 ml-4">
-                                                <div className="text-right">
-                                                    <p className="text-xs text-secondary-500">Load</p>
-                                                    <p className="text-sm font-semibold text-slate-900">
-                                                        {mentor.currentLoad}/{mentor.maxStudents}
+                                            )}
+
+                                            <div className="flex justify-between items-start">
+                                                <div>
+                                                    <h5 className="font-bold text-slate-800 group-hover:text-indigo-700 transition-colors">
+                                                        {mentor.name}
+                                                    </h5>
+                                                    <p className="text-xs text-slate-500 mt-1">
+                                                        {mentor.specialization || 'General Mentoring'} • {mentor.department || 'All Depts'}
                                                     </p>
                                                 </div>
-                                                {mentor.matchScore > 0 && (
-                                                    <CheckCircle2 className="text-primary" size={20} />
-                                                )}
+                                                <div className="text-right">
+                                                    <div className="text-xs text-slate-400 font-medium uppercase tracking-wider mb-0.5">Load</div>
+                                                    <div className={`text-sm font-bold ${(mentor.currentLoad / mentor.maxStudents) > 0.9 ? 'text-rose-500' : 'text-emerald-600'
+                                                        }`}>
+                                                        {mentor.currentLoad}/{mentor.maxStudents}
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                ))}
+
+                                            {mentor.matchedCategories?.length > 0 && (
+                                                <div className="mt-3 py-2 border-t border-slate-100 flex flex-wrap gap-1.5">
+                                                    <span className="text-[10px] text-slate-400 font-medium self-center mr-1">Strong in:</span>
+                                                    {mentor.matchedCategories.map(cat => {
+                                                        const config = PROBLEM_CATEGORIES[cat];
+                                                        return config ? (
+                                                            <span key={cat} className="text-[10px] px-1.5 py-0.5 bg-slate-100 text-slate-600 rounded">
+                                                                {config.label}
+                                                            </span>
+                                                        ) : null;
+                                                    })}
+                                                </div>
+                                            )}
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className="text-center py-8 bg-slate-50 rounded-xl border border-dashed border-slate-300">
+                                    <p className="text-sm text-slate-500">No suitable mentors found based on current criteria.</p>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Auto-Assign Button */}
+                        {suggestions.length > 0 && suggestions[0].isRecommended && (
+                            <div className="mt-2 mb-4">
+                                <Button
+                                    onClick={handleAutoAssign}
+                                    variant="secondary"
+                                    className="w-full justify-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white border-0 hover:from-indigo-700 hover:to-purple-700 shadow-md transform transition-all hover:-translate-y-0.5"
+                                >
+                                    <Sparkles size={16} className="mr-2 text-yellow-300" />
+                                    Auto-Assign Best Match
+                                </Button>
+                                <p className="text-xs text-center text-slate-500 mt-2">
+                                    Automatically assigns <span className="font-semibold text-slate-700">{suggestions[0].name}</span> based on compatibility.
+                                </p>
                             </div>
-                        </div>
-                    )}
+                        )}
 
-                    {suggestions.length === 0 && (
-                        <div className="text-center py-4 text-secondary-500 text-sm">
-                            No mentors available for assignment
-                        </div>
-                    )}
-
-                    {/* Re-analyze Button */}
-                    <button
-                        onClick={handleAnalyze}
-                        disabled={analyzing}
-                        className="w-full px-4 py-2 border-2 border-primary text-primary hover:bg-primary-50 font-medium rounded-lg transition-colors"
-                    >
-                        Re-analyze with latest data
-                    </button>
-                </div>
-            )}
+                        {/* Re-analyze Button */}
+                        <button
+                            onClick={handleAnalyze}
+                            className="w-full py-2.5 text-sm font-medium text-indigo-600 hover:text-indigo-700 hover:bg-indigo-50 rounded-lg transition-colors flex items-center justify-center gap-2"
+                        >
+                            <RefreshCw size={14} />
+                            Re-analyze with latest data
+                        </button>
+                    </motion.div>
+                ) : null}
+            </AnimatePresence>
         </div>
     );
 };

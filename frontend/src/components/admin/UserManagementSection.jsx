@@ -3,10 +3,14 @@ import Card from '../ui/Card';
 import Badge from '../ui/Badge';
 import Button from '../ui/Button';
 import { adminAPI, studentAPI } from '../../services/api';
-import { Users, UserCog, X, Check, Trash2 } from 'lucide-react';
-import AIAssignment from './AIAssignment';
+import { useToast } from '../../contexts/ToastContext';
+import { Users, UserCog, UserPlus, Trash2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import ConfirmationModal from '../modals/ConfirmationModal';
+import AssignmentModal from './AssignmentModal';
 
 const UserManagementSection = () => {
+    const { success, error } = useToast();
     const [activeTab, setActiveTab] = useState('counselors'); // 'mentors' | 'counselors'
     const [mentors, setMentors] = useState([]);
     const [counselors, setCounselors] = useState([]);
@@ -15,18 +19,14 @@ const UserManagementSection = () => {
 
     // Assignment modal state
     const [showAssignModal, setShowAssignModal] = useState(false);
-    const [assignmentType, setAssignmentType] = useState(null); // 'student-counselor' | 'mentor-counselor'
-    const [selectedCounselor, setSelectedCounselor] = useState('');
-    const [selectedStudents, setSelectedStudents] = useState([]);
-    const [selectedMentor, setSelectedMentor] = useState('');
-    const [searchTerm, setSearchTerm] = useState('');
+    const [assignmentType, setAssignmentType] = useState('student-counselor');
 
-    // Advanced filters for student assignment
-    const [filterDepartment, setFilterDepartment] = useState('');
-    const [filterSemester, setFilterSemester] = useState('');
-    const [assignmentMode, setAssignmentMode] = useState('manual'); // 'manual' or 'range'
-    const [rangeStart, setRangeStart] = useState(1);
-    const [rangeEnd, setRangeEnd] = useState(10);
+    // Delete Modal State
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [userToDelete, setUserToDelete] = useState(null);
+    const [isDeleting, setIsDeleting] = useState(false);
+
+
 
     useEffect(() => {
         fetchData();
@@ -38,172 +38,74 @@ const UserManagementSection = () => {
             const [mentorsData, counselorsData, studentsData] = await Promise.all([
                 adminAPI.getAllMentors(),
                 adminAPI.getAllCounselors(),
-                studentAPI.getAll({ limit: 1000 }) // Fetch all students (default is only 10!)
+                studentAPI.getAll({ limit: 1000 })
             ]);
             setMentors(mentorsData.data || []);
             setCounselors(counselorsData.data || []);
             setStudents(studentsData.data || []);
-        } catch (error) {
-            console.error('Error fetching user management data:', error);
+        } catch (err) {
+            console.error('Error fetching user management data:', err);
         } finally {
             setLoading(false);
         }
     };
 
-    const handleDeleteUser = async (userId) => {
-        if (!userId) {
-            error('Cannot delete user: Missing User ID');
-            return;
-        }
+    const handleDeleteClick = (userId, userName, type) => {
+        setUserToDelete({ id: userId, name: userName, type });
+        setShowDeleteModal(true);
+    };
 
-        if (!window.confirm('Are you sure you want to delete this user? This action cannot be undone and will remove all their profiles and assignments.')) {
-            return;
-        }
+    const confirmDelete = async () => {
+        if (!userToDelete) return;
 
         try {
-            await adminAPI.deleteUser(userId);
-            success('User deleted successfully');
-            fetchData(); // Refresh list
+            setIsDeleting(true);
+            await adminAPI.deleteUser(userToDelete.id);
+            success(`${userToDelete.type === 'Counselor' ? 'Counselor' : 'Mentor'} deleted successfully`);
+            setShowDeleteModal(false);
+            fetchData();
         } catch (err) {
             console.error('Delete user error:', err);
             error(err.message || 'Failed to delete user');
+        } finally {
+            setIsDeleting(false);
+            setUserToDelete(null);
         }
     };
 
-    // Get students that are not yet assigned to any counselor
-    const getAvailableStudents = () => {
-        // Get all assigned student IDs from all counselors
-        const assignedStudentIds = new Set();
-        counselors.forEach(counselor => {
-            if (counselor.assignedStudents) {
-                counselor.assignedStudents.forEach(assignment => {
-                    assignedStudentIds.add(assignment.studentId);
-                });
-            }
-        });
-
-        // Filter out assigned students
-        let available = students.filter(student => !assignedStudentIds.has(student.id));
-
-        // Apply department filter (only if filter is set)
-        if (filterDepartment) {
-            available = available.filter(student =>
-                student.department && student.department === filterDepartment
-            );
-        }
-
-        // Apply semester filter (only if filter is set)
-        if (filterSemester) {
-            available = available.filter(student =>
-                student.semester && student.semester === parseInt(filterSemester)
-            );
-        }
-
-        // Apply search filter
-        if (searchTerm) {
-            const term = searchTerm.toLowerCase();
-            available = available.filter(student =>
-                (student.name && student.name.toLowerCase().includes(term)) ||
-                (student.studentId && student.studentId.toLowerCase().includes(term))
-            );
-        }
-
-        return available;
-    };
-
-    // Get unique departments from students (filter out null/undefined)
     const getUniqueDepartments = () => {
         const depts = [...new Set(students.map(s => s.department))];
         return depts.filter(d => d && d !== null && d !== undefined && d !== '').sort();
     };
 
-    // Get unique semesters from students (filter out null/undefined)
-    const getUniqueSemesters = () => {
-        const sems = [...new Set(students.map(s => s.semester))];
-        return sems.filter(s => s !== null && s !== undefined && s !== '' && !isNaN(s)).sort((a, b) => a - b);
-    };
-
-    // Handle range selection
-    const handleRangeSelection = () => {
-        const available = getAvailableStudents();
-        const start = Math.max(1, rangeStart) - 1; // Convert to 0-indexed
-        const end = Math.min(rangeEnd, available.length);
-        const selectedIds = available.slice(start, end).map(s => s.id);
-        setSelectedStudents(selectedIds);
-    };
-
-    const handleAssignStudents = async () => {
-        try {
-            if (selectedStudents.length === 0 || !selectedCounselor) {
-                alert('Please select counselor and at least one student');
-                return;
-            }
-
-            if (selectedStudents.length === 1) {
-                await adminAPI.assignStudentToCounselor({
-                    studentId: selectedStudents[0],
-                    counselorId: selectedCounselor
-                });
-            } else {
-                await adminAPI.bulkAssignStudents({
-                    studentIds: selectedStudents,
-                    counselorId: selectedCounselor
-                });
-            }
-
-            alert(`Successfully assigned ${selectedStudents.length} student(s)`);
-            setShowAssignModal(false);
-            setSelectedStudents([]);
-            setSelectedCounselor('');
-            fetchData();
-        } catch (error) {
-            alert(error.message || 'Failed to assign students');
-        }
-    };
-
-    const handleAssignMentor = async () => {
-        try {
-            if (!selectedMentor || !selectedCounselor) {
-                alert('Please select both mentor and counselor');
-                return;
-            }
-
-            await adminAPI.assignMentorToCounselor({
-                mentorId: selectedMentor,
-                counselorId: selectedCounselor
-            });
-
-            alert('Successfully assigned mentor to counselor');
-            setShowAssignModal(false);
-            setSelectedMentor('');
-            setSelectedCounselor('');
-            fetchData();
-        } catch (error) {
-            alert(error.message || 'Failed to assign mentor');
-        }
-    };
-
-    const toggleStudentSelection = (studentId) => {
-        setSelectedStudents(prev =>
-            prev.includes(studentId)
-                ? prev.filter(id => id !== studentId)
-                : [...prev, studentId]
-        );
+    const tabVariants = {
+        inactive: { borderBottomWidth: 0, opacity: 0.6 },
+        active: { borderBottomWidth: 2, opacity: 1, borderColor: '#6366f1', color: '#6366f1' }
     };
 
     return (
         <div className="space-y-6">
             {/* Header with Actions */}
-            <div className="flex items-center justify-between">
-                <h2 className="text-xl font-bold">User Management</h2>
-                <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div className="flex items-center gap-3">
+                    <div className="p-2 bg-indigo-100 rounded-lg">
+                        <Users className="text-indigo-600" size={24} />
+                    </div>
+                    <div>
+                        <h2 className="text-xl font-bold text-slate-800">User Management</h2>
+                        <p className="text-sm text-secondary-500">Manage counselors, mentors, and assignments</p>
+                    </div>
+                </div>
+                <div className="flex gap-2 w-full sm:w-auto">
                     <Button
                         onClick={() => {
                             setAssignmentType('student-counselor');
                             setShowAssignModal(true);
                         }}
                         variant="primary"
+                        className="flex-1 sm:flex-none justify-center"
                     >
+                        <UserPlus size={16} className="mr-2" />
                         Assign Students
                     </Button>
                     <Button
@@ -212,77 +114,87 @@ const UserManagementSection = () => {
                             setShowAssignModal(true);
                         }}
                         variant="secondary"
+                        className="flex-1 sm:flex-none justify-center"
                     >
+                        <UserCog size={16} className="mr-2" />
                         Assign Mentor
                     </Button>
                 </div>
             </div>
 
             {/* Tabs */}
-            <div className="flex gap-2 border-b border-secondary-200">
-                <button
+            <div className="flex gap-6 border-b border-slate-200">
+                <motion.button
                     onClick={() => setActiveTab('counselors')}
-                    className={`px-4 py-2 font-medium transition-colors ${activeTab === 'counselors'
-                        ? 'text-primary border-b-2 border-primary'
-                        : 'text-secondary-600 hover:text-secondary-900'
-                        }`}
+                    animate={activeTab === 'counselors' ? 'active' : 'inactive'}
+                    variants={tabVariants}
+                    className="pb-3 text-sm font-semibold transition-colors relative"
                 >
-                    Counselors ({counselors.length})
-                </button>
-                <button
+                    Counselors
+                    <Badge variant="neutral" className="ml-2 bg-slate-100 text-slate-600">{counselors.length}</Badge>
+                </motion.button>
+                <motion.button
                     onClick={() => setActiveTab('mentors')}
-                    className={`px-4 py-2 font-medium transition-colors ${activeTab === 'mentors'
-                        ? 'text-primary border-b-2 border-primary'
-                        : 'text-secondary-600 hover:text-secondary-900'
-                        }`}
+                    animate={activeTab === 'mentors' ? 'active' : 'inactive'}
+                    variants={tabVariants}
+                    className="pb-3 text-sm font-semibold transition-colors relative"
                 >
-                    Mentors ({mentors.length})
-                </button>
+                    Mentors
+                    <Badge variant="neutral" className="ml-2 bg-slate-100 text-slate-600">{mentors.length}</Badge>
+                </motion.button>
             </div>
 
-            {/* Content */}
-            <Card>
+            {/* Content Table */}
+            <div className="bg-white/80 backdrop-blur rounded-2xl border border-slate-200 shadow-sm overflow-hidden min-h-[400px]">
                 {loading ? (
-                    <div className="flex items-center justify-center py-12">
-                        <div className="animate-spin rounded-full h-8 w-8 border-4 border-primary border-t-transparent"></div>
+                    <div className="flex items-center justify-center h-64">
+                        <div className="animate-spin rounded-full h-8 w-8 border-4 border-indigo-500 border-t-transparent"></div>
                     </div>
                 ) : activeTab === 'counselors' ? (
                     <div className="overflow-x-auto">
                         <table className="w-full">
                             <thead>
-                                <tr className="border-b border-secondary-100">
-                                    <th className="text-left py-3 px-4 text-sm font-semibold">Name</th>
-                                    <th className="text-left py-3 px-4 text-sm font-semibold">Email</th>
-                                    <th className="text-center py-3 px-4 text-sm font-semibold">Students</th>
-                                    <th className="text-center py-3 px-4 text-sm font-semibold">High Risk</th>
-                                    <th className="text-center py-3 px-4 text-sm font-semibold">Capacity</th>
-                                    <th className="text-left py-3 px-4 text-sm font-semibold">Mentors</th>
-                                    <th className="text-center py-3 px-4 text-sm font-semibold">Actions</th>
+                                <tr className="bg-slate-50 border-b border-slate-100">
+                                    <th className="text-left py-4 px-6 text-xs font-semibold text-slate-500 uppercase tracking-wider">Name</th>
+                                    <th className="text-left py-4 px-6 text-xs font-semibold text-slate-500 uppercase tracking-wider">Email</th>
+                                    <th className="text-center py-4 px-6 text-xs font-semibold text-slate-500 uppercase tracking-wider">Students</th>
+                                    <th className="text-center py-4 px-6 text-xs font-semibold text-rose-500 uppercase tracking-wider">High Risk</th>
+                                    <th className="text-center py-4 px-6 text-xs font-semibold text-slate-500 uppercase tracking-wider">Capacity</th>
+                                    <th className="text-left py-4 px-6 text-xs font-semibold text-slate-500 uppercase tracking-wider">Mentors</th>
+                                    <th className="text-center py-4 px-6 text-xs font-semibold text-slate-500 uppercase tracking-wider">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="divide-y divide-slate-100">
                                 {counselors.map((counselor) => (
-                                    <tr key={counselor.id} className="border-b border-secondary-50 hover:bg-secondary-50">
-                                        <td className="py-3 px-4 font-medium">{counselor.name}</td>
-                                        <td className="py-3 px-4 text-sm text-secondary-600">{counselor.email}</td>
-                                        <td className="py-3 px-4 text-center">{counselor.studentCount}</td>
-                                        <td className="py-3 px-4 text-center">
-                                            <Badge variant={counselor.highRiskCount > 0 ? 'danger' : 'success'}>
-                                                {counselor.highRiskCount}
-                                            </Badge>
+                                    <tr key={counselor.id} className="hover:bg-slate-50/80 transition-colors">
+                                        <td className="py-4 px-6 text-sm font-medium text-slate-900">{counselor.name}</td>
+                                        <td className="py-4 px-6 text-sm text-slate-500">{counselor.email}</td>
+                                        <td className="py-4 px-6 text-center text-sm font-medium text-slate-700">{counselor.studentCount}</td>
+                                        <td className="py-4 px-6 text-center">
+                                            {counselor.highRiskCount > 0 && (
+                                                <Badge variant="danger" className="text-xs">{counselor.highRiskCount} Students</Badge>
+                                            )}
                                         </td>
-                                        <td className="py-3 px-4 text-center text-sm">
-                                            {counselor.capacityUsed}%
+                                        <td className="py-4 px-6 text-center">
+                                            <div className="flex items-center justify-center gap-2">
+                                                <div className="w-16 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                                    <div
+                                                        className={`h-full rounded-full ${counselor.capacityUsed > 90 ? 'bg-rose-500' : 'bg-emerald-500'}`}
+                                                        style={{ width: `${counselor.capacityUsed}%` }}
+                                                    />
+                                                </div>
+                                                <span className="text-xs text-slate-500">{counselor.capacityUsed}%</span>
+                                            </div>
                                         </td>
-                                        <td className="py-3 px-4 text-sm">
+                                        <td className="py-4 px-6 text-sm text-slate-600">
                                             {counselor.mentors?.length > 0
                                                 ? counselor.mentors.map(m => m.name).join(', ')
-                                                : 'None'}
+                                                : <span className="text-slate-400 italic">Unassigned</span>}
                                         </td>
-                                        <td className="py-3 px-4 text-center">
+                                        <td className="py-4 px-6 text-center">
                                             <button
-                                                onClick={() => handleDeleteUser(counselor.userId)}
-                                                className="p-1 text-red-500 hover:bg-red-50 rounded transition-colors"
+                                                onClick={() => handleDeleteClick(counselor.userId, counselor.name, 'Counselor')}
+                                                className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-all"
                                                 title="Delete User"
                                             >
                                                 <Trash2 size={16} />
@@ -297,33 +209,33 @@ const UserManagementSection = () => {
                     <div className="overflow-x-auto">
                         <table className="w-full">
                             <thead>
-                                <tr className="border-b border-secondary-100">
-                                    <th className="text-left py-3 px-4 text-sm font-semibold">Name</th>
-                                    <th className="text-left py-3 px-4 text-sm font-semibold">Email</th>
-                                    <th className="text-left py-3 px-4 text-sm font-semibold">Specialization</th>
-                                    <th className="text-center py-3 px-4 text-sm font-semibold">Students</th>
-                                    <th className="text-center py-3 px-4 text-sm font-semibold">Counselors</th>
-                                    <th className="text-left py-3 px-4 text-sm font-semibold">Department</th>
-                                    <th className="text-center py-3 px-4 text-sm font-semibold">Actions</th>
+                                <tr className="bg-slate-50 border-b border-slate-100">
+                                    <th className="text-left py-4 px-6 text-xs font-semibold text-slate-500 uppercase tracking-wider">Name</th>
+                                    <th className="text-left py-4 px-6 text-xs font-semibold text-slate-500 uppercase tracking-wider">Email</th>
+                                    <th className="text-left py-4 px-6 text-xs font-semibold text-slate-500 uppercase tracking-wider">Specialization</th>
+                                    <th className="text-center py-4 px-6 text-xs font-semibold text-slate-500 uppercase tracking-wider">Students</th>
+                                    <th className="text-center py-4 px-6 text-xs font-semibold text-slate-500 uppercase tracking-wider">Counselors</th>
+                                    <th className="text-left py-4 px-6 text-xs font-semibold text-slate-500 uppercase tracking-wider">Department</th>
+                                    <th className="text-center py-4 px-6 text-xs font-semibold text-slate-500 uppercase tracking-wider">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="divide-y divide-slate-100">
                                 {mentors.map((mentor) => (
-                                    <tr key={mentor.id} className="border-b border-secondary-50 hover:bg-secondary-50">
-                                        <td className="py-3 px-4 font-medium">{mentor.name}</td>
-                                        <td className="py-3 px-4 text-sm text-secondary-600">{mentor.email}</td>
-                                        <td className="py-3 px-4 text-sm">
-                                            <span className="px-2 py-1 bg-primary-100 text-primary-700 rounded text-xs font-medium">
+                                    <tr key={mentor.id} className="hover:bg-slate-50/80 transition-colors">
+                                        <td className="py-4 px-6 text-sm font-medium text-slate-900">{mentor.name}</td>
+                                        <td className="py-4 px-6 text-sm text-slate-500">{mentor.email}</td>
+                                        <td className="py-4 px-6">
+                                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700 border border-indigo-100">
                                                 {mentor.specialization || 'General Mentoring'}
                                             </span>
                                         </td>
-                                        <td className="py-3 px-4 text-center">{mentor.assignedStudents?.length || 0}</td>
-                                        <td className="py-3 px-4 text-center">{mentor.counselorCount}</td>
-                                        <td className="py-3 px-4 text-sm">{mentor.department || 'N/A'}</td>
-                                        <td className="py-3 px-4 text-center">
+                                        <td className="py-4 px-6 text-center text-sm text-slate-700">{mentor.assignedStudents?.length || 0}</td>
+                                        <td className="py-4 px-6 text-center text-sm text-slate-700">{mentor.counselorCount}</td>
+                                        <td className="py-4 px-6 text-sm text-slate-600">{mentor.department || 'N/A'}</td>
+                                        <td className="py-4 px-6 text-center">
                                             <button
-                                                onClick={() => handleDeleteUser(mentor.userId)}
-                                                className="p-1 text-red-500 hover:bg-red-50 rounded transition-colors"
+                                                onClick={() => handleDeleteClick(mentor.userId, mentor.name, 'Mentor')}
+                                                className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-all"
                                                 title="Delete User"
                                             >
                                                 <Trash2 size={16} />
@@ -335,240 +247,30 @@ const UserManagementSection = () => {
                         </table>
                     </div>
                 )}
-            </Card>
+            </div>
 
             {/* Assignment Modal */}
-            {showAssignModal && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <Card className="w-full max-w-2xl max-h-[80vh] overflow-y-auto">
-                        <div className="flex items-center justify-between mb-4">
-                            <h3 className="text-lg font-bold">
-                                {assignmentType === 'student-counselor' ? 'Assign Students to Counselor' : 'Assign Mentor to Counselor'}
-                            </h3>
-                            <button onClick={() => setShowAssignModal(false)} className="text-secondary-500 hover:text-secondary-700">
-                                <X size={24} />
-                            </button>
-                        </div>
+            <AssignmentModal
+                isOpen={showAssignModal}
+                onClose={() => setShowAssignModal(false)}
+                onAssignSuccess={fetchData}
+                initialType={assignmentType}
+                counselors={counselors}
+                mentors={mentors}
+                students={students}
+            />
 
-                        <div className="space-y-4">
-                            {/* Select Counselor */}
-                            <div>
-                                <label className="block text-sm font-medium mb-2">Select Counselor</label>
-                                <select
-                                    value={selectedCounselor}
-                                    onChange={(e) => setSelectedCounselor(e.target.value)}
-                                    className="w-full px-3 py-2 border border-secondary-300 rounded-lg"
-                                >
-                                    <option value="">Choose a counselor...</option>
-                                    {counselors.map(c => (
-                                        <option key={c.id} value={c.id}>
-                                            {c.name} ({c.studentCount}/{c.maxStudents} students)
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
-
-                            {assignmentType === 'student-counselor' ? (
-                                <div>
-                                    <label className="block text-sm font-medium mb-2">
-                                        Select Students ({selectedStudents.length} selected)
-                                    </label>
-
-                                    {/* AI-Powered Mentor Assignment - Only show when NOT assigning to counselor */}
-                                    {assignmentType === 'student-counselor' && selectedStudents.length === 1 && (
-                                        <div className="mt-6 pt-6 border-t border-secondary-200">
-                                            <AIAssignment
-                                                studentId={selectedStudents[0]}
-                                                studentName={getAvailableStudents().find(s => s.id === selectedStudents[0])?.name}
-                                                onMentorSelect={(mentorId) => {
-                                                    // Auto-select the mentor suggested by AI
-                                                    setSelectedMentor(mentorId);
-                                                }}
-                                            />
-                                        </div>
-                                    )}
-
-                                    {/* Assignment Mode Tabs */}
-                                    <div className="flex gap-3 pt-4 border-b border-secondary-200">
-                                        <button
-                                            onClick={() => setAssignmentMode('manual')}
-                                            className={`px-3 py-2 text-sm font-medium ${assignmentMode === 'manual'
-                                                ? 'text-primary border-b-2 border-primary'
-                                                : 'text-secondary-600'}`}
-                                        >
-                                            Manual Selection
-                                        </button>
-                                        <button
-                                            onClick={() => setAssignmentMode('range')}
-                                            className={`px-3 py-2 text-sm font-medium ${assignmentMode === 'range'
-                                                ? 'text-primary border-b-2 border-primary'
-                                                : 'text-secondary-600'}`}
-                                        >
-                                            Range Selection
-                                        </button>
-                                    </div>
-
-                                    {/* Filters */}
-                                    <div className="grid grid-cols-2 gap-3 mb-3">
-                                        <div>
-                                            <label className="block text-xs font-medium mb-1">Department</label>
-                                            <select
-                                                value={filterDepartment}
-                                                onChange={(e) => setFilterDepartment(e.target.value)}
-                                                className="w-full px-2 py-1.5 text-sm border border-secondary-300 rounded-lg"
-                                            >
-                                                <option value="">All Departments</option>
-                                                {getUniqueDepartments().map(dept => (
-                                                    <option key={dept} value={dept}>{dept}</option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                        <div>
-                                            <label className="block text-xs font-medium mb-1">Semester</label>
-                                            <select
-                                                value={filterSemester}
-                                                onChange={(e) => setFilterSemester(e.target.value)}
-                                                className="w-full px-2 py-1.5 text-sm border border-secondary-300 rounded-lg"
-                                            >
-                                                <option value="">All Semesters</option>
-                                                {getUniqueSemesters().map(sem => (
-                                                    <option key={sem} value={sem}>Semester {sem}</option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    {assignmentMode === 'range' ? (
-                                        /* Range Selection Mode */
-                                        <div className="space-y-3">
-                                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                                                <p className="text-sm font-medium text-blue-900 mb-2">
-                                                    📊 {getAvailableStudents().length} students available after filters
-                                                </p>
-                                                <div className="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label className="block text-xs font-medium mb-1">From (Student #)</label>
-                                                        <input
-                                                            type="number"
-                                                            min="1"
-                                                            max={getAvailableStudents().length}
-                                                            value={rangeStart}
-                                                            onChange={(e) => setRangeStart(parseInt(e.target.value) || 1)}
-                                                            className="w-full px-2 py-1.5 text-sm border border-secondary-300 rounded-lg"
-                                                        />
-                                                    </div>
-                                                    <div>
-                                                        <label className="block text-xs font-medium mb-1">To (Student #)</label>
-                                                        <input
-                                                            type="number"
-                                                            min="1"
-                                                            max={getAvailableStudents().length}
-                                                            value={rangeEnd}
-                                                            onChange={(e) => setRangeEnd(parseInt(e.target.value) || 1)}
-                                                            className="w-full px-2 py-1.5 text-sm border border-secondary-300 rounded-lg"
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <button
-                                                    onClick={handleRangeSelection}
-                                                    className="w-full mt-2 px-3 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary-600"
-                                                >
-                                                    Select Range ({Math.max(0, Math.min(rangeEnd, getAvailableStudents().length) - (rangeStart - 1))} students)
-                                                </button>
-                                            </div>
-
-                                            {/* Preview of selected students */}
-                                            {selectedStudents.length > 0 && (
-                                                <div className="border border-secondary-300 rounded-lg max-h-48 overflow-y-auto">
-                                                    <div className="bg-secondary-50 px-3 py-2 border-b border-secondary-200 sticky top-0">
-                                                        <p className="text-sm font-medium">Selected Students Preview</p>
-                                                    </div>
-                                                    {getAvailableStudents()
-                                                        .filter(s => selectedStudents.includes(s.id))
-                                                        .map(student => (
-                                                            <div key={student.id} className="px-3 py-2 border-b border-secondary-100">
-                                                                <p className="text-sm font-medium">{student.name}</p>
-                                                                <p className="text-xs text-secondary-500">{student.studentId} - {student.department} - Sem {student.semester}</p>
-                                                            </div>
-                                                        ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                    ) : (
-                                        /* Manual Selection Mode */
-                                        <div>
-                                            <input
-                                                type="text"
-                                                placeholder="Search by name or ID..."
-                                                value={searchTerm}
-                                                onChange={(e) => setSearchTerm(e.target.value)}
-                                                className="w-full px-3 py-2 mb-2 border border-secondary-300 rounded-lg"
-                                            />
-
-                                            <div className="border border-secondary-300 rounded-lg max-h-64 overflow-y-auto">
-                                                {getAvailableStudents().length === 0 ? (
-                                                    <div className="px-3 py-8 text-center text-secondary-500">
-                                                        {filterDepartment || filterSemester || searchTerm
-                                                            ? 'No students match your filters'
-                                                            : 'All students are already assigned'}
-                                                    </div>
-                                                ) : (
-                                                    getAvailableStudents().map(student => (
-                                                        <div
-                                                            key={student.id}
-                                                            onClick={() => toggleStudentSelection(student.id)}
-                                                            className={`px-3 py-2 cursor-pointer hover:bg-secondary-50 flex items-center justify-between ${selectedStudents.includes(student.id) ? 'bg-primary-50' : ''
-                                                                }`}
-                                                        >
-                                                            <div>
-                                                                <p className="font-medium">{student.name}</p>
-                                                                <p className="text-xs text-secondary-500">
-                                                                    {student.studentId} - {student.department || 'N/A'} - {student.semester ? `Sem ${student.semester}` : 'N/A'}
-                                                                </p>
-                                                            </div>
-                                                            {selectedStudents.includes(student.id) && <Check size={16} className="text-primary" />}
-                                                        </div>
-                                                    ))
-                                                )}
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    <p className="text-xs text-secondary-500 mt-2">
-                                        {getAvailableStudents().length} unassigned student(s) match filters
-                                    </p>
-                                </div>
-                            ) : (
-                                <div>
-                                    <label className="block text-sm font-medium mb-2">Select Mentor</label>
-                                    <select
-                                        value={selectedMentor}
-                                        onChange={(e) => setSelectedMentor(e.target.value)}
-                                        className="w-full px-3 py-2 border border-secondary-300 rounded-lg"
-                                    >
-                                        <option value="">Choose a mentor...</option>
-                                        {mentors.map(m => (
-                                            <option key={m.id} value={m.id}>{m.name}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                            )}
-
-                            <div className="flex gap-2 justify-end">
-                                <Button variant="secondary" onClick={() => setShowAssignModal(false)}>
-                                    Cancel
-                                </Button>
-                                <Button
-                                    variant="primary"
-                                    onClick={assignmentType === 'student-counselor' ? handleAssignStudents : handleAssignMentor}
-                                >
-                                    Assign
-                                </Button>
-                            </div>
-                        </div>
-                    </Card>
-                </div>
-            )}
+            {/* Confirmation Modal */}
+            <ConfirmationModal
+                isOpen={showDeleteModal}
+                onClose={() => setShowDeleteModal(false)}
+                onConfirm={confirmDelete}
+                title={`Delete ${userToDelete?.type}`}
+                message={`Are you sure you want to delete ${userToDelete?.name}? This action cannot be undone.`}
+                confirmText="Delete"
+                variant="danger"
+                isLoading={isDeleting}
+            />
         </div>
     );
 };

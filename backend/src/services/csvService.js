@@ -84,11 +84,11 @@ export const exportStudentsToCSV = async (outputPath, filters = {}) => {
   try {
     // Build query with filters
     const where = {};
-    
+
     if (filters.department) {
       where.department = filters.department;
     }
-    
+
     if (filters.semester) {
       where.semester = parseInt(filters.semester);
     }
@@ -173,20 +173,40 @@ export const generateCSVTemplate = (outputPath) => {
 
   csvStream.pipe(writeStream);
 
-  // Write sample row
-  csvStream.write({
-    studentId: 'STU001',
-    name: 'John Doe',
-    email: 'john.doe@university.edu',
-    phone: '+1234567890',
-    department: 'Computer Science',
-    semester: '6',
-    currentCGPA: '7.5',
-    attendancePercent: '85',
-    dateOfBirth: '2002-01-15',
-    gender: 'Male',
-    familyIncome: '50000',
-    parentEducation: 'Graduate'
+  // Write sample rows
+  const sampleStudents = [
+    {
+      studentId: 'ME2023001',
+      name: 'Kunal Joshi',
+      email: '24me050@charusat.edu.in',
+      phone: '9156715214',
+      department: 'ME',
+      semester: 4,
+      currentCGPA: 6.8,
+      attendancePercent: 58,
+      dateOfBirth: '2002-03-10',
+      gender: 'Male',
+      familyIncome: '50000',
+      parentEducation: 'Graduate'
+    },
+    {
+      studentId: 'CS2023089',
+      name: 'Priya Sharma',
+      email: '24cs089@charusat.edu.in',
+      phone: '9876543210',
+      department: 'CS',
+      semester: 6,
+      currentCGPA: 7.2,
+      attendancePercent: 72,
+      dateOfBirth: '2001-11-22',
+      gender: 'Female',
+      familyIncome: '65000',
+      parentEducation: 'Postgraduate'
+    }
+  ];
+
+  sampleStudents.forEach(student => {
+    csvStream.write(student);
   });
 
   csvStream.end();
@@ -220,14 +240,14 @@ export const validateCSV = async (filePath) => {
       .pipe(csvParser())
       .on('headers', (headerList) => {
         headers.push(...headerList);
-        
+
         // Check for required fields
         const missingFields = requiredFields.filter(field => !headers.includes(field));
         if (missingFields.length > 0) {
           errors.push(`Missing required columns: ${missingFields.join(', ')}`);
         }
       })
-      .on('data', () => {}) // Just validate headers, don't process data
+      .on('data', () => { }) // Just validate headers, don't process data
       .on('end', () => {
         resolve({
           valid: errors.length === 0,

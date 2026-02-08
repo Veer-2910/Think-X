@@ -9,7 +9,7 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  timeout: 10000, // 10 second timeout
+  timeout: 60000, // 60 second timeout for AI operations
 });
 
 // Request interceptor - Attach JWT token to every request
@@ -95,6 +95,7 @@ export const studentAPI = {
   }),
   delete: (id) => api.delete(`/students/${id}`),
   clearAllData: () => api.delete('/students/clear-all'),
+  getStats: () => api.get('/students/stats'),
 };
 
 // ==================== RISK ENDPOINTS ====================
@@ -201,6 +202,7 @@ export const aiAPI = {
   analyzeStudent: (studentId) => api.post(`/ai/analyze-student/${studentId}`),
   suggestMentors: (studentId) => api.post(`/ai/suggest-mentors/${studentId}`),
   getImprovementPlan: (studentId) => api.post(`/ai/improvement-plan/${studentId}`),
+  autoAssignMentor: (studentId) => api.post(`/ai/auto-assign/${studentId}`),
 };
 
 // ==================== HEALTH CHECK ====================

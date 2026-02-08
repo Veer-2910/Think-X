@@ -3,7 +3,8 @@ import PageWrapper from '../components/layout/PageWrapper';
 import Card from '../components/ui/Card';
 import ExportButton from '../components/ui/ExportButton';
 import { studentAPI, analyticsAPI } from '../services/api';
-import { FileText, Download, Users, TrendingDown, AlertTriangle, PieChart } from 'lucide-react';
+import { FileText, Users, TrendingDown, AlertTriangle, PieChart, CheckCircle, AlertCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Reports = () => {
   const [students, setStudents] = useState([]);
@@ -33,6 +34,13 @@ const Reports = () => {
   const mediumRisk = students.filter(s => s.dropoutRisk === 'MEDIUM').length;
   const lowRisk = students.filter(s => s.dropoutRisk === 'LOW').length;
 
+  const stats = [
+    { label: 'Total Students', value: totalStudents, icon: Users, color: 'text-indigo-600', bg: 'bg-indigo-50' },
+    { label: 'High Risk', value: highRisk, icon: AlertCircle, color: 'text-rose-600', bg: 'bg-rose-50' },
+    { label: 'Medium Risk', value: mediumRisk, icon: AlertTriangle, color: 'text-amber-600', bg: 'bg-amber-50' },
+    { label: 'Low Risk', value: lowRisk, icon: CheckCircle, color: 'text-emerald-600', bg: 'bg-emerald-50' },
+  ];
+
   const reportTypes = [
     {
       title: 'Student List Report',
@@ -59,80 +67,110 @@ const Reports = () => {
 
   return (
     <PageWrapper
-      title="Reports"
-      subtitle="Generate and download reports"
+      title="Reports Center"
+      subtitle="Generate and download comprehensive data reports"
     >
-      {/* Summary Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <Card className="text-center p-4">
-          <p className="text-2xl font-bold text-slate-900">{totalStudents}</p>
-          <p className="text-sm text-secondary-600">Total Students</p>
-        </Card>
-        <Card className="text-center p-4">
-          <p className="text-2xl font-bold text-red-600">{highRisk}</p>
-          <p className="text-sm text-secondary-600">High Risk</p>
-        </Card>
-        <Card className="text-center p-4">
-          <p className="text-2xl font-bold text-yellow-600">{mediumRisk}</p>
-          <p className="text-sm text-secondary-600">Medium Risk</p>
-        </Card>
-        <Card className="text-center p-4">
-          <p className="text-2xl font-bold text-green-600">{lowRisk}</p>
-          <p className="text-sm text-secondary-600">Low Risk</p>
-        </Card>
-      </div>
+      <div className="space-y-8 animate-fade-in">
 
-      {/* Available Reports */}
-      <h2 className="text-lg font-semibold text-slate-900 mb-4">Available Reports</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {reportTypes.map((report, index) => (
-          <Card key={index} className="p-6">
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-primary-50 rounded-lg">
-                <report.icon className="text-primary-600" size={24} />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-slate-900">{report.title}</h3>
-                <p className="text-sm text-secondary-600 mt-1 mb-4">{report.description}</p>
-                <ExportButton type={report.type} reportType={report.reportType} />
-              </div>
-            </div>
-          </Card>
-        ))}
-      </div>
-
-      {/* Department Breakdown */}
-      {departmentData.length > 0 && (
-        <div className="mt-8">
-          <h2 className="text-lg font-semibold text-slate-900 mb-4">Department Summary</h2>
-          <Card>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b">
-                    <th className="text-left py-3 px-4 font-medium text-secondary-600">Department</th>
-                    <th className="text-center py-3 px-4 font-medium text-secondary-600">Students</th>
-                    <th className="text-center py-3 px-4 font-medium text-secondary-600">High Risk</th>
-                    <th className="text-center py-3 px-4 font-medium text-secondary-600">Medium Risk</th>
-                    <th className="text-center py-3 px-4 font-medium text-secondary-600">Low Risk</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {departmentData.map((dept, index) => (
-                    <tr key={index} className="border-b last:border-0 hover:bg-secondary-50">
-                      <td className="py-3 px-4 font-medium">{dept.department}</td>
-                      <td className="py-3 px-4 text-center">{dept.total}</td>
-                      <td className="py-3 px-4 text-center text-red-600">{dept.highRisk}</td>
-                      <td className="py-3 px-4 text-center text-yellow-600">{dept.mediumRisk}</td>
-                      <td className="py-3 px-4 text-center text-green-600">{dept.lowRisk}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </Card>
+        {/* Summary Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="flex items-center p-6 hover:shadow-lg transition-transform hover:-translate-y-1 cursor-default border-t-4 border-t-transparent hover:border-t-indigo-500">
+                <div className={`p-4 rounded-2xl ${stat.bg} mr-5`}>
+                  <stat.icon className={`w-8 h-8 ${stat.color}`} />
+                </div>
+                <div>
+                  <p className="text-secondary-500 text-sm font-medium">{stat.label}</p>
+                  <p className="text-3xl font-bold text-slate-800 tracking-tight">{stat.value}</p>
+                </div>
+              </Card>
+            </motion.div>
+          ))}
         </div>
-      )}
+
+        {/* Available Reports */}
+        <div>
+          <h2 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+            <FileText className="text-indigo-500" /> Available Reports
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {reportTypes.map((report, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 + index * 0.1 }}
+              >
+                <Card className="p-6 h-full flex flex-col hover:shadow-xl transition-all border border-slate-200/60" hover>
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                      <report.icon className="text-slate-600" size={24} />
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{report.title}</h3>
+                  <p className="text-sm text-secondary-500 mb-6 flex-grow">{report.description}</p>
+                  <ExportButton type={report.type} reportType={report.reportType} className="w-full justify-center" />
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Department Breakdown */}
+        {departmentData.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            <h2 className="text-xl font-bold text-slate-800 mb-6">Department Summary</h2>
+            <div className="bg-white/80 backdrop-blur rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="bg-slate-50/50 border-b border-slate-200">
+                      <th className="text-left py-4 px-6 text-sm font-semibold text-slate-600">Department</th>
+                      <th className="text-center py-4 px-6 text-sm font-semibold text-slate-600">Total Students</th>
+                      <th className="text-center py-4 px-6 text-sm font-semibold text-rose-600">High Risk</th>
+                      <th className="text-center py-4 px-6 text-sm font-semibold text-amber-600">Medium Risk</th>
+                      <th className="text-center py-4 px-6 text-sm font-semibold text-emerald-600">Low Risk</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {departmentData.map((dept, index) => (
+                      <tr key={index} className="hover:bg-slate-50/80 transition-colors">
+                        <td className="py-4 px-6 font-medium text-slate-900">{dept.department}</td>
+                        <td className="py-4 px-6 text-center text-slate-600 font-medium">{dept.total}</td>
+                        <td className="py-4 px-6 text-center">
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-50 text-rose-700 border border-rose-100">
+                            {dept.highRisk}
+                          </span>
+                        </td>
+                        <td className="py-4 px-6 text-center">
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700 border border-amber-100">
+                            {dept.mediumRisk}
+                          </span>
+                        </td>
+                        <td className="py-4 px-6 text-center">
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-100">
+                            {dept.lowRisk}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </div>
     </PageWrapper>
   );
 };

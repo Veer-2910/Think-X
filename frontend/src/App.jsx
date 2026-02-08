@@ -1,8 +1,12 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import { AuthProvider } from './contexts/AuthContext';
 import { ToastProvider } from './contexts/ToastContext';
 import ProtectedRoute from './components/ProtectedRoute';
-import Sidebar from './components/layout/Sidebar';
+import Layout from './components/layout/Layout';
+import PageTransition from './components/layout/PageTransition';
+
 import Dashboard from './pages/Dashboard';
 import Students from './pages/Students';
 import StudentProfile from './pages/StudentProfile';
@@ -19,46 +23,99 @@ import ChangePassword from './pages/ChangePassword';
 import './index.css';
 
 function App() {
+  const location = useLocation();
+
   return (
-    <Router>
-      <ToastProvider>
-        <AuthProvider>
-          <Routes>
-            {/* Public route */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/change-password" element={<ChangePassword />} /> // Authenticated but restricted
-
-            {/* Protected routes with sidebar */}
-            <Route path="/*" element={
-              <ProtectedRoute>
-                <div className="flex min-h-screen bg-secondary-50">
-                  <Sidebar />
-                  <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="/students" element={<Students />} />
-                    <Route path="/students/:id" element={<StudentProfile />} />
-                    <Route path="/analytics" element={<Analytics />} />
-                    <Route path="/data-management" element={<DataManagement />} />
-                    <Route path="/reports" element={<Reports />} />
-                    <Route path="/mentor/my-students" element={<MentorDashboard />} />
-                    <Route path="/counseling/queue" element={<CounselorDashboard />} />
-                    <Route path="/counseling/analytics" element={<CounselorAnalytics />} />
-                    <Route path="/counseling/data" element={<CounselorDataManagement />} />
-
-                    {/* Admin dashboard - unrestricted for now */}
-                    <Route path="/admin" element={
-                      <ProtectedRoute>
-                        <AdminDashboard />
-                      </ProtectedRoute>
-                    } />
-                  </Routes>
-                </div>
-              </ProtectedRoute>
+    <ToastProvider>
+      <AuthProvider>
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            {/* Public route - No Layout */}
+            <Route path="/login" element={
+              <PageTransition>
+                <Login />
+              </PageTransition>
             } />
+
+            <Route path="/change-password" element={
+              <PageTransition>
+                <ChangePassword />
+              </PageTransition>
+            } />
+
+            {/* Protected routes wrapped in Layout */}
+            <Route element={
+              <ProtectedRoute>
+                <Layout />
+              </ProtectedRoute>
+            }>
+              <Route path="/" element={
+                <PageTransition>
+                  <Dashboard />
+                </PageTransition>
+              } />
+              <Route path="/students" element={
+                <PageTransition>
+                  <Students />
+                </PageTransition>
+              } />
+              <Route path="/students/:id" element={
+                <PageTransition>
+                  <StudentProfile />
+                </PageTransition>
+              } />
+              <Route path="/analytics" element={
+                <PageTransition>
+                  <Analytics />
+                </PageTransition>
+              } />
+              <Route path="/data-management" element={
+                <PageTransition>
+                  <DataManagement />
+                </PageTransition>
+              } />
+              <Route path="/reports" element={
+                <PageTransition>
+                  <Reports />
+                </PageTransition>
+              } />
+              <Route path="/mentor/my-students" element={
+                <PageTransition>
+                  <MentorDashboard />
+                </PageTransition>
+              } />
+              <Route path="/counseling/queue" element={
+                <PageTransition>
+                  <CounselorDashboard />
+                </PageTransition>
+              } />
+              <Route path="/counseling/analytics" element={
+                <PageTransition>
+                  <CounselorAnalytics />
+                </PageTransition>
+              } />
+              <Route path="/counseling/data" element={
+                <PageTransition>
+                  <CounselorDataManagement />
+                </PageTransition>
+              } />
+
+              {/* Admin dashboard - restricted */}
+              <Route path="/admin" element={
+                <ProtectedRoute>
+                  <PageTransition>
+                    <AdminDashboard />
+                  </PageTransition>
+                </ProtectedRoute>
+              } />
+            </Route>
+
+            {/* Catch all redirect */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
-        </AuthProvider>
-      </ToastProvider>
-    </Router>
+        </AnimatePresence>
+      </AuthProvider>
+    </ToastProvider>
   );
 }
 

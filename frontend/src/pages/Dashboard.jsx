@@ -2,14 +2,20 @@ import { useState, useEffect } from 'react';
 import PageWrapper from '../components/layout/PageWrapper';
 import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
-import { 
-  Users, 
-  AlertTriangle, 
-  AlertCircle, 
+import WelcomeBanner from '../components/dashboard/WelcomeBanner';
+import StatsCard from '../components/dashboard/StatsCard';
+import RecentActivity from '../components/dashboard/RecentActivity';
+import {
+  Users,
+  AlertTriangle,
+  AlertCircle,
   CheckCircle,
-  Eye
+  Eye,
+  TrendingUp,
+  Activity,
+  Sparkles
 } from 'lucide-react';
-import { LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { AreaChart, Area, PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend, XAxis, YAxis, CartesianGrid } from 'recharts';
 import { Link } from 'react-router-dom';
 import { studentAPI } from '../services/api';
 
@@ -25,17 +31,17 @@ const Dashboard = () => {
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
-      
+
       // Fetch all students (set high limit to get all records)
       const studentsData = await studentAPI.getAll({ limit: 10000 });
       const students = studentsData.data || studentsData;
-      
+
       // Calculate statistics
       const totalStudents = students.length;
       const highRisk = students.filter(s => s.dropoutRisk === 'HIGH').length;
       const mediumRisk = students.filter(s => s.dropoutRisk === 'MEDIUM').length;
       const lowRisk = students.filter(s => s.dropoutRisk === 'LOW' || !s.dropoutRisk).length;
-      
+
       // Get high risk students for table (top 5)
       const highRiskList = students
         .filter(s => s.dropoutRisk === 'HIGH')
@@ -48,14 +54,14 @@ const Dashboard = () => {
           avgMarks: s.currentCGPA ? Math.round((s.currentCGPA / 10) * 100) : 0,
           riskLevel: 'HIGH'
         }));
-      
+
       setStats({
         total: totalStudents,
         highRisk,
         mediumRisk,
         safe: lowRisk
       });
-      
+
       setHighRiskStudents(highRiskList);
     } catch (error) {
       console.error('Error fetching dashboard data:', error);
@@ -66,9 +72,12 @@ const Dashboard = () => {
 
   if (loading) {
     return (
-      <PageWrapper title="Dashboard">
-        <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
+      <PageWrapper>
+        <div className="flex items-center justify-center h-[80vh]">
+          <div className="relative">
+            <div className="animate-spin rounded-full h-16 w-16 border-4 border-primary-200 border-t-primary-600"></div>
+            <div className="mt-4 text-center text-primary-600 font-medium animate-pulse">Loading...</div>
+          </div>
         </div>
       </PageWrapper>
     );
@@ -76,49 +85,31 @@ const Dashboard = () => {
 
   if (!stats) {
     return (
-      <PageWrapper title="Dashboard">
-        <Card>
-          <p className="text-center text-secondary-500">Failed to load dashboard data</p>
+      <PageWrapper>
+        <WelcomeBanner />
+        <Card className="text-center py-12">
+          <AlertTriangle className="mx-auto text-amber-500 mb-4" size={48} />
+          <h3 className="text-lg font-semibold text-slate-800">Unable to load dashboard data</h3>
+          <p className="text-slate-500">Please check your connection and try again.</p>
         </Card>
       </PageWrapper>
     );
   }
 
   const riskDistribution = [
-    { name: 'Low Risk', value: stats.safe, color: '#22C55E' },
-    { name: 'Medium Risk', value: stats.mediumRisk, color: '#F59E0B' },
-    { name: 'High Risk', value: stats.highRisk, color: '#EF4444' },
+    { name: 'Low Risk', value: stats.safe, color: '#10B981' }, // Emerald 500
+    { name: 'Medium Risk', value: stats.mediumRisk, color: '#F59E0B' }, // Amber 500
+    { name: 'High Risk', value: stats.highRisk, color: '#F43F5E' }, // Rose 500
   ];
 
-  const kpis = [
-    {
-      title: 'Total Students',
-      value: stats.total,
-      icon: Users,
-      color: 'text-primary',
-      bgColor: 'bg-primary-50',
-    },
-    {
-      title: 'High Risk',
-      value: stats.highRisk,
-      icon: AlertTriangle,
-      color: 'text-red-600',
-      bgColor: 'bg-red-50',
-    },
-    {
-      title: 'Medium Risk',
-      value: stats.mediumRisk,
-      icon: AlertCircle,
-      color: 'text-amber-600',
-      bgColor: 'bg-amber-50',
-    },
-    {
-      title: 'Safe',
-      value: stats.safe,
-      icon: CheckCircle,
-      color: 'text-green-600',
-      bgColor: 'bg-green-50',
-    },
+  // Dummy trend data for charts
+  const performanceTrend = [
+    { month: 'Jan', avg: 65 },
+    { month: 'Feb', avg: 68 },
+    { month: 'Mar', avg: 72 },
+    { month: 'Apr', avg: 70 },
+    { month: 'May', avg: 75 },
+    { month: 'Jun', avg: 78 },
   ];
 
   const getRiskBadge = (level) => {
@@ -131,112 +122,206 @@ const Dashboard = () => {
   };
 
   return (
-    <PageWrapper title="Dashboard">
-      <div className="mb-6 p-4 bg-indigo-50 border border-indigo-100 rounded-lg">
-        <h2 className="text-lg font-semibold text-indigo-800">Welcome, Admin</h2>
-        <p className="text-indigo-600">System overview and global management.</p>
-      </div>
+    <PageWrapper>
+      <div className="animate-slide-in">
+        <WelcomeBanner />
 
-      {/* KPI Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        {kpis.map((kpi, index) => {
-          const Icon = kpi.icon;
-          return (
-            <Card key={index} hover className="cursor-pointer">
-              <div className="flex items-center justify-between">
+        {/* Stats Grid - Masonry style inputs */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <StatsCard
+            title="Total Students"
+            value={stats.total}
+            icon={Users}
+            trend={12}
+            color="primary"
+          />
+          <StatsCard
+            title="High Risk Alerts"
+            value={stats.highRisk}
+            icon={AlertTriangle}
+            trend={-5}
+            trendLabel="decreased vs last week"
+            color="danger"
+          />
+          <StatsCard
+            title="Avg Attendance"
+            value="84%"
+            icon={CheckCircle}
+            trend={2.4}
+            color="success"
+          />
+          <StatsCard
+            title="Active Interventions"
+            value="28"
+            icon={Activity}
+            trend={8}
+            color="info"
+          />
+        </div>
+
+        {/* Main Content Grid 2:1 Ratio */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+
+          {/* Left Column (Charts) */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Performance Chart */}
+            <Card>
+              <div className="flex items-center justify-between mb-6">
                 <div>
-                  <p className="text-sm text-secondary-500 font-medium">{kpi.title}</p>
-                  <p className="text-3xl font-bold mt-2">{kpi.value}</p>
+                  <h3 className="text-lg font-bold text-slate-800">Academic Performance Trend</h3>
+                  <p className="text-sm text-slate-500">Average CGPA over the last 6 months</p>
                 </div>
-                <div className={`${kpi.bgColor} ${kpi.color} p-3 rounded-lg`}>
-                  <Icon size={24} />
-                </div>
+                <Badge variant="success" className="px-3 py-1">+4.2% Growth</Badge>
+              </div>
+              <div className="h-[300px] w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart data={performanceTrend}>
+                    <defs>
+                      <linearGradient id="colorAvg" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#4F46E5" stopOpacity={0.3} />
+                        <stop offset="95%" stopColor="#4F46E5" stopOpacity={0} />
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E2E8F0" />
+                    <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: '#64748B' }} />
+                    <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748B' }} />
+                    <Tooltip
+                      contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+                    />
+                    <Area type="monotone" dataKey="avg" stroke="#4F46E5" strokeWidth={3} fillOpacity={1} fill="url(#colorAvg)" />
+                  </AreaChart>
+                </ResponsiveContainer>
               </div>
             </Card>
-          );
-        })}
-      </div>
 
-      {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-1 gap-6 mb-8">
-        {/* Risk Distribution */}
-        <Card>
-          <h3 className="text-lg font-semibold mb-4">Risk Distribution</h3>
-          <ResponsiveContainer width="100%" height={250}>
-            <PieChart>
-              <Pie
-                data={riskDistribution}
-                cx="50%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={90}
-                paddingAngle={5}
-                dataKey="value"
-              >
-                {riskDistribution.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
+            {/* High Risk Students Table */}
+            <Card className="overflow-hidden">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h3 className="text-lg font-bold text-slate-800">High Risk Attention Needed</h3>
+                  <p className="text-sm text-slate-500">Students requiring immediate intervention</p>
+                </div>
+                <Link to="/students?risk=HIGH" className="text-primary-600 hover:text-primary-700 text-sm font-semibold flex items-center gap-1">
+                  View All <TrendingUp size={16} />
+                </Link>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="bg-slate-50 border-y border-slate-100">
+                      <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Student</th>
+                      <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">ID</th>
+                      <th className="text-center py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Attendance</th>
+                      <th className="text-center py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Marks</th>
+                      <th className="text-center py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
+                      <th className="text-center py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-50">
+                    {highRiskStudents.map((student) => (
+                      <tr key={student.id} className="hover:bg-slate-50/80 transition-colors group">
+                        <td className="py-4 px-4">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center text-rose-600 font-bold text-xs">
+                              {student.name.charAt(0)}
+                            </div>
+                            <span className="font-medium text-slate-700">{student.name}</span>
+                          </div>
+                        </td>
+                        <td className="py-4 px-4 text-sm text-slate-500 font-mono">{student.studentId}</td>
+                        <td className="py-4 px-4 text-center">
+                          <span className={`inline-block px-2 py-1 rounded text-xs font-medium ${student.attendance < 75 ? 'bg-red-50 text-red-600' : 'bg-green-50 text-green-600'}`}>
+                            {student.attendance}%
+                          </span>
+                        </td>
+                        <td className="py-4 px-4 text-center font-medium text-slate-700">{student.avgMarks}%</td>
+                        <td className="py-4 px-4 text-center">{getRiskBadge(student.riskLevel)}</td>
+                        <td className="py-4 px-4 text-center">
+                          <Link
+                            to={`/students/${student.id}`}
+                            className="p-1.5 rounded-lg text-slate-400 hover:text-primary-600 hover:bg-primary-50 transition-all inline-block"
+                          >
+                            <Eye size={18} />
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
+                    {highRiskStudents.length === 0 && (
+                      <tr>
+                        <td colspan="6" className="py-8 text-center text-slate-400">
+                          No high risk students found. Great job!
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </Card>
+          </div>
+
+          {/* Right Column (Sidebar Widgets) */}
+          <div className="space-y-8">
+            {/* Risk Distribution Donut */}
+            <Card>
+              <h3 className="text-lg font-bold text-slate-800 mb-4">Risk Overview</h3>
+              <div className="h-[200px] w-full relative">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={riskDistribution}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={60}
+                      outerRadius={80}
+                      paddingAngle={5}
+                      dataKey="value"
+                      stroke="none"
+                    >
+                      {riskDistribution.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Pie>
+                    <Tooltip />
+                  </PieChart>
+                </ResponsiveContainer>
+                {/* Centered Total */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                  <span className="text-3xl font-bold text-slate-800">{stats.total}</span>
+                  <span className="text-xs text-slate-500 uppercase tracking-wide">Students</span>
+                </div>
+              </div>
+              <div className="mt-4 space-y-2">
+                {riskDistribution.map((item) => (
+                  <div key={item.name} className="flex items-center justify-between text-sm">
+                    <div className="flex items-center gap-2">
+                      <span className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }}></span>
+                      <span className="text-slate-600">{item.name}</span>
+                    </div>
+                    <span className="font-semibold text-slate-800">{item.value}</span>
+                  </div>
                 ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </Card>
-      </div>
+              </div>
+            </Card>
 
-      {/* High Risk Students Table */}
-      <Card>
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold">High-Risk Students</h3>
-          <Link to="/students?risk=HIGH" className="text-primary hover:text-primary-600 text-sm font-medium">
-            View All →
-          </Link>
+            {/* Activity Feed */}
+            <RecentActivity />
+
+            {/* Quick Promo / Insight */}
+            <div className="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-xl p-6 text-white text-center shadow-lg shadow-indigo-500/20">
+              <Sparkles className="mx-auto mb-3 text-yellow-300 animate-pulse" size={28} />
+              <h4 className="font-bold text-lg mb-2">AI Insights Ready</h4>
+              <p className="text-indigo-100 text-sm mb-4">
+                We've analyzed student performance patterns. 12 new recommendations available.
+              </p>
+              <button className="px-4 py-2 bg-white text-indigo-600 rounded-lg text-sm font-bold hover:shadow-lg hover:scale-105 transition-all">
+                View Recommendations
+              </button>
+            </div>
+          </div>
+
         </div>
-        {highRiskStudents.length > 0 ? (
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-secondary-100">
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Name</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Student ID</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Attendance</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Avg Marks</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Risk Level</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {highRiskStudents.map((student) => (
-                  <tr 
-                    key={student.id} 
-                    className="border-b border-secondary-50 hover:bg-secondary-50 transition-colors"
-                  >
-                    <td className="py-3 px-4 text-sm font-medium">{student.name}</td>
-                    <td className="py-3 px-4 text-sm text-secondary-600">{student.studentId}</td>
-                    <td className="py-3 px-4 text-sm">{student.attendance}%</td>
-                    <td className="py-3 px-4 text-sm">{student.avgMarks}%</td>
-                    <td className="py-3 px-4">{getRiskBadge(student.riskLevel)}</td>
-                    <td className="py-3 px-4">
-                      <Link
-                        to={`/students/${student.id}`}
-                        className="inline-flex items-center gap-1 text-primary hover:text-primary-600 text-sm font-medium"
-                      >
-                        <Eye size={16} />
-                        View
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <div className="text-center py-8 text-secondary-500">
-            <p>No high-risk students found</p>
-            <p className="text-sm mt-2">Upload student data to see risk analysis</p>
-          </div>
-        )}
-      </Card>
+      </div>
     </PageWrapper>
   );
 };

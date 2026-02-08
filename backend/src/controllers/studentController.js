@@ -114,8 +114,27 @@ export const getStudentById = async (req, res) => {
   try {
     const { id } = req.params;
 
+    // Determine if the ID is a UUID or a studentId
+    const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+
+    // Build query based on ID type
+    const whereClause = isUUID ? { id } : { studentId: id };
+
     const student = await prisma.student.findUnique({
-      where: { id }
+      where: whereClause,
+      include: {
+        counselorAssignments: {
+          include: {
+            counselor: true
+          }
+        },
+        mentorAssignments: {
+          where: { status: 'ACTIVE' },
+          include: {
+            mentor: true
+          }
+        }
+      }
     });
 
     if (!student) {
@@ -486,3 +505,4 @@ export const getStudentStats = async (req, res) => {
     });
   }
 };
+// force reload

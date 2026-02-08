@@ -4,22 +4,26 @@ import PageWrapper from '../components/layout/PageWrapper';
 import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
 import Button from '../components/ui/Button';
+import CounselingQueue from '../components/dashboard/CounselingQueue';
 import { counselorAPI } from '../services/api';
+import { useAuth } from '../contexts/AuthContext';
 import {
   Users,
   AlertTriangle,
   TrendingUp,
-  Eye,
-  Edit,
-  Plus,
-  Activity
+  Activity,
+  Calendar,
+  Search,
+  CheckCircle2,
+  Clock
 } from 'lucide-react';
 
 const CounselorDashboard = () => {
+  const { user } = useAuth();
   const [students, setStudents] = useState([]);
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState('ALL'); // ALL, HIGH, MEDIUM, LOW
+  const [activeTab, setActiveTab] = useState('overview'); // overview, students
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
@@ -34,7 +38,7 @@ const CounselorDashboard = () => {
         counselorAPI.getMyStats()
       ]);
       setStudents(studentsData.data || []);
-      setStats(statsData.data || null);
+      setStats(statsData.data || { totalStudents: 0, highRisk: 0, avgCGPA: 0, avgAttendance: 0 });
     } catch (err) {
       console.error('Error fetching counselor data:', err);
     } finally {
@@ -42,193 +46,198 @@ const CounselorDashboard = () => {
     }
   };
 
-  const getRiskBadge = (level) => {
-    const variants = {
-      HIGH: 'danger',
-      MEDIUM: 'warning',
-      LOW: 'success',
-      UNKNOWN: 'neutral'
-    };
-    return <Badge variant={variants[level] || 'neutral'}>{level}</Badge>;
+  // Mock sessions for the queue (since we might not have real session data yet)
+  const [upcomingSessions, setUpcomingSessions] = useState([
+    { id: 1, studentName: 'Kunal Joshi', studentId: '23DCS045', date: new Date(), time: '02:00 PM', status: 'SCHEDULED', dropoutRisk: 'HIGH' },
+    { id: 2, studentName: 'Priya Sharma', studentId: '24DCS012', date: new Date(), time: '04:30 PM', status: 'SCHEDULED', dropoutRisk: 'MEDIUM' },
+  ]);
+
+  const handleCompleteSession = (id) => {
+    setUpcomingSessions(prev => prev.filter(s => s.id !== id));
+    // Call API to complete session
   };
 
-  // Filter students
-  const filteredStudents = students.filter(student => {
-    const matchesFilter = filter === 'ALL' || student.dropoutRisk === filter;
-    const matchesSearch = student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      student.studentId.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesFilter && matchesSearch;
-  });
+  const handleCancelSession = (id) => {
+    setUpcomingSessions(prev => prev.filter(s => s.id !== id));
+    // Call API to cancel session
+  };
+
+  const filteredStudents = students.filter(student =>
+    student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    student.studentId.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   if (loading) {
     return (
-      <PageWrapper title="My Students">
-        <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
+      <PageWrapper>
+        <div className="flex items-center justify-center h-[80vh]">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-indigo-600 border-t-transparent"></div>
         </div>
       </PageWrapper>
     );
   }
 
   return (
-    <PageWrapper title="My Students">
+    <PageWrapper>
+      <div className="max-w-7xl mx-auto space-y-8 animate-fade-in pb-12">
 
-      {/* Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <Card>
-          <div className="flex items-center gap-4">
-            <div className="p-3 bg-primary-50 text-primary rounded-lg">
-              <Users size={24} />
-            </div>
+        {/* Glass Header */}
+        <div className="relative mb-8 z-20">
+          <div className="absolute inset-0 bg-white/70 backdrop-blur-md rounded-2xl shadow-sm border border-white/50"></div>
+          <div className="relative px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
             <div>
-              <p className="text-secondary-500 text-sm">Total Students</p>
-              <h3 className="text-2xl font-bold">{stats?.totalStudents || 0}</h3>
+              <h1 className="text-2xl font-bold text-slate-800 tracking-tight">Welcome back, {user?.name?.split(' ')[0]} 👋</h1>
+              <p className="text-slate-500 text-sm">Here's what's happening in your counseling queue today.</p>
             </div>
-          </div>
-        </Card>
-
-        <Card>
-          <div className="flex items-center gap-4">
-            <div className="p-3 bg-red-50 text-red-600 rounded-lg">
-              <AlertTriangle size={24} />
+            <div className="flex bg-slate-100/50 p-1 rounded-xl">
+              <button
+                onClick={() => setActiveTab('overview')}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === 'overview' ? 'bg-white shadow-sm text-indigo-600' : 'text-slate-500 hover:text-slate-700'}`}
+              >
+                Overview
+              </button>
+              <button
+                onClick={() => setActiveTab('students')}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === 'students' ? 'bg-white shadow-sm text-indigo-600' : 'text-slate-500 hover:text-slate-700'}`}
+              >
+                My Students
+              </button>
             </div>
-            <div>
-              <p className="text-secondary-500 text-sm">High Risk</p>
-              <h3 className="text-2xl font-bold">{stats?.highRisk || 0}</h3>
-            </div>
-          </div>
-        </Card>
-
-        <Card>
-          <div className="flex items-center gap-4">
-            <div className="p-3 bg-blue-50 text-blue-600 rounded-lg">
-              <TrendingUp size={24} />
-            </div>
-            <div>
-              <p className="text-secondary-500 text-sm">Avg CGPA</p>
-              <h3 className="text-2xl font-bold">{stats?.avgCGPA?.toFixed(2) || '0.00'}</h3>
-            </div>
-          </div>
-        </Card>
-
-        <Card>
-          <div className="flex items-center gap-4">
-            <div className="p-3 bg-green-50 text-green-600 rounded-lg">
-              <Activity size={24} />
-            </div>
-            <div>
-              <p className="text-secondary-500 text-sm">Avg Attendance</p>
-              <h3 className="text-2xl font-bold">{stats?.avgAttendance?.toFixed(1) || '0.0'}%</h3>
-            </div>
-          </div>
-        </Card>
-      </div>
-
-      {/* Capacity Indicator */}
-      {stats && (
-        <Card className="mb-6">
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="text-sm font-semibold text-secondary-700">Student Capacity</h3>
-            <span className="text-sm font-medium text-secondary-600">
-              {stats.totalStudents} / {stats.maxStudents}
-            </span>
-          </div>
-          <div className="w-full bg-secondary-100 rounded-full h-2">
-            <div
-              className={`h-2 rounded-full transition-all ${parseFloat(stats.capacityUsed) > 90 ? 'bg-red-500' :
-                  parseFloat(stats.capacityUsed) > 70 ? 'bg-amber-500' : 'bg-green-500'
-                }`}
-              style={{ width: `${Math.min(parseFloat(stats.capacityUsed), 100)}%` }}
-            ></div>
-          </div>
-        </Card>
-      )}
-
-      {/* Student List */}
-      <Card>
-        <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4">
-          <h2 className="text-lg font-semibold">Assigned Students ({filteredStudents.length})</h2>
-
-          <div className="flex flex-col md:flex-row items-center gap-3 w-full md:w-auto">
-            {/* Search */}
-            <input
-              type="text"
-              placeholder="Search students..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 w-full md:w-64"
-            />
-
-            {/* Filter */}
-            <select
-              value={filter}
-              onChange={(e) => setFilter(e.target.value)}
-              className="px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 w-full md:w-auto"
-            >
-              <option value="ALL">All Risk Levels</option>
-              <option value="HIGH">High Risk</option>
-              <option value="MEDIUM">Medium Risk</option>
-              <option value="LOW">Low Risk</option>
-            </select>
           </div>
         </div>
 
-        {filteredStudents.length === 0 ? (
-          <div className="text-center py-12 text-secondary-500">
-            <Users size={48} className="mx-auto mb-4 opacity-50" />
-            <p className="text-lg font-medium">
-              {students.length === 0 ? 'No students assigned yet.' : 'No students match your filters.'}
-            </p>
-            {students.length === 0 && (
-              <p className="text-sm mt-2">Please wait for admin assignment.</p>
-            )}
+        {activeTab === 'overview' ? (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            {/* Left Column: Stats & Quick Actions */}
+            <div className="space-y-6">
+              <div className="grid grid-cols-2 gap-4">
+                <Card className="bg-indigo-600 text-white border-none shadow-indigo-200 shadow-lg">
+                  <p className="text-indigo-100 text-xs font-bold uppercase mb-1">Total Assigned</p>
+                  <h3 className="text-3xl font-bold">{stats?.totalStudents}</h3>
+                </Card>
+                <Card className="bg-white border-none shadow-sm">
+                  <p className="text-slate-400 text-xs font-bold uppercase mb-1">High Risk</p>
+                  <h3 className="text-3xl font-bold text-red-500 flex items-center gap-2">
+                    {stats?.highRisk} <AlertTriangle size={18} />
+                  </h3>
+                </Card>
+                <Card className="bg-white border-none shadow-sm">
+                  <p className="text-slate-400 text-xs font-bold uppercase mb-1">Avg Attendance</p>
+                  <h3 className="text-3xl font-bold text-slate-800">{stats?.avgAttendance?.toFixed(0)}%</h3>
+                </Card>
+                <Card className="bg-white border-none shadow-sm">
+                  <p className="text-slate-400 text-xs font-bold uppercase mb-1">Avg CGPA</p>
+                  <h3 className="text-3xl font-bold text-slate-800">{stats?.avgCGPA?.toFixed(1)}</h3>
+                </Card>
+              </div>
+
+              {/* Reminders / Next Up */}
+              <Card className="border-none shadow-md">
+                <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                  <Clock size={20} className="text-indigo-500" /> Quick Actions
+                </h3>
+                <div className="space-y-2">
+                  <Button variant="outline" className="w-full justify-start text-slate-600">
+                    <Calendar size={16} className="mr-2" /> Schedule New Session
+                  </Button>
+                  <Button variant="outline" className="w-full justify-start text-slate-600">
+                    <Search size={16} className="mr-2" /> Find Student
+                  </Button>
+                </div>
+              </Card>
+            </div>
+
+            {/* Right Column: Counseling Queue */}
+            <div className="lg:col-span-2 space-y-6">
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-bold text-slate-800">Today's Sessions</h2>
+                <Badge variant="neutral">{upcomingSessions.length} Pending</Badge>
+              </div>
+
+              <CounselingQueue
+                sessions={upcomingSessions}
+                onComplete={handleCompleteSession}
+                onCancel={handleCancelSession}
+              />
+            </div>
+
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-secondary-100">
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Student</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Department</th>
-                  <th className="text-center py-3 px-4 text-sm font-semibold text-secondary-700">Semester</th>
-                  <th className="text-center py-3 px-4 text-sm font-semibold text-secondary-700">CGPA</th>
-                  <th className="text-center py-3 px-4 text-sm font-semibold text-secondary-700">Attendance</th>
-                  <th className="text-center py-3 px-4 text-sm font-semibold text-secondary-700">Risk Level</th>
-                  <th className="text-center py-3 px-4 text-sm font-semibold text-secondary-700">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredStudents.map((student) => (
-                  <tr key={student.id} className="border-b border-secondary-50 hover:bg-secondary-50 transition-colors">
-                    <td className="py-3 px-4">
-                      <div>
-                        <p className="font-medium text-secondary-900">{student.name}</p>
-                        <p className="text-xs text-secondary-500">{student.studentId}</p>
-                      </div>
-                    </td>
-                    <td className="py-3 px-4 text-sm text-secondary-600">{student.department}</td>
-                    <td className="py-3 px-4 text-sm text-center text-secondary-600">{student.semester}</td>
-                    <td className="py-3 px-4 text-sm text-center text-secondary-600">{student.currentCGPA}</td>
-                    <td className="py-3 px-4 text-sm text-center text-secondary-600">{student.attendancePercent?.toFixed(1)}%</td>
-                    <td className="py-3 px-4 text-center">{getRiskBadge(student.dropoutRisk)}</td>
-                    <td className="py-3 px-4">
-                      <div className="flex items-center justify-center gap-2">
-                        <Link
-                          to={`/students/${student.id}`}
-                          className="inline-flex items-center gap-1 text-primary hover:text-primary-700 font-medium text-sm"
-                        >
-                          <Eye size={16} />
-                          View
-                        </Link>
-                      </div>
-                    </td>
+          /* Students List Tab */
+          <div className="space-y-6">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="relative w-full sm:w-96">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Search your students..."
+                  className="w-full pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none"
+                />
+              </div>
+              <div className="text-slate-500 text-sm">
+                Showing <strong>{filteredStudents.length}</strong> students
+              </div>
+            </div>
+
+            {/* Reuse simple table or grid here, for now simple styled table */}
+            <Card className="overflow-hidden border-none shadow-md">
+              <table className="w-full">
+                <thead className="bg-slate-50 border-b border-slate-100">
+                  <tr>
+                    <th className="text-left py-4 px-6 text-xs font-bold text-slate-500 uppercase">Student</th>
+                    <th className="text-left py-4 px-6 text-xs font-bold text-slate-500 uppercase">Status</th>
+                    <th className="text-left py-4 px-6 text-xs font-bold text-slate-500 uppercase">Performance</th>
+                    <th className="text-right py-4 px-6 text-xs font-bold text-slate-500 uppercase">Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {filteredStudents.map(student => (
+                    <tr key={student.id} className="hover:bg-slate-50/50 transition-colors group">
+                      <td className="py-4 px-6">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-xs">
+                            {student.name.charAt(0)}
+                          </div>
+                          <div>
+                            <p className="font-bold text-slate-800 text-sm">{student.name}</p>
+                            <p className="text-xs text-slate-500">{student.studentId}</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="py-4 px-6">
+                        <Badge variant={student.dropoutRisk === 'HIGH' ? 'danger' : student.dropoutRisk === 'MEDIUM' ? 'warning' : 'success'}>
+                          {student.dropoutRisk}
+                        </Badge>
+                      </td>
+                      <td className="py-4 px-6">
+                        <div className="flex items-center gap-4 text-sm text-slate-600">
+                          <span title="Attendance">{Math.round(student.attendancePercent)}% Att.</span>
+                          <span className="w-px h-3 bg-slate-300"></span>
+                          <span title="CGPA">{student.currentCGPA.toFixed(1)} CGPA</span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-6 text-right">
+                        <Link to={`/students/${student.id}`}>
+                          <Button size="sm" variant="ghost" className="text-indigo-600 hover:bg-indigo-50">View Profile</Button>
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+                  {filteredStudents.length === 0 && (
+                    <tr>
+                      <td colSpan="4" className="py-8 text-center text-slate-500">No students found</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </Card>
           </div>
         )}
-      </Card>
+
+      </div>
     </PageWrapper>
   );
 };

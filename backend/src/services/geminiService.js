@@ -6,8 +6,19 @@ if (!apiKey) {
     console.error('GEMINI_API_KEY is missing in environment variables');
 }
 
-// Initialize Gemini AI
+// Initialize Gemini AI with configuration
 const genAI = new GoogleGenerativeAI(apiKey || 'dummy_key');
+
+// Configuration for request timeout and retry
+const GEMINI_CONFIG = {
+    temperature: 0.7,
+    topK: 40,
+    topP: 0.95,
+    maxOutputTokens: 2048,
+};
+
+// Request timeout in milliseconds (increased to 60 seconds for better quality)
+const REQUEST_TIMEOUT = 60000;
 
 /**
  * Generate a personalized improvement plan for a student
@@ -16,7 +27,11 @@ const genAI = new GoogleGenerativeAI(apiKey || 'dummy_key');
  */
 export const generateStudentImprovementPlan = async (student) => {
     try {
-        const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+        const model = genAI.getGenerativeModel({
+            model: 'gemini-2.5-flash',
+            generationConfig: GEMINI_CONFIG,
+            requestOptions: { timeout: REQUEST_TIMEOUT }
+        });
 
         const studentContext = `
         Student Name: ${student.name}
@@ -38,8 +53,8 @@ export const generateStudentImprovementPlan = async (student) => {
         Please provide a structured response in the following JSON format (output ONLY valid JSON):
         {
             "academic_guidance": [
-                "Specific step 1 to improve grades",
-                "Specific step 2..."
+                "Actionable step 1 (max 15 words)",
+                "Actionable step 2..."
             ],
             "behavioral_guidance": [
                 "Advice on attendance/behavior",
@@ -56,7 +71,8 @@ export const generateStudentImprovementPlan = async (student) => {
             "motivational_message": "A short, encouraging message for the student"
         }
         
-        Tailor the advice to their specific department (${student.department}) and risk factors. Be practical and empathetic.`;
+        Tailor the advice to their specific department (${student.department}) and risk factors. 
+        IMPORTANT: Keep each bullet point extremely concise (max 1 sentence). Do not write paragraphs. Just the main action item.`;
 
         const result = await model.generateContent(prompt);
         const response = await result.response;
@@ -109,7 +125,11 @@ export const analyzeStudentProblems = async (counselorNotes) => {
             };
         }
 
-        const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+        const model = genAI.getGenerativeModel({
+            model: 'gemini-2.5-flash',
+            generationConfig: GEMINI_CONFIG,
+            requestOptions: { timeout: REQUEST_TIMEOUT }
+        });
 
         const prompt = `You are an expert student counselor analyzing student problems. Based on the following counselor notes, identify and categorize the student's problems.
 
@@ -167,40 +187,51 @@ Return only categories that clearly apply based on the notes. Be specific and ac
  * @returns {array} - Sorted array of mentor recommendations
  */
 export const suggestMentors = (problemCategories, availableMentors) => {
-    // Define category to specialization mapping
-    const categorySpecializationMap = {
-        academic_struggles: ['Academic Support', 'General Mentoring'],
-        family_issues: ['Family Counseling', 'General Mentoring'],
-        financial_problems: ['Financial Guidance', 'General Mentoring'],
-        health_concerns: ['Mental Health Support', 'General Mentoring'],
-        mental_health: ['Mental Health Support', 'Counseling'],
-        bereavement: ['Grief Counseling', 'Mental Health Support'],
-        social_isolation: ['Social Skills', 'General Mentoring'],
-        attendance_issues: ['Academic Support', 'General Mentoring'],
-        substance_abuse: ['Addiction Counseling', 'Mental Health Support'],
-        career_confusion: ['Career Guidance', 'Academic Support']
+    console.log('Problem Categories:', problemCategories);
+    console.log('Available Mentors:', availableMentors.map(m => ({ name: m.name, specialization: m.specialization })));
+
+    // Define flexible keyword matching for specializations
+    const specializationKeywords = {
+        'Academic Support': ['academic', 'study', 'grade', 'exam', 'course', 'backlog', 'subject', 'learning', 'performance'],
+        'Career Guidance': ['career', 'job', 'placement', 'interview', 'resume', 'future', 'profession', 'employment'],
+        'Financial Guidance': ['financial', 'money', 'fee', 'loan', 'scholarship', 'budget', 'economic', 'tuition'],
+        'Family Counseling': ['family', 'parent', 'home', 'sibling', 'relationship', 'domestic', 'personal'],
+        'Mental Health Support': ['mental', 'stress', 'anxiety', 'depression', 'emotional', 'psychological'],
+        'General Mentoring': ['general', 'overall', 'guidance', 'support', 'help']
     };
 
-    // Score each mentor
+    // Score each mentor based on keyword matching
     const mentorScores = availableMentors.map(mentor => {
         let score = 0;
         const matchedCategories = [];
+        const mentorSpec = (mentor.specialization || '').toLowerCase();
 
+        // Check each problem category against mentor specialization
         problemCategories.forEach(category => {
-            const preferredSpecializations = categorySpecializationMap[category] || [];
+            const categoryLower = category.toLowerCase();
 
-            preferredSpecializations.forEach(spec => {
-                if (mentor.specialization && mentor.specialization.includes(spec)) {
-                    score += 10; // High score for exact match
-                    matchedCategories.push(category);
+            // Direct match with specialization keywords
+            Object.entries(specializationKeywords).forEach(([spec, keywords]) => {
+                if (mentorSpec.includes(spec.toLowerCase())) {
+                    // Check if any keyword from this specialization matches the category
+                    const hasMatch = keywords.some(keyword =>
+                        categoryLower.includes(keyword) || keyword.includes(categoryLower)
+                    );
+
+                    if (hasMatch) {
+                        score += 10;
+                        matchedCategories.push(category);
+                    }
                 }
             });
         });
 
-        // Give lower score for general mentoring if no specific match
-        if (score === 0 && mentor.specialization && mentor.specialization.includes('General Mentoring')) {
-            score = 3;
+        // Fallback: If no specific match, give points based on capacity
+        if (score === 0) {
+            score = 5; // Base score for any available mentor
         }
+
+        console.log(`Mentor ${mentor.name} (${mentor.specialization}): Score = ${score}, Matched = ${matchedCategories.join(', ')}`);
 
         return {
             ...mentor,
@@ -210,8 +241,13 @@ export const suggestMentors = (problemCategories, availableMentors) => {
         };
     });
 
-    // Sort by score (highest first)
-    return mentorScores.sort((a, b) => b.matchScore - a.matchScore);
+    // Sort by score (highest first), then by current load (lowest first)
+    return mentorScores.sort((a, b) => {
+        if (b.matchScore !== a.matchScore) {
+            return b.matchScore - a.matchScore;
+        }
+        return (a.currentLoad || 0) - (b.currentLoad || 0);
+    });
 };
 
 export default {

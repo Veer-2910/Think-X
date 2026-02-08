@@ -101,8 +101,19 @@ export const validateUpdateStudent = [
 
 export const validateStudentId = [
   param('id')
-    .isUUID()
-    .withMessage('Invalid student ID format'),
+    .trim()
+    .notEmpty()
+    .withMessage('Student ID is required')
+    .custom((value) => {
+      // Accept either UUID format or alphanumeric studentId (like CS2023001)
+      const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value);
+      const isStudentId = /^[A-Z0-9]{3,50}$/i.test(value);
+
+      if (!isUUID && !isStudentId) {
+        throw new Error('Invalid student ID format. Must be either a UUID or alphanumeric student ID');
+      }
+      return true;
+    }),
 
   handleValidationErrors
 ];

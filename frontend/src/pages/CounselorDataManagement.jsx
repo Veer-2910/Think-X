@@ -4,7 +4,8 @@ import Card from '../components/ui/Card';
 import CSVUploadCard from '../components/ui/CSVUploadCard';
 import { counselorAPI, attendanceAPI, academicAPI } from '../services/api';
 import { useToast } from '../contexts/ToastContext';
-import { Calendar, FileText, ChevronDown, ChevronUp, UserCheck, Plus } from 'lucide-react';
+import { Calendar, FileText, ChevronDown, ChevronUp, UserCheck, Plus, Check, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const CounselorDataManagement = () => {
     const { success, error } = useToast();
@@ -120,241 +121,287 @@ const CounselorDataManagement = () => {
     return (
         <PageWrapper
             title="Manage Student Data"
-            subtitle={`Add attendance and marks for your ${students.length} assigned students`}
+            subtitle={`Update records for your ${students.length} assigned students`}
         >
-            {/* Manual Entry Section */}
-            <Card className="mb-8">
-                <button
-                    onClick={() => setShowManualEntry(!showManualEntry)}
-                    className="flex items-center justify-between w-full text-left"
+            <div className="space-y-8 animate-fade-in pb-12">
+                {/* Manual Entry Section */}
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
                 >
-                    <div className="flex items-center gap-2">
-                        <Plus size={20} className="text-primary" />
-                        <h3 className="text-lg font-semibold">Manual Entry</h3>
+                    <Card className="overflow-hidden border border-indigo-100 shadow-lg">
+                        <button
+                            onClick={() => setShowManualEntry(!showManualEntry)}
+                            className="flex items-center justify-between w-full text-left p-6 bg-indigo-50/50 hover:bg-indigo-50 transition-colors"
+                        >
+                            <div className="flex items-center gap-3">
+                                <div className="p-2 bg-indigo-100 rounded-lg text-indigo-600">
+                                    <Plus size={24} />
+                                </div>
+                                <div>
+                                    <h3 className="text-lg font-bold text-slate-800">Manual Data Entry</h3>
+                                    <p className="text-sm text-secondary-500">Add individual attendance or exam records</p>
+                                </div>
+                            </div>
+                            <div className={`p-2 rounded-full transition-transform duration-300 ${showManualEntry ? 'rotate-180 bg-indigo-100/50' : ''}`}>
+                                <ChevronDown size={20} className="text-indigo-500" />
+                            </div>
+                        </button>
+
+                        <AnimatePresence>
+                            {showManualEntry && (
+                                <motion.div
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: 'auto', opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    className="border-t border-indigo-100"
+                                >
+                                    <div className="p-6 md:p-8">
+                                        <form onSubmit={handleManualSubmit} className="space-y-6">
+                                            {/* Entry Type Toggle */}
+                                            <div className="flex p-1 bg-slate-100 rounded-xl w-full max-w-md mx-auto mb-8">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setEntryType('attendance')}
+                                                    className={`flex-1 py-2 px-4 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2 ${entryType === 'attendance'
+                                                        ? 'bg-white text-indigo-600 shadow-sm'
+                                                        : 'text-slate-500 hover:text-slate-700'
+                                                        }`}
+                                                >
+                                                    <Calendar size={18} />
+                                                    Attendance
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setEntryType('marks')}
+                                                    className={`flex-1 py-2 px-4 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2 ${entryType === 'marks'
+                                                        ? 'bg-white text-indigo-600 shadow-sm'
+                                                        : 'text-slate-500 hover:text-slate-700'
+                                                        }`}
+                                                >
+                                                    <FileText size={18} />
+                                                    Marks / Grades
+                                                </button>
+                                            </div>
+
+                                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                                {/* Student Selection */}
+                                                <div className="col-span-1 md:col-span-2 lg:col-span-1">
+                                                    <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                                                        Select Student <span className="text-rose-500">*</span>
+                                                    </label>
+                                                    <select
+                                                        value={selectedStudent}
+                                                        onChange={(e) => setSelectedStudent(e.target.value)}
+                                                        className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow outline-none"
+                                                        required
+                                                    >
+                                                        <option value="">-- Choose a student --</option>
+                                                        {students.map(student => (
+                                                            <option key={student.id} value={student.id}>
+                                                                {student.name} ({student.studentId})
+                                                            </option>
+                                                        ))}
+                                                    </select>
+                                                </div>
+
+                                                {/* Attendance Fields */}
+                                                {entryType === 'attendance' && (
+                                                    <>
+                                                        <div>
+                                                            <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                                                                Date <span className="text-rose-500">*</span>
+                                                            </label>
+                                                            <input
+                                                                type="date"
+                                                                value={attendanceDate}
+                                                                onChange={(e) => setAttendanceDate(e.target.value)}
+                                                                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow outline-none"
+                                                                required
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                                                                Status <span className="text-rose-500">*</span>
+                                                            </label>
+                                                            <select
+                                                                value={attendanceStatus}
+                                                                onChange={(e) => setAttendanceStatus(e.target.value)}
+                                                                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow outline-none"
+                                                                required
+                                                            >
+                                                                <option value="PRESENT">Present</option>
+                                                                <option value="ABSENT">Absent</option>
+                                                                <option value="LEAVE">Leave</option>
+                                                            </select>
+                                                        </div>
+                                                        <div className="col-span-1 md:col-span-2 lg:col-span-3">
+                                                            <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                                                                Subject (Optional)
+                                                            </label>
+                                                            <input
+                                                                type="text"
+                                                                value={attendanceSubject}
+                                                                onChange={(e) => setAttendanceSubject(e.target.value)}
+                                                                placeholder="e.g., Mathematics"
+                                                                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow outline-none"
+                                                            />
+                                                        </div>
+                                                    </>
+                                                )}
+
+                                                {/* Marks Fields */}
+                                                {entryType === 'marks' && (
+                                                    <>
+                                                        <div>
+                                                            <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                                                                Exam Name <span className="text-rose-500">*</span>
+                                                            </label>
+                                                            <input
+                                                                type="text"
+                                                                value={examName}
+                                                                onChange={(e) => setExamName(e.target.value)}
+                                                                placeholder="e.g., Mid-Sem 1"
+                                                                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow outline-none"
+                                                                required
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                                                                Subject <span className="text-rose-500">*</span>
+                                                            </label>
+                                                            <input
+                                                                type="text"
+                                                                value={subject}
+                                                                onChange={(e) => setSubject(e.target.value)}
+                                                                placeholder="e.g., Mathematics"
+                                                                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow outline-none"
+                                                                required
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                                                                Semester <span className="text-rose-500">*</span>
+                                                            </label>
+                                                            <input
+                                                                type="number"
+                                                                value={semester}
+                                                                onChange={(e) => setSemester(e.target.value)}
+                                                                placeholder="e.g., 3"
+                                                                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow outline-none"
+                                                                required
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                                                                Marks Obtained <span className="text-rose-500">*</span>
+                                                            </label>
+                                                            <input
+                                                                type="number"
+                                                                step="0.01"
+                                                                value={marksObtained}
+                                                                onChange={(e) => setMarksObtained(e.target.value)}
+                                                                placeholder="0.00"
+                                                                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow outline-none"
+                                                                required
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                                                                Total Marks <span className="text-rose-500">*</span>
+                                                            </label>
+                                                            <input
+                                                                type="number"
+                                                                step="0.01"
+                                                                value={totalMarks}
+                                                                onChange={(e) => setTotalMarks(e.target.value)}
+                                                                placeholder="100.00"
+                                                                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow outline-none"
+                                                                required
+                                                            />
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+
+                                            {/* Submit Button */}
+                                            <div className="flex gap-4 pt-4 border-t border-slate-100">
+                                                <button
+                                                    type="button"
+                                                    onClick={resetForm}
+                                                    className="px-6 py-2.5 text-slate-600 hover:text-slate-800 font-medium rounded-xl hover:bg-slate-50 transition-colors"
+                                                >
+                                                    Clear Form
+                                                </button>
+                                                <button
+                                                    type="submit"
+                                                    className="flex-1 px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition-all shadow-md hover:shadow-indigo-500/30 flex items-center justify-center gap-2"
+                                                >
+                                                    <Check size={18} />
+                                                    Submit {entryType === 'attendance' ? 'Attendance' : 'Marks'}
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </Card>
+                </motion.div>
+
+                {/* CSV Upload Section */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                >
+                    <div className="flex items-center gap-3 mb-6">
+                        <div className="p-2 bg-indigo-100 rounded-lg text-indigo-600">
+                            <FileText size={24} />
+                        </div>
+                        <h2 className="text-xl font-bold text-slate-800">Bulk Upload</h2>
                     </div>
-                    {showManualEntry ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                </button>
 
-                {showManualEntry && (
-                    <form onSubmit={handleManualSubmit} className="mt-6 space-y-6">
-                        {/* Student Selection */}
-                        <div>
-                            <label className="block text-sm font-medium text-secondary-700 mb-2">
-                                Select Student *
-                            </label>
-                            <select
-                                value={selectedStudent}
-                                onChange={(e) => setSelectedStudent(e.target.value)}
-                                className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                                required
-                            >
-                                <option value="">-- Choose a student --</option>
-                                {students.map(student => (
-                                    <option key={student.id} value={student.id}>
-                                        {student.name} ({student.studentId})
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        {csvConfigs.map((config, index) => (
+                            <CSVUploadCard
+                                key={`${config.title}-${refreshKey}-${index}`}
+                                title={config.title}
+                                description={config.description}
+                                uploadEndpoint={config.uploadEndpoint}
+                                templateUrl={config.templateUrl}
+                                icon={config.icon}
+                                onUploadSuccess={config.onSuccess}
+                            />
+                        ))}
+                    </div>
+                </motion.div>
 
-                        {/* Entry Type Toggle */}
-                        <div className="flex gap-4">
-                            <button
-                                type="button"
-                                onClick={() => setEntryType('attendance')}
-                                className={`flex-1 py-3 px-4 rounded-lg font-medium transition-colors ${entryType === 'attendance'
-                                        ? 'bg-primary text-white'
-                                        : 'bg-secondary-100 text-secondary-700 hover:bg-secondary-200'
-                                    }`}
-                            >
-                                <Calendar size={20} className="inline mr-2" />
-                                Attendance
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => setEntryType('marks')}
-                                className={`flex-1 py-3 px-4 rounded-lg font-medium transition-colors ${entryType === 'marks'
-                                        ? 'bg-primary text-white'
-                                        : 'bg-secondary-100 text-secondary-700 hover:bg-secondary-200'
-                                    }`}
-                            >
-                                <FileText size={20} className="inline mr-2" />
-                                Marks
-                            </button>
-                        </div>
-
-                        {/* Attendance Fields */}
-                        {entryType === 'attendance' && (
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div>
-                                    <label className="block text-sm font-medium text-secondary-700 mb-2">
-                                        Date *
-                                    </label>
-                                    <input
-                                        type="date"
-                                        value={attendanceDate}
-                                        onChange={(e) => setAttendanceDate(e.target.value)}
-                                        className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-secondary-700 mb-2">
-                                        Status *
-                                    </label>
-                                    <select
-                                        value={attendanceStatus}
-                                        onChange={(e) => setAttendanceStatus(e.target.value)}
-                                        className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                                        required
-                                    >
-                                        <option value="PRESENT">Present</option>
-                                        <option value="ABSENT">Absent</option>
-                                        <option value="LEAVE">Leave</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-secondary-700 mb-2">
-                                        Subject (Optional)
-                                    </label>
-                                    <input
-                                        type="text"
-                                        value={attendanceSubject}
-                                        onChange={(e) => setAttendanceSubject(e.target.value)}
-                                        placeholder="e.g., Mathematics"
-                                        className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                                    />
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Marks Fields */}
-                        {entryType === 'marks' && (
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label className="block text-sm font-medium text-secondary-700 mb-2">
-                                        Exam Name *
-                                    </label>
-                                    <input
-                                        type="text"
-                                        value={examName}
-                                        onChange={(e) => setExamName(e.target.value)}
-                                        placeholder="e.g., Mid-Sem 1"
-                                        className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-secondary-700 mb-2">
-                                        Subject *
-                                    </label>
-                                    <input
-                                        type="text"
-                                        value={subject}
-                                        onChange={(e) => setSubject(e.target.value)}
-                                        placeholder="e.g., Mathematics"
-                                        className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-secondary-700 mb-2">
-                                        Marks Obtained *
-                                    </label>
-                                    <input
-                                        type="number"
-                                        step="0.01"
-                                        value={marksObtained}
-                                        onChange={(e) => setMarksObtained(e.target.value)}
-                                        placeholder="e.g., 85"
-                                        className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-secondary-700 mb-2">
-                                        Total Marks *
-                                    </label>
-                                    <input
-                                        type="number"
-                                        step="0.01"
-                                        value={totalMarks}
-                                        onChange={(e) => setTotalMarks(e.target.value)}
-                                        placeholder="e.g., 100"
-                                        className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-secondary-700 mb-2">
-                                        Semester *
-                                    </label>
-                                    <input
-                                        type="number"
-                                        value={semester}
-                                        onChange={(e) => setSemester(e.target.value)}
-                                        placeholder="e.g., 3"
-                                        className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                                        required
-                                    />
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Submit Button */}
-                        <div className="flex gap-3 pt-4">
-                            <button
-                                type="button"
-                                onClick={resetForm}
-                                className="px-6 py-2 border border-secondary-300 text-secondary-700 rounded-lg hover:bg-secondary-50 transition-colors"
-                            >
-                                Clear
-                            </button>
-                            <button
-                                type="submit"
-                                className="flex-1 px-6 py-2 bg-primary hover:bg-primary-600 text-white font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
-                            >
-                                <UserCheck size={18} />
-                                Add {entryType === 'attendance' ? 'Attendance' : 'Marks'}
-                            </button>
-                        </div>
-                    </form>
+                {loading && students.length === 0 && (
+                    <div className="flex justify-center py-12">
+                        <div className="animate-spin rounded-full h-8 w-8 border-4 border-indigo-200 border-t-indigo-600"></div>
+                    </div>
                 )}
-            </Card>
 
-            {/* CSV Upload Section */}
-            <div>
-                <h2 className="text-lg font-semibold mb-4">Bulk Upload via CSV</h2>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                    {csvConfigs.map((config, index) => (
-                        <CSVUploadCard
-                            key={`${config.title}-${refreshKey}-${index}`}
-                            title={config.title}
-                            description={config.description}
-                            uploadEndpoint={config.uploadEndpoint}
-                            templateUrl={config.templateUrl}
-                            icon={config.icon}
-                            onUploadSuccess={config.onSuccess}
-                        />
-                    ))}
-                </div>
+                {!loading && students.length === 0 && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="mt-8"
+                    >
+                        <Card>
+                            <div className="text-center py-16">
+                                <div className="bg-slate-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <UserCheck size={40} className="text-slate-400" />
+                                </div>
+                                <h3 className="text-xl font-semibold text-slate-800 mb-2">No Students Assigned</h3>
+                                <p className="text-secondary-500">You need students assigned to you before adding data.</p>
+                            </div>
+                        </Card>
+                    </motion.div>
+                )}
             </div>
-
-            {loading && students.length === 0 && (
-                <div className="text-center py-12 text-secondary-500">
-                    <p>Loading your students...</p>
-                </div>
-            )}
-
-            {!loading && students.length === 0 && (
-                <Card className="mt-6">
-                    <div className="text-center py-12">
-                        <UserCheck size={48} className="mx-auto text-secondary-400 mb-4" />
-                        <h3 className="text-lg font-semibold text-secondary-700 mb-2">No Students Assigned</h3>
-                        <p className="text-secondary-500">You don't have any students assigned to you yet.</p>
-                    </div>
-                </Card>
-            )}
         </PageWrapper>
     );
 };

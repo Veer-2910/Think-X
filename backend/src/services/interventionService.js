@@ -25,11 +25,26 @@ export const autoAssignMentor = async (studentId) => {
         id: true,
         name: true,
         counselorNotes: true,
-        problemCategories: true
+        problemCategories: true,
+        counselor: true, // Need to check if counselor exists
+        mentorAssignment: {
+          where: { status: 'ACTIVE' }
+        }
       }
     });
 
     if (!student) return null;
+
+    // Check pre-requisites based on user rules
+    if (!student.counselor) {
+      console.warn(`Student ${student.name} has no counselor, skipping auto-assign`);
+      return null;
+    }
+
+    if (student.mentorAssignment && student.mentorAssignment.length > 0) {
+      console.warn(`Student ${student.name} already has a mentor`);
+      return null;
+    }
 
     // 2. Get all mentors with availability
     const mentors = await prisma.mentor.findMany({

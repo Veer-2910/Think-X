@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import PageWrapper from '../components/layout/PageWrapper';
 import Card from '../components/ui/Card';
-import Badge from '../components/ui/Badge';
+import MyMenteesGrid from '../components/dashboard/MyMenteesGrid';
 import { mentorAPI } from '../services/api';
-import { 
-  Users, 
-  AlertTriangle, 
-  BookOpen,
-  Eye,
-  Activity
+import { useAuth } from '../contexts/AuthContext';
+import {
+  Users,
+  AlertTriangle,
+  Activity,
+  CheckCircle2,
+  BookOpen
 } from 'lucide-react';
 
 const MentorDashboard = () => {
+  const { user } = useAuth();
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -28,139 +29,112 @@ const MentorDashboard = () => {
       setStudents(data.data || []);
     } catch (err) {
       console.error('Error fetching students:', err);
-      // Don't show error if it's just 404/empty (backend returns 200 with empty array usually)
-      setError('Failed to load assigned students');
+      // Don't show error if it's just 404/empty
     } finally {
       setLoading(false);
     }
   };
 
-  const getRiskBadge = (level) => {
-    const variants = {
-      HIGH: 'danger',
-      MEDIUM: 'warning',
-      LOW: 'success',
-      UNKNOWN: 'neutral'
-    };
-    return <Badge variant={variants[level] || 'neutral'}>{level}</Badge>;
-  };
+  // Calculate stats
+  const totalStudents = students.length;
+  const highRisk = students.filter(s => s.dropoutRisk === 'HIGH').length;
+  const avgAttendance = totalStudents > 0
+    ? students.reduce((acc, s) => acc + (s.attendancePercent || 0), 0) / totalStudents
+    : 0;
 
   if (loading) {
     return (
-      <PageWrapper title="My Mentorship Group">
-        <div className="flex items-center justify-center h-64">
-           <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
+      <PageWrapper>
+        <div className="flex items-center justify-center h-[80vh]">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-indigo-600 border-t-transparent"></div>
         </div>
       </PageWrapper>
     );
   }
 
-  // Calculate stats
-  const totalStudents = students.length;
-  const highRisk = students.filter(s => s.dropoutRisk === 'HIGH').length;
-  const avgAttendance = students.reduce((acc, s) => acc + (s.attendancePercent || 0), 0) / (totalStudents || 1);
-
   return (
-    <PageWrapper title="My Mentorship Group">
+    <PageWrapper>
+      <div className="max-w-7xl mx-auto space-y-8 animate-fade-in pb-12">
 
-
-      {/* Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <Card>
-          <div className="flex items-center gap-4">
-            <div className="p-3 bg-primary-50 text-primary rounded-lg">
-              <Users size={24} />
-            </div>
+        {/* Glass Header */}
+        <div className="relative mb-8 z-20">
+          <div className="absolute inset-0 bg-white/70 backdrop-blur-md rounded-2xl shadow-sm border border-white/50"></div>
+          <div className="relative px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
             <div>
-              <p className="text-secondary-500 text-sm">Assigned Students</p>
-              <h3 className="text-2xl font-bold">{totalStudents}</h3>
+              <h1 className="text-2xl font-bold text-slate-800 tracking-tight">Mentorship Workspace</h1>
+              <p className="text-slate-500 text-sm">Track progress and guide your assigned students.</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="bg-indigo-50 text-indigo-700 px-4 py-2 rounded-xl font-bold text-sm border border-indigo-100 flex items-center gap-2">
+                <img
+                  src={`https://ui-avatars.com/api/?name=${user?.name}&background=6366f1&color=fff`}
+                  alt={user?.name}
+                  className="w-6 h-6 rounded-full"
+                />
+                {user?.name}
+                <span className="text-indigo-400 font-normal ml-1">• {user?.specialization || 'General'}</span>
+              </div>
             </div>
           </div>
-        </Card>
-        
-        <Card>
-          <div className="flex items-center gap-4">
-             <div className="p-3 bg-red-50 text-red-600 rounded-lg">
-              <AlertTriangle size={24} />
-            </div>
-            <div>
-              <p className="text-secondary-500 text-sm">High Risk Cases</p>
-              <h3 className="text-2xl font-bold">{highRisk}</h3>
-            </div>
-          </div>
-        </Card>
-
-        <Card>
-           <div className="flex items-center gap-4">
-             <div className="p-3 bg-blue-50 text-blue-600 rounded-lg">
-              <Activity size={24} />
-            </div>
-            <div>
-              <p className="text-secondary-500 text-sm">Avg. Group Attendance</p>
-              <h3 className="text-2xl font-bold">{avgAttendance.toFixed(1)}%</h3>
-            </div>
-          </div>
-        </Card>
-      </div>
-
-      {/* Student List */}
-      <Card>
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-lg font-semibold">Assigned Students</h2>
         </div>
 
-        {students.length === 0 ? (
-          <div className="text-center py-12 text-secondary-500">
-            <Users size={48} className="mx-auto mb-4 opacity-50" />
-            <p className="text-lg font-medium">No students assigned yet.</p>
-            <p className="text-sm mt-2">Please wait for admin assignment.</p>
+        {/* Stats Row */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Card className="bg-gradient-to-br from-indigo-500 to-indigo-700 text-white border-none shadow-lg shadow-indigo-200">
+            <div className="flex justify-between items-start">
+              <div>
+                <p className="text-indigo-100 text-xs font-bold uppercase mb-1">My Group</p>
+                <h3 className="text-3xl font-bold">{totalStudents} <span className="text-sm font-normal opacity-80">Mentees</span></h3>
+              </div>
+              <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
+                <Users size={24} />
+              </div>
+            </div>
+            <div className="mt-4 pt-4 border-t border-white/20 text-xs text-indigo-100 flex items-center gap-2">
+              <CheckCircle2 size={12} /> Active & Enrolled
+            </div>
+          </Card>
+
+          <Card className="border-none shadow-md hover:shadow-lg transition-shadow">
+            <div className="flex justify-between items-start">
+              <div>
+                <p className="text-slate-400 text-xs font-bold uppercase mb-1">Attention Needed</p>
+                <h3 className="text-3xl font-bold text-slate-800">{highRisk}</h3>
+              </div>
+              <div className={`p-2 rounded-lg ${highRisk > 0 ? 'bg-red-50 text-red-500' : 'bg-green-50 text-green-500'}`}>
+                <AlertTriangle size={24} />
+              </div>
+            </div>
+            <p className="text-xs text-slate-500 mt-2">Students marked as High Risk</p>
+          </Card>
+
+          <Card className="border-none shadow-md hover:shadow-lg transition-shadow">
+            <div className="flex justify-between items-start">
+              <div>
+                <p className="text-slate-400 text-xs font-bold uppercase mb-1">Group Avg Attendance</p>
+                <h3 className="text-3xl font-bold text-slate-800">{avgAttendance.toFixed(1)}%</h3>
+              </div>
+              <div className="p-2 bg-blue-50 text-blue-500 rounded-lg">
+                <Activity size={24} />
+              </div>
+            </div>
+            <div className="w-full bg-slate-100 rounded-full h-1.5 mt-4">
+              <div className="bg-blue-500 h-1.5 rounded-full" style={{ width: `${avgAttendance}%` }}></div>
+            </div>
+          </Card>
+        </div>
+
+        {/* Mentees Grid */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2">
+            <BookOpen className="text-indigo-600" size={20} />
+            <h2 className="text-lg font-bold text-slate-800">Assigned Students</h2>
           </div>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-secondary-100">
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Student</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Department</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Attendance</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">CGPA</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Risk Level</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Primary Reason</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-secondary-700">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {students.map((student) => (
-                  <tr key={student.id} className="border-b border-secondary-50 hover:bg-secondary-50 transition-colors">
-                    <td className="py-3 px-4">
-                      <div>
-                        <p className="font-medium text-secondary-900">{student.name}</p>
-                        <p className="text-xs text-secondary-500">{student.studentId}</p>
-                      </div>
-                    </td>
-                    <td className="py-3 px-4 text-sm text-secondary-600">{student.department}</td>
-                    <td className="py-3 px-4 text-sm text-secondary-600">{student.attendancePercent?.toFixed(1)}%</td>
-                    <td className="py-3 px-4 text-sm text-secondary-600">{student.currentCGPA}</td>
-                    <td className="py-3 px-4">{getRiskBadge(student.dropoutRisk)}</td>
-                    <td className="py-3 px-4 text-sm text-secondary-600 truncate max-w-xs" title={student.riskReason}>
-                      {student.riskReason || '-'}
-                    </td>
-                    <td className="py-3 px-4">
-                      <Link 
-                        to={`/students/${student.id}`} 
-                        className="inline-flex items-center gap-1 text-primary hover:text-primary-700 font-medium text-sm"
-                      >
-                        <Eye size={16} />
-                        View
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </Card>
+
+          <MyMenteesGrid students={students} />
+        </div>
+
+      </div>
     </PageWrapper>
   );
 };
