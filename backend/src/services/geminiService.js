@@ -186,68 +186,109 @@ Return only categories that clearly apply based on the notes. Be specific and ac
  * @param {array} availableMentors - Array of mentor objects with specializations
  * @returns {array} - Sorted array of mentor recommendations
  */
-export const suggestMentors = (problemCategories, availableMentors) => {
-    console.log('Problem Categories:', problemCategories);
-    console.log('Available Mentors:', availableMentors.map(m => ({ name: m.name, specialization: m.specialization })));
+/**
+ * Suggest mentors based on student context using Gemini AI
+ * @param {object} studentData - Student data including counselor notes and problem categories
+ * @param {array} availableMentors - Array of mentor objects with specializations
+ * @returns {Promise<array>} - Sorted array of mentor recommendations
+ */
+export const suggestMentors = async (studentData, availableMentors) => {
+    try {
+        console.log('Generating AI mentor suggestions for student...');
 
-    // Define flexible keyword matching for specializations
-    const specializationKeywords = {
-        'Academic Support': ['academic', 'study', 'grade', 'exam', 'course', 'backlog', 'subject', 'learning', 'performance'],
-        'Career Guidance': ['career', 'job', 'placement', 'interview', 'resume', 'future', 'profession', 'employment'],
-        'Financial Guidance': ['financial', 'money', 'fee', 'loan', 'scholarship', 'budget', 'economic', 'tuition'],
-        'Family Counseling': ['family', 'parent', 'home', 'sibling', 'relationship', 'domestic', 'personal'],
-        'Mental Health Support': ['mental', 'stress', 'anxiety', 'depression', 'emotional', 'psychological'],
-        'General Mentoring': ['general', 'overall', 'guidance', 'support', 'help']
-    };
+        if (!availableMentors || availableMentors.length === 0) {
+            return [];
+        }
 
-    // Score each mentor based on keyword matching
-    const mentorScores = availableMentors.map(mentor => {
-        let score = 0;
-        const matchedCategories = [];
-        const mentorSpec = (mentor.specialization || '').toLowerCase();
-
-        // Check each problem category against mentor specialization
-        problemCategories.forEach(category => {
-            const categoryLower = category.toLowerCase();
-
-            // Direct match with specialization keywords
-            Object.entries(specializationKeywords).forEach(([spec, keywords]) => {
-                if (mentorSpec.includes(spec.toLowerCase())) {
-                    // Check if any keyword from this specialization matches the category
-                    const hasMatch = keywords.some(keyword =>
-                        categoryLower.includes(keyword) || keyword.includes(categoryLower)
-                    );
-
-                    if (hasMatch) {
-                        score += 10;
-                        matchedCategories.push(category);
-                    }
-                }
-            });
+        const model = genAI.getGenerativeModel({
+            model: 'gemini-2.5-flash',
+            generationConfig: GEMINI_CONFIG,
+            requestOptions: { timeout: REQUEST_TIMEOUT }
         });
 
-        // Fallback: If no specific match, give points based on capacity
-        if (score === 0) {
-            score = 5; // Base score for any available mentor
+        // Prepare mentor list for prompt
+        const mentorsList = availableMentors.map(m =>
+            `- ID: ${m.id}, Name: ${m.name}, Department: ${m.department || 'N/A'}, Specialization: ${m.specialization || 'General'}, Current Load: ${m.currentLoad || 0}`
+        ).join('\n');
+
+        const studentContext = `
+        Student Context:
+        Problem Categories: ${JSON.stringify(studentData.problemCategories || [])}
+        Counselor Notes: "${studentData.counselorNotes || 'No notes provided'}"
+        Department: ${studentData.department || 'Unknown'}
+        Risk Level: ${studentData.dropoutRisk || 'Unknown'}
+        `;
+
+        const prompt = `You are an expert academic counselor. Your task is to select the most suitable mentors for a student based on their specific problems and the mentors' specializations.
+        
+        ${studentContext}
+
+        Available Mentors:
+        ${mentorsList}
+
+        Please analyze the student's situation and the available mentors. Rank the top 3 most suitable mentors.
+        
+        Respond in the following JSON format (output ONLY valid JSON):
+        {
+            "recommendations": [
+                {
+                    "mentorId": "ID of the mentor",
+                    "matchScore": 0 to 100,
+                    "reasoning": "One sentence explaining why this mentor is a good match"
+                }
+            ]
+        }
+        
+        Scoring Criteria:
+        - High score (80-100): Mentor's specialization directly addresses the student's specific problems (e.g., Financial expert for financial issues).
+        - Medium score (50-79): Mentor is in the same department or has relevant general experience.
+        - Low score (0-49): Weak match.
+        
+        Consider the student's department and specific issues described in the notes.`;
+
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        let text = response.text();
+
+        // Clean markdown
+        let jsonText = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+        const jsonMatch = jsonText.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+            jsonText = jsonMatch[0];
         }
 
-        console.log(`Mentor ${mentor.name} (${mentor.specialization}): Score = ${score}, Matched = ${matchedCategories.join(', ')}`);
-
-        return {
-            ...mentor,
-            matchScore: score,
-            matchedCategories,
-            isRecommended: score > 5
-        };
-    });
-
-    // Sort by score (highest first), then by current load (lowest first)
-    return mentorScores.sort((a, b) => {
-        if (b.matchScore !== a.matchScore) {
-            return b.matchScore - a.matchScore;
+        let recommendations = [];
+        try {
+            const parsed = JSON.parse(jsonText);
+            recommendations = parsed.recommendations || [];
+        } catch (e) {
+            console.error('Failed to parse mentor suggestions JSON:', e);
         }
-        return (a.currentLoad || 0) - (b.currentLoad || 0);
-    });
+
+        // Merge AI recommendations with original mentor objects
+        const scoredMentors = availableMentors.map(mentor => {
+            const rec = recommendations.find(r => r.mentorId === mentor.id);
+            return {
+                ...mentor,
+                matchScore: rec ? rec.matchScore : 0,
+                distinguishedReasoning: rec ? rec.reasoning : 'available', // renamed to avoid conflict if any
+                isRecommended: rec ? rec.matchScore > 60 : false
+            };
+        });
+
+        // effective sorting: High match score first, then lowest current load
+        return scoredMentors.sort((a, b) => {
+            if (b.matchScore !== a.matchScore) {
+                return b.matchScore - a.matchScore; // Higher score first
+            }
+            return (a.currentLoad || 0) - (b.currentLoad || 0); // Lower load first
+        });
+
+    } catch (error) {
+        console.error('AI Mentor Suggestion Error:', error);
+        // Fallback to simple load balancing if AI fails
+        return availableMentors.map(m => ({ ...m, matchScore: 0 })).sort((a, b) => (a.currentLoad || 0) - (b.currentLoad || 0));
+    }
 };
 
 export default {

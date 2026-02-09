@@ -91,7 +91,12 @@ export const autoAssignMentor = async (studentId) => {
         }
 
         // Get suggestions
-        const suggestions = suggestMentors(categories, availableMentors);
+        const suggestions = await suggestMentors({
+          problemCategories: categories,
+          counselorNotes: student.counselorNotes,
+          department: 'Unknown', // Could fetch if needed
+          dropoutRisk: 'Unknown'
+        }, availableMentors);
 
         if (suggestions.length > 0 && suggestions[0].matchScore > 0) {
           selectedMentor = suggestions[0];

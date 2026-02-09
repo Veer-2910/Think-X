@@ -133,7 +133,12 @@ export const suggestMentorsForStudent = async (req, res) => {
             .filter(mentor => mentor.hasCapacity);
 
         // Get mentor suggestions
-        const suggestions = suggestMentors(problemCategories, availableMentors);
+        const suggestions = await suggestMentors({
+            problemCategories,
+            counselorNotes: student.aiAnalysis || '', // Using AI summary as notes proxy if raw notes unavailable here, or fetch notes if needed
+            department: 'Unknown', // Ideally fetch this
+            dropoutRisk: 'Unknown'
+        }, availableMentors);
 
         res.status(200).json({
             success: true,
@@ -151,7 +156,7 @@ export const suggestMentorsForStudent = async (req, res) => {
                     currentLoad: mentor.currentLoad,
                     maxStudents: mentor.maxStudents,
                     matchScore: mentor.matchScore,
-                    matchedCategories: mentor.matchedCategories,
+                    expectedReasoning: mentor.distinguishedReasoning,
                     isRecommended: mentor.isRecommended
                 }))
             }
@@ -278,7 +283,12 @@ export const autoAssignMentor = async (req, res) => {
                 }
 
                 // Use AI matching to find best mentor
-                const suggestions = suggestMentors(problemCategories, availableMentors);
+                const suggestions = await suggestMentors({
+                    problemCategories,
+                    counselorNotes: student.counselorNotes,
+                    department: student.department || 'Unknown',
+                    dropoutRisk: student.dropoutRisk
+                }, availableMentors);
 
                 // Prioritize mentors with match score > 5 (good match)
                 const goodMatches = suggestions.filter(m => m.matchScore > 5);
